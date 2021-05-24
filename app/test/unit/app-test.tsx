@@ -96,7 +96,7 @@ describe('App', () => {
   })
 
   it('renders', async () => {
-    const app = (TestUtils.renderIntoDocument(
+    const app = TestUtils.renderIntoDocument(
       <App
         dispatcher={dispatcher}
         appStore={appStore}
@@ -106,7 +106,7 @@ describe('App', () => {
         aheadBehindStore={aheadBehindStore}
         startTime={0}
       />
-    ) as unknown) as React.Component<any, any>
+    ) as unknown as React.Component<any, any>
     // Give any promises a tick to resolve.
     await wait(0)
 

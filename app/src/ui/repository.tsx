@@ -110,8 +110,8 @@ export class RepositoryView extends React.Component<
   IRepositoryViewProps,
   IRepositoryViewState
 > {
-  private previousSection: RepositorySectionTab = this.props.state
-    .selectedSection
+  private previousSection: RepositorySectionTab =
+    this.props.state.selectedSection
 
   public constructor(props: IRepositoryViewProps) {
     super(props)
@@ -131,8 +131,8 @@ export class RepositoryView extends React.Component<
   }
 
   private renderChangesBadge(): JSX.Element | null {
-    const filesChangedCount = this.props.state.changesState.workingDirectory
-      .files.length
+    const filesChangedCount =
+      this.props.state.changesState.workingDirectory.files.length
 
     if (filesChangedCount <= 0) {
       return null

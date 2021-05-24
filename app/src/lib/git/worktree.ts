@@ -23,7 +23,8 @@ export async function listWorkTrees(
   const worktrees = new Array<LinkedWorkTree>()
 
   // the porcelain output from git-worktree covers multiple lines
-  const listWorkTreeRe = /worktree (.*)\nHEAD ([a-f0-9]*)\n(branch .*|detached)\n/gm
+  const listWorkTreeRe =
+    /worktree (.*)\nHEAD ([a-f0-9]*)\n(branch .*|detached)\n/gm
 
   getMatches(result.stdout, listWorkTreeRe).forEach(m => {
     if (m.length === 4) {

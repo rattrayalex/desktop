@@ -478,9 +478,8 @@ export class Dispatcher {
 
     await this.setRebaseProgressFromState(repository)
 
-    const initialStep = initializeRebaseFlowForConflictedRepository(
-      updatedConflictState
-    )
+    const initialStep =
+      initializeRebaseFlowForConflictedRepository(updatedConflictState)
 
     this.setRebaseFlowStep(repository, initialStep)
 
@@ -1096,12 +1095,8 @@ export class Dispatcher {
     conflictsState: RebaseConflictState
   ): Promise<void> {
     const stateBefore = this.repositoryStateManager.get(repository)
-    const {
-      targetBranch,
-      baseBranch,
-      originalBranchTip,
-      manualResolutions,
-    } = conflictsState
+    const { targetBranch, baseBranch, originalBranchTip, manualResolutions } =
+      conflictsState
 
     const beforeSha = getTipSha(stateBefore.branchesState.tip)
 
@@ -1642,9 +1637,8 @@ export class Dispatcher {
     }
 
     // Find the repository where the PR is created in Desktop.
-    let repository: Repository | null = this.getRepositoryFromPullRequest(
-      pullRequest
-    )
+    let repository: Repository | null =
+      this.getRepositoryFromPullRequest(pullRequest)
 
     if (repository !== null) {
       await this.selectRepository(repository)

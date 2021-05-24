@@ -131,9 +131,8 @@ export class RepositoriesDatabase extends BaseDatabase {
  * Remove any duplicate GitHub repositories that have the same owner and name.
  */
 function removeDuplicateGitHubRepositories(transaction: Dexie.Transaction) {
-  const table = transaction.table<IDatabaseGitHubRepository, number>(
-    'gitHubRepositories'
-  )
+  const table =
+    transaction.table<IDatabaseGitHubRepository, number>('gitHubRepositories')
 
   const seenKeys = new Set<string>()
   return table.toCollection().each(repo => {

@@ -11,19 +11,13 @@ interface ICherryPickProgressDialogProps {
   readonly emoji: Map<string, string>
 }
 
-export class CherryPickProgressDialog extends React.Component<
-  ICherryPickProgressDialogProps
-> {
+export class CherryPickProgressDialog extends React.Component<ICherryPickProgressDialogProps> {
   // even tho dialog is not dismissable, it requires an onDismissed method
   private onDismissed = () => {}
 
   public render() {
-    const {
-      position,
-      totalCommitCount,
-      value,
-      currentCommitSummary,
-    } = this.props.progress
+    const { position, totalCommitCount, value, currentCommitSummary } =
+      this.props.progress
 
     return (
       <Dialog

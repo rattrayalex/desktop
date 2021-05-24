@@ -215,12 +215,8 @@ export class CherryPickFlow extends React.Component<ICherryPickFlowProps> {
 
     switch (step.kind) {
       case CherryPickStepKind.ChooseTargetBranch: {
-        const {
-          allBranches,
-          defaultBranch,
-          currentBranch,
-          recentBranches,
-        } = step
+        const { allBranches, defaultBranch, currentBranch, recentBranches } =
+          step
         return (
           <ChooseTargetBranchDialog
             key="choose-target-branch"

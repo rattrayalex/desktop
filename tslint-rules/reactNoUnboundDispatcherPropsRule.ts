@@ -76,7 +76,8 @@ class ReactNoUnboundDispatcherPropsWalker extends Lint.RuleWalker {
         return
       }
 
-      const propAccess: ts.PropertyAccessExpression = jsxExpression.expression as ts.PropertyAccessExpression
+      const propAccess: ts.PropertyAccessExpression =
+        jsxExpression.expression as ts.PropertyAccessExpression
       const propAccessText = propAccess.getText()
 
       if (/^this\.props\.dispatcher\./.test(propAccessText)) {

@@ -405,13 +405,17 @@ export class AppStore extends TypedBaseStore<IAppState> {
   private windowZoomFactor: number = 1
   private isUpdateAvailableBannerVisible: boolean = false
 
-  private askToMoveToApplicationsFolderSetting: boolean = askToMoveToApplicationsFolderDefault
-  private askForConfirmationOnRepositoryRemoval: boolean = confirmRepoRemovalDefault
+  private askToMoveToApplicationsFolderSetting: boolean =
+    askToMoveToApplicationsFolderDefault
+  private askForConfirmationOnRepositoryRemoval: boolean =
+    confirmRepoRemovalDefault
   private confirmDiscardChanges: boolean = confirmDiscardChangesDefault
   private askForConfirmationOnForcePush = askForConfirmationOnForcePushDefault
   private imageDiffType: ImageDiffType = imageDiffTypeDefault
-  private hideWhitespaceInChangesDiff: boolean = hideWhitespaceInChangesDiffDefault
-  private hideWhitespaceInHistoryDiff: boolean = hideWhitespaceInHistoryDiffDefault
+  private hideWhitespaceInChangesDiff: boolean =
+    hideWhitespaceInChangesDiffDefault
+  private hideWhitespaceInHistoryDiff: boolean =
+    hideWhitespaceInHistoryDiffDefault
   /** Whether or not the spellchecker is enabled for commit summary and description */
   private commitSpellcheckEnabled: boolean = commitSpellcheckEnabledDefault
   private showSideBySideDiff: boolean = ShowSideBySideDiffDefault
@@ -728,9 +732,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
     }
 
     if (repository instanceof CloningRepository) {
-      const progress = this.cloningRepositoriesStore.getRepositoryState(
-        repository
-      )
+      const progress =
+        this.cloningRepositoriesStore.getRepositoryState(repository)
       if (!progress) {
         return null
       }
@@ -782,10 +785,10 @@ export class AppStore extends TypedBaseStore<IAppState> {
       highlightAccessKeys: this.highlightAccessKeys,
       isUpdateAvailableBannerVisible: this.isUpdateAvailableBannerVisible,
       currentBanner: this.currentBanner,
-      askToMoveToApplicationsFolderSetting: this
-        .askToMoveToApplicationsFolderSetting,
-      askForConfirmationOnRepositoryRemoval: this
-        .askForConfirmationOnRepositoryRemoval,
+      askToMoveToApplicationsFolderSetting:
+        this.askToMoveToApplicationsFolderSetting,
+      askForConfirmationOnRepositoryRemoval:
+        this.askForConfirmationOnRepositoryRemoval,
       askForConfirmationOnDiscardChanges: this.confirmDiscardChanges,
       askForConfirmationOnForcePush: this.askForConfirmationOnForcePush,
       uncommittedChangesStrategy: this.uncommittedChangesStrategy,
@@ -1893,8 +1896,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
 
   private updateRepositorySelectionAfterRepositoriesChanged() {
     const selectedRepository = this.selectedRepository
-    let newSelectedRepository: Repository | CloningRepository | null = this
-      .selectedRepository
+    let newSelectedRepository: Repository | CloningRepository | null =
+      this.selectedRepository
     if (selectedRepository) {
       const r =
         this.repositories.find(
@@ -1968,9 +1971,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
    * Push changes from latest conflicts into current rebase flow step, if needed
    */
   private updateRebaseFlowConflictsIfFound(repository: Repository) {
-    const { changesState, rebaseState } = this.repositoryStateCache.get(
-      repository
-    )
+    const { changesState, rebaseState } =
+      this.repositoryStateCache.get(repository)
     const { conflictState } = changesState
 
     if (conflictState === null || !isRebaseConflictState(conflictState)) {
@@ -2005,9 +2007,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
    *  - i.e. - multiple instance of running in to conflicts
    */
   private updateCherryPickFlowConflictsIfFound(repository: Repository) {
-    const { changesState, cherryPickState } = this.repositoryStateCache.get(
-      repository
-    )
+    const { changesState, cherryPickState } =
+      this.repositoryStateCache.get(repository)
     const { conflictState } = changesState
 
     if (conflictState === null || !isCherryPickConflictState(conflictState)) {
@@ -2221,9 +2222,10 @@ export class AppStore extends TypedBaseStore<IAppState> {
     }
 
     const selectedFileIdBeforeLoad = selectedFileIDsBeforeLoad[0]
-    const selectedFileBeforeLoad = changesStateBeforeLoad.workingDirectory.findFileWithID(
-      selectedFileIdBeforeLoad
-    )
+    const selectedFileBeforeLoad =
+      changesStateBeforeLoad.workingDirectory.findFileWithID(
+        selectedFileIdBeforeLoad
+      )
 
     if (selectedFileBeforeLoad === null) {
       return
@@ -2257,9 +2259,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
       return
     }
 
-    const currentlySelectedFile = changesState.workingDirectory.findFileWithID(
-      selectedFileID
-    )
+    const currentlySelectedFile =
+      changesState.workingDirectory.findFileWithID(selectedFileID)
     if (currentlySelectedFile === null) {
       return
     }
@@ -2281,9 +2282,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
       })
     }
 
-    const newSelection = currentlySelectedFile.selection.withSelectableLines(
-      selectableLines
-    )
+    const newSelection =
+      currentlySelectedFile.selection.withSelectableLines(selectableLines)
     const selectedFile = currentlySelectedFile.withSelection(newSelection)
     const updatedFiles = changesState.workingDirectory.files.map(f =>
       f.id === selectedFile.id ? selectedFile : f
@@ -2549,9 +2549,10 @@ export class AppStore extends TypedBaseStore<IAppState> {
         }
       }
 
-      const branchProtectionsFound = await this.repositoriesStore.hasBranchProtectionsConfigured(
-        repository.gitHubRepository
-      )
+      const branchProtectionsFound =
+        await this.repositoriesStore.hasBranchProtectionsConfigured(
+          repository.gitHubRepository
+        )
 
       if (branchProtectionsFound) {
         this.statsStore.recordCommitToRepositoryWithBranchProtections()
@@ -2633,9 +2634,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
     includeAll: boolean
   ): Promise<void> {
     this.repositoryStateCache.updateChangesState(repository, state => {
-      const workingDirectory = state.workingDirectory.withIncludeAllFiles(
-        includeAll
-      )
+      const workingDirectory =
+        state.workingDirectory.withIncludeAllFiles(includeAll)
       return { workingDirectory }
     })
 
@@ -2753,9 +2753,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
     desktopStashEntryCount: number,
     stashEntryCount: number
   ) {
-    const lastStashEntryCheck = await this.repositoriesStore.getLastStashCheckDate(
-      repository
-    )
+    const lastStashEntryCheck =
+      await this.repositoriesStore.getLastStashCheckDate(repository)
     const dateNow = moment()
     const threshold = dateNow.subtract(24, 'hours')
     // `lastStashEntryCheck` being equal to `null` means
@@ -5296,8 +5295,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
       return
     }
 
-    const currentPullRequest = this.repositoryStateCache.get(repository)
-      .branchesState.currentPullRequest
+    const currentPullRequest =
+      this.repositoryStateCache.get(repository).branchesState.currentPullRequest
 
     if (currentPullRequest === null) {
       return

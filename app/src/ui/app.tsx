@@ -1732,10 +1732,8 @@ export class App extends React.Component<IAppProps, IAppState> {
           return null
         }
 
-        const {
-          workingDirectory,
-          conflictState,
-        } = selectedState.state.changesState
+        const { workingDirectory, conflictState } =
+          selectedState.state.changesState
 
         if (conflictState === null || conflictState.kind === 'rebase') {
           return null
@@ -1916,10 +1914,8 @@ export class App extends React.Component<IAppProps, IAppState> {
       }
       case PopupType.StashAndSwitchBranch: {
         const { repository, branchToCheckout } = popup
-        const {
-          branchesState,
-          changesState,
-        } = this.props.repositoryStateManager.get(repository)
+        const { branchesState, changesState } =
+          this.props.repositoryStateManager.get(repository)
         const { tip } = branchesState
 
         if (tip.kind !== TipState.Valid) {
@@ -2207,9 +2203,8 @@ export class App extends React.Component<IAppProps, IAppState> {
       type: BannerType.RebaseConflictsFound,
       targetBranch,
       onOpenDialog: async () => {
-        const { changesState } = this.props.repositoryStateManager.get(
-          repository
-        )
+        const { changesState } =
+          this.props.repositoryStateManager.get(repository)
         const { conflictState } = changesState
 
         if (conflictState === null || !isRebaseConflictState(conflictState)) {
@@ -2221,9 +2216,8 @@ export class App extends React.Component<IAppProps, IAppState> {
 
         await this.props.dispatcher.setRebaseProgressFromState(repository)
 
-        const initialStep = initializeRebaseFlowForConflictedRepository(
-          conflictState
-        )
+        const initialStep =
+          initializeRebaseFlowForConflictedRepository(conflictState)
 
         this.props.dispatcher.setRebaseFlowStep(repository, initialStep)
 
@@ -2933,12 +2927,8 @@ export class App extends React.Component<IAppProps, IAppState> {
   ) => {
     const repositoryState = this.props.repositoryStateManager.get(repository)
 
-    const {
-      defaultBranch,
-      allBranches,
-      recentBranches,
-      tip,
-    } = repositoryState.branchesState
+    const { defaultBranch, allBranches, recentBranches, tip } =
+      repositoryState.branchesState
     let currentBranch: Branch | null = null
 
     if (tip.kind === TipState.Valid) {
@@ -2995,9 +2985,8 @@ export class App extends React.Component<IAppProps, IAppState> {
       type: BannerType.CherryPickConflictsFound,
       targetBranchName,
       onOpenConflictsDialog: async () => {
-        const { changesState } = this.props.repositoryStateManager.get(
-          repository
-        )
+        const { changesState } =
+          this.props.repositoryStateManager.get(repository)
         const { conflictState } = changesState
 
         if (

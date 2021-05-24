@@ -15,9 +15,7 @@ interface IRebaseProgressDialogProps {
   readonly emoji: Map<string, string>
 }
 
-export class RebaseProgressDialog extends React.Component<
-  IRebaseProgressDialogProps
-> {
+export class RebaseProgressDialog extends React.Component<IRebaseProgressDialogProps> {
   private onDismissed = () => {
     // this dialog is undismissable, but I need to handle the event
   }

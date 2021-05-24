@@ -113,9 +113,7 @@ interface ISideBySideDiffRowProps {
   readonly onContextMenuText: () => void
 }
 
-export class SideBySideDiffRow extends React.Component<
-  ISideBySideDiffRowProps
-> {
+export class SideBySideDiffRow extends React.Component<ISideBySideDiffRowProps> {
   public render() {
     const { row, showSideBySideDiff } = this.props
 

@@ -98,12 +98,8 @@ export class BranchListItem extends React.Component<IBranchListItemProps, {}> {
   }
 
   private onMouseUp = () => {
-    const {
-      onDropOntoBranch,
-      onDropOntoCurrentBranch,
-      name,
-      isCurrentBranch,
-    } = this.props
+    const { onDropOntoBranch, onDropOntoCurrentBranch, name, isCurrentBranch } =
+      this.props
 
     if (!dragAndDropManager.isDragOfTypeInProgress(DragType.Commit)) {
       return

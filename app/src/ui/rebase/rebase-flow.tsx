@@ -282,11 +282,8 @@ export class RebaseFlow extends React.Component<IRebaseFlowProps> {
           />
         )
       case RebaseStep.WarnForcePush:
-        const {
-          repository,
-          dispatcher,
-          askForConfirmationOnForcePush,
-        } = this.props
+        const { repository, dispatcher, askForConfirmationOnForcePush } =
+          this.props
 
         return (
           <WarnForcePushDialog

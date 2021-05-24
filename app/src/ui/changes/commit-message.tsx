@@ -558,12 +558,8 @@ export class CommitMessage extends React.Component<
   }
 
   private renderPermissionsCommitWarning() {
-    const {
-      showBranchProtected,
-      showNoWriteAccess,
-      repository,
-      branch,
-    } = this.props
+    const { showBranchProtected, showNoWriteAccess, repository, branch } =
+      this.props
 
     if (showNoWriteAccess) {
       return (

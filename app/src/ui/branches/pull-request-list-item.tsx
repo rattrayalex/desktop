@@ -48,9 +48,7 @@ export interface IPullRequestListItemProps {
 }
 
 /** Pull requests as rendered in the Pull Requests list. */
-export class PullRequestListItem extends React.Component<
-  IPullRequestListItemProps
-> {
+export class PullRequestListItem extends React.Component<IPullRequestListItemProps> {
   private getSubtitle() {
     if (this.props.loading === true) {
       return undefined

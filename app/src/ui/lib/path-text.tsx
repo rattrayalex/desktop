@@ -136,9 +136,10 @@ export function truncatePath(path: string, length: number) {
  *
  * @param normalizedPath The normalized path (i.e. no '.' or '..' characters in path)
  */
-export function extract(
-  normalizedPath: string
-): { normalizedFileName: string; normalizedDirectory: string } {
+export function extract(normalizedPath: string): {
+  normalizedFileName: string
+  normalizedDirectory: string
+} {
   // for untracked submodules, the status entry is returned as a directory,
   // with a trailing / which causes the directory to be trimmed in a weird way
   // below. let's try and resolve this here
