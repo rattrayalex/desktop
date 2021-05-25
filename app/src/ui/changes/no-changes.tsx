@@ -148,8 +148,9 @@ function buildMenuItemInfoMap(
     const infoItem: IMenuItemInfo = {
       label: item.label,
       acceleratorKeys: getItemAcceleratorKeys(item),
-      parentMenuLabels:
-        parent === undefined ? [] : [parent.label, ...parent.parentMenuLabels],
+      parentMenuLabels: parent === undefined ?
+          []
+        : [parent.label, ...parent.parentMenuLabels],
       enabled: item.enabled,
     }
 
@@ -169,9 +170,9 @@ export class NoChanges extends React.Component<
   INoChangesState
 > {
   private getMenuInfoMap = memoizeOne((menu: IMenu | undefined) =>
-    menu === undefined
-      ? new Map<string, IMenuItemInfo>()
-      : buildMenuItemInfoMap(menu)
+    menu === undefined ?
+      new Map<string, IMenuItemInfo>()
+    : buildMenuItemInfoMap(menu)
   )
 
   /**
@@ -584,9 +585,9 @@ export class NoChanges extends React.Component<
     if (aheadBehind.ahead > 0) {
       itemsToPushTypes.push('commits')
       itemsToPushDescriptions.push(
-        aheadBehind.ahead === 1
-          ? '1 local commit'
-          : `${aheadBehind.ahead} local commits`
+        aheadBehind.ahead === 1 ?
+          '1 local commit'
+        : `${aheadBehind.ahead} local commits`
       )
     }
 

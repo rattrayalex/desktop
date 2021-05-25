@@ -10,15 +10,14 @@ export function SuccessfulMerge({
   readonly theirBranch?: string
   readonly onDismissed: () => void
 }) {
-  const message =
-    theirBranch !== undefined ? (
+  const message = theirBranch !== undefined ?
       <span>
         {'Successfully merged '}
         <strong>{theirBranch}</strong>
         {' into '}
         <strong>{ourBranch}</strong>
       </span>
-    ) : (
+    : (
       <span>
         {'Successfully merged into '}
         <strong>{ourBranch}</strong>

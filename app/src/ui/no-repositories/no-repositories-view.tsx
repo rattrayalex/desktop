@@ -207,8 +207,8 @@ export class NoRepositoriesView extends React.Component<
   }
 
   private getSelectedItemForAccount(account: Account) {
-    return account === this.props.dotComAccount
-      ? this.state.selectedDotComRepository
+    return account === this.props.dotComAccount ?
+        this.state.selectedDotComRepository
       : this.state.selectedEnterpriseRepository
   }
 
@@ -218,15 +218,15 @@ export class NoRepositoriesView extends React.Component<
   ) {
     const loading = accountState === undefined ? true : accountState.loading
 
-    const repositories =
-      accountState === undefined ? null : accountState.repositories
+    const repositories = accountState === undefined ?
+        null
+      : accountState.repositories
 
     const selectedItem = this.getSelectedItemForAccount(account)
 
-    const filterText =
-      account === this.props.dotComAccount
-        ? this.state.dotComFilterText
-        : this.state.enterpriseFilterText
+    const filterText = account === this.props.dotComAccount ?
+        this.state.dotComFilterText
+      : this.state.enterpriseFilterText
 
     return (
       <>
@@ -314,8 +314,11 @@ export class NoRepositoriesView extends React.Component<
       return null
     }
 
-    const selectedIndex =
-      this.getSelectedAccount() === this.props.dotComAccount ? 0 : 1
+    const selectedIndex = (
+        this.getSelectedAccount() === this.props.dotComAccount
+      ) ?
+        0
+      : 1
 
     return (
       <TabBar selectedIndex={selectedIndex} onTabClicked={this.onTabClicked}>
@@ -367,18 +370,18 @@ export class NoRepositoriesView extends React.Component<
     if (this.props.tutorialPaused) {
       return this.renderButtonGroupButton(
         OcticonSymbol.mortarBoard,
-        __DARWIN__
-          ? 'Return to In Progress Tutorial'
-          : 'Return to in progress tutorial',
+        __DARWIN__ ?
+          'Return to In Progress Tutorial'
+        : 'Return to in progress tutorial',
         this.props.onResumeTutorialRepository,
         'submit'
       )
     } else {
       return this.renderButtonGroupButton(
         OcticonSymbol.mortarBoard,
-        __DARWIN__
-          ? 'Create a Tutorial Repository…'
-          : 'Create a tutorial repository…',
+        __DARWIN__ ?
+          'Create a Tutorial Repository…'
+        : 'Create a tutorial repository…',
         this.props.onCreateTutorialRepository,
         'submit'
       )
@@ -388,9 +391,9 @@ export class NoRepositoriesView extends React.Component<
   private renderCloneButton() {
     return this.renderButtonGroupButton(
       OcticonSymbol.repoClone,
-      __DARWIN__
-        ? 'Clone a Repository from the Internet…'
-        : 'Clone a repository from the Internet…',
+      __DARWIN__ ?
+        'Clone a Repository from the Internet…'
+      : 'Clone a repository from the Internet…',
       this.onShowClone
     )
   }
@@ -398,9 +401,9 @@ export class NoRepositoriesView extends React.Component<
   private renderCreateRepositoryButton() {
     return this.renderButtonGroupButton(
       OcticonSymbol.plus,
-      __DARWIN__
-        ? 'Create a New Repository on your Hard Drive…'
-        : 'Create a New Repository on your hard drive…',
+      __DARWIN__ ?
+        'Create a New Repository on your Hard Drive…'
+      : 'Create a New Repository on your hard drive…',
       this.props.onCreate
     )
   }
@@ -408,9 +411,9 @@ export class NoRepositoriesView extends React.Component<
   private renderAddExistingRepositoryButton() {
     return this.renderButtonGroupButton(
       OcticonSymbol.fileDirectory,
-      __DARWIN__
-        ? 'Add an Existing Repository from your Hard Drive…'
-        : 'Add an Existing Repository from your hard drive…',
+      __DARWIN__ ?
+        'Add an Existing Repository from your Hard Drive…'
+      : 'Add an Existing Repository from your hard drive…',
       this.props.onAdd
     )
   }

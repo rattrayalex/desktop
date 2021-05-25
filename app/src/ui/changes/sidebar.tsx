@@ -342,15 +342,16 @@ export class ChangesSidebar extends React.Component<IChangesSidebarProps, {}> {
     } = this.props.changes
     let rebaseConflictState: RebaseConflictState | null = null
     if (conflictState !== null) {
-      rebaseConflictState = isRebaseConflictState(conflictState)
-        ? conflictState
+      rebaseConflictState = isRebaseConflictState(conflictState) ?
+          conflictState
         : null
     }
 
-    const selectedFileIDs =
-      selection.kind === ChangesSelectionKind.WorkingDirectory
-        ? selection.selectedFileIDs
-        : []
+    const selectedFileIDs = (
+        selection.kind === ChangesSelectionKind.WorkingDirectory
+      ) ?
+        selection.selectedFileIDs
+      : []
 
     const isShowingStashEntry = selection.kind === ChangesSelectionKind.Stash
     const repositoryAccount = getAccountForRepository(

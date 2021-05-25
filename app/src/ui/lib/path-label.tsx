@@ -36,8 +36,8 @@ export class PathLabel extends React.Component<IPathLabelProps, {}> {
       status.kind === AppFileStatusKind.Renamed ||
       status.kind === AppFileStatusKind.Copied
     ) {
-      const segmentWidth = availableWidth
-        ? availableWidth / 2 - ResizeArrowPadding
+      const segmentWidth = availableWidth ?
+          availableWidth / 2 - ResizeArrowPadding
         : undefined
       return (
         <label {...props}>

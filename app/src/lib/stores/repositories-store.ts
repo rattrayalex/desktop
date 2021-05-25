@@ -129,9 +129,9 @@ export class RepositoriesStore extends TypedBaseStore<
     return new Repository(
       repo.path,
       repo.id,
-      repo.gitHubRepositoryID !== null
-        ? await this.findGitHubRepositoryByID(repo.gitHubRepositoryID)
-        : await Promise.resolve(null), // Dexie gets confused if we return null
+      repo.gitHubRepositoryID !== null ?
+        await this.findGitHubRepositoryByID(repo.gitHubRepositoryID)
+      : await Promise.resolve(null), // Dexie gets confused if we return null
       repo.missing,
       enableRepositoryAliases() ? repo.alias : null,
       repo.workflowPreferences,
@@ -144,8 +144,8 @@ export class RepositoriesStore extends TypedBaseStore<
     id: number
   ): Promise<GitHubRepository | null> {
     const gitHubRepository = await this.db.gitHubRepositories.get(id)
-    return gitHubRepository !== undefined
-      ? this.toGitHubRepository(gitHubRepository)
+    return gitHubRepository !== undefined ?
+        this.toGitHubRepository(gitHubRepository)
       : Promise.resolve(null) // Dexie gets confused if we return null
   }
 
@@ -456,14 +456,15 @@ export class RepositoriesStore extends TypedBaseStore<
     gitHubRepository: IAPIRepository | IAPIFullRepository,
     ignoreParent = false
   ): Promise<GitHubRepository> {
-    const parent =
-      'parent' in gitHubRepository && gitHubRepository.parent !== undefined
-        ? await this._upsertGitHubRepository(
-            endpoint,
-            gitHubRepository.parent,
-            true
-          )
-        : await Promise.resolve(null) // Dexie gets confused if we return null
+    const parent = (
+        'parent' in gitHubRepository && gitHubRepository.parent !== undefined
+      ) ?
+        await this._upsertGitHubRepository(
+          endpoint,
+          gitHubRepository.parent,
+          true
+        )
+      : await Promise.resolve(null) // Dexie gets confused if we return null
 
     const login = gitHubRepository.owner.login.toLowerCase()
     const owner = await this.putOwner(endpoint, login)
@@ -505,8 +506,8 @@ export class RepositoriesStore extends TypedBaseStore<
     // rare (deleting a forked repository and creating it from scratch again
     // with the same name or the parent getting deleted, etc) we assume that the
     // value we've got is valid until we're certain its not.
-    const parentID = ignoreParent
-      ? existingRepo?.parentID ?? null
+    const parentID = ignoreParent ?
+        existingRepo?.parentID ?? null
       : parent?.dbID ?? null
 
     const updatedGitHubRepo: IDatabaseGitHubRepository = {

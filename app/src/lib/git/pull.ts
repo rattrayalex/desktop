@@ -79,8 +79,9 @@ export async function pull(
           }
         }
 
-        const description =
-          progress.kind === 'progress' ? progress.details.text : progress.text
+        const description = progress.kind === 'progress' ?
+            progress.details.text
+          : progress.text
 
         const value = progress.percent
 

@@ -12,8 +12,8 @@ export function envForAuthentication(auth: IGitAccount | null): Object {
     DESKTOP_PATH: process.execPath,
     DESKTOP_ASKPASS_SCRIPT: getAskPassScriptPath(),
     DESKTOP_TRAMPOLINE_IDENTIFIER: TrampolineCommandIdentifier.AskPass,
-    GIT_ASKPASS: enableDesktopTrampoline()
-      ? getDesktopTrampolinePath()
+    GIT_ASKPASS: enableDesktopTrampoline() ?
+        getDesktopTrampolinePath()
       : getAskPassTrampolinePath(),
     // supported since Git 2.3, this is used to ensure we never interactively prompt
     // for credentials - even as a fallback

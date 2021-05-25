@@ -26,8 +26,8 @@ export function buildAutocompletionProviders(
   ]
 
   // Issues autocompletion is only available for GitHub repositories.
-  const gitHubRepository = isRepositoryWithGitHubRepository(repository)
-    ? getNonForkGitHubRepository(repository)
+  const gitHubRepository = isRepositoryWithGitHubRepository(repository) ?
+      getNonForkGitHubRepository(repository)
     : null
 
   if (gitHubRepository !== null) {

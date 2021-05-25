@@ -67,15 +67,17 @@ export class RepositoryListItem extends React.Component<
   public render() {
     const repository = this.props.repository
     const path = repository.path
-    const gitHubRepo =
-      repository instanceof Repository ? repository.gitHubRepository : null
+    const gitHubRepo = repository instanceof Repository ?
+        repository.gitHubRepository
+      : null
     const hasChanges = this.props.changedFilesCount > 0
 
-    const alias: string | null =
-      repository instanceof Repository ? repository.alias : null
+    const alias: string | null = repository instanceof Repository ?
+        repository.alias
+      : null
 
-    const repoTooltipComponents = gitHubRepo
-      ? [gitHubRepo.fullName, gitHubRepo.htmlURL, path]
+    const repoTooltipComponents = gitHubRepo ?
+        [gitHubRepo.fullName, gitHubRepo.htmlURL, path]
       : [path]
 
     if (alias !== null) {
@@ -105,7 +107,9 @@ export class RepositoryListItem extends React.Component<
         />
 
         <div className={classNames(classNameList)}>
-          {prefix ? <span className="prefix">{prefix}</span> : null}
+          {prefix ?
+            <span className="prefix">{prefix}</span>
+          : null}
           <HighlightText
             text={alias ?? repository.name}
             highlight={this.props.matches.title}
@@ -140,8 +144,8 @@ export class RepositoryListItem extends React.Component<
 
     const repository = this.props.repository
     const missing = repository instanceof Repository && repository.missing
-    const openInExternalEditor = this.props.externalEditorLabel
-      ? `Open in ${this.props.externalEditorLabel}`
+    const openInExternalEditor = this.props.externalEditorLabel ?
+        `Open in ${this.props.externalEditorLabel}`
       : DefaultEditorLabel
 
     const items: ReadonlyArray<IMenuItem> = [
@@ -168,8 +172,8 @@ export class RepositoryListItem extends React.Component<
       },
       { type: 'separator' },
       {
-        label: this.props.askForConfirmationOnRemoveRepository
-          ? 'Remove…'
+        label: this.props.askForConfirmationOnRemoveRepository ?
+            'Remove…'
           : 'Remove',
         action: this.removeRepository,
       },

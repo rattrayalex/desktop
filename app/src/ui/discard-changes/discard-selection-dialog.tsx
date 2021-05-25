@@ -90,9 +90,9 @@ export class DiscardSelection extends React.Component<
           <Checkbox
             label="Do not show this message again"
             value={
-              this.state.confirmDiscardSelection
-                ? CheckboxValue.Off
-                : CheckboxValue.On
+              this.state.confirmDiscardSelection ?
+                CheckboxValue.Off
+              : CheckboxValue.On
             }
             onChange={this.onConfirmDiscardSelectionChanged}
           />

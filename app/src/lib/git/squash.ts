@@ -52,9 +52,9 @@ export async function squash(
 
     const commits = await getCommits(
       repository,
-      lastRetainedCommitRef === null
-        ? undefined
-        : revRange(lastRetainedCommitRef, 'HEAD')
+      lastRetainedCommitRef === null ?
+        undefined
+      : revRange(lastRetainedCommitRef, 'HEAD')
     )
 
     if (commits.length === 0) {
@@ -142,8 +142,9 @@ export async function squash(
     }
 
     // if no commit message provided, accept default editor
-    const gitEditor =
-      messagePath !== undefined ? `cat "${messagePath}" >` : undefined
+    const gitEditor = messagePath !== undefined ?
+        `cat "${messagePath}" >`
+      : undefined
 
     result = await rebaseInteractive(
       repository,

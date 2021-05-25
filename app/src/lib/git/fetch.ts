@@ -18,8 +18,8 @@ async function getFetchArgs(
   const networkArguments = await gitNetworkArguments(repository, account)
 
   if (enableRecurseSubmodulesFlag()) {
-    return progressCallback != null
-      ? [
+    return progressCallback != null ?
+        [
           ...networkArguments,
           'fetch',
           '--progress',
@@ -35,8 +35,8 @@ async function getFetchArgs(
           remote,
         ]
   } else {
-    return progressCallback != null
-      ? [...networkArguments, 'fetch', '--progress', '--prune', remote]
+    return progressCallback != null ?
+        [...networkArguments, 'fetch', '--progress', '--prune', remote]
       : [...networkArguments, 'fetch', '--prune', remote]
   }
 }
@@ -84,8 +84,9 @@ export async function fetch(
           }
         }
 
-        const description =
-          progress.kind === 'progress' ? progress.details.text : progress.text
+        const description = progress.kind === 'progress' ?
+            progress.details.text
+          : progress.text
         const value = progress.percent
 
         progressCallback({

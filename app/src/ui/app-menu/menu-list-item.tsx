@@ -65,22 +65,24 @@ export class MenuListItem extends React.Component<IMenuListItemProps, {}> {
       return <hr />
     }
 
-    const arrow =
-      item.type === 'submenuItem' && this.props.renderSubMenuArrow !== false ? (
+    const arrow = (
+        item.type === 'submenuItem' && this.props.renderSubMenuArrow !== false
+      ) ?
         <Octicon
           className="submenu-arrow"
           symbol={OcticonSymbol.triangleRight}
         />
-      ) : null
+      : null
 
-    const accelerator =
-      item.type !== 'submenuItem' &&
-      item.accelerator &&
-      this.props.renderAcceleratorText !== false ? (
+    const accelerator = (
+        item.type !== 'submenuItem' &&
+        item.accelerator &&
+        this.props.renderAcceleratorText !== false
+      ) ?
         <div className="accelerator">
           {friendlyAcceleratorText(item.accelerator)}
         </div>
-      ) : null
+      : null
 
     const className = classNames(
       'menu-item',

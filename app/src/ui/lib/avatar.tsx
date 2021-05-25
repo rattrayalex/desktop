@@ -180,8 +180,8 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
 
   public render() {
     const title = this.getTitle()
-    const ariaLabel = this.props.user
-      ? `Avatar for ${this.props.user.name || this.props.user.email}`
+    const ariaLabel = this.props.user ?
+        `Avatar for ${this.props.user.name || this.props.user.email}`
       : `Avatar for unknown user`
 
     if (this.state.candidates.length === 0) {

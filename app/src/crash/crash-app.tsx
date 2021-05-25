@@ -66,9 +66,9 @@ function prepareErrorMessage(error: Error) {
         // We want to try to strip the user-specific path part out.
         const match = line.match(/(\s*)(.*)(\(|file:\/\/\/).*(app.*)/)
 
-        return !match || match.length < 5
-          ? line
-          : match[1] + match[2] + match[3] + match[4]
+        return !match || match.length < 5 ? line : (
+          match[1] + match[2] + match[3] + match[4]
+        )
       })
       .join('\n')
   } else {
@@ -120,10 +120,9 @@ export class CrashApp extends React.Component<ICrashAppProps, ICrashAppState> {
   }
 
   private renderTitle() {
-    const message =
-      this.state.type === 'launch'
-        ? 'GitHub Desktop failed to launch'
-        : 'GitHub Desktop encountered an error'
+    const message = this.state.type === 'launch' ?
+        'GitHub Desktop failed to launch'
+      : 'GitHub Desktop encountered an error'
 
     return (
       <header>

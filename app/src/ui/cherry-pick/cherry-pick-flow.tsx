@@ -260,8 +260,8 @@ export class CherryPickFlow extends React.Component<ICherryPickFlowProps> {
         const { conflictState } = step
         const { manualResolutions, targetBranchName: ourBranch } = conflictState
 
-        const submit = __DARWIN__
-          ? 'Continue Cherry-pick'
+        const submit = __DARWIN__ ?
+            'Continue Cherry-pick'
           : 'Continue cherry-pick'
         const abort = __DARWIN__ ? 'Abort Cherry-pick' : 'Abort cherry-pick'
 
@@ -290,8 +290,9 @@ export class CherryPickFlow extends React.Component<ICherryPickFlowProps> {
         const {
           commits: { length: commitCount },
         } = this.props
-        const sourceBranchName =
-          this.props.sourceBranch !== null ? this.props.sourceBranch.name : null
+        const sourceBranchName = this.props.sourceBranch !== null ?
+            this.props.sourceBranch.name
+          : null
         return (
           <ConfirmCherryPickAbortDialog
             step={step}
@@ -311,12 +312,12 @@ export class CherryPickFlow extends React.Component<ICherryPickFlowProps> {
           targetBranchName,
         } = step
 
-        const okButtonText = __DARWIN__
-          ? 'Create Branch and Cherry-pick'
+        const okButtonText = __DARWIN__ ?
+            'Create Branch and Cherry-pick'
           : 'Create branch and cherry-pick'
 
-        const headerText = __DARWIN__
-          ? 'Cherry-pick to New Branch'
+        const headerText = __DARWIN__ ?
+            'Cherry-pick to New Branch'
           : 'Cherry-pick to new branch'
 
         return (

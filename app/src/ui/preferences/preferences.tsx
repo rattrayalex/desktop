@@ -268,8 +268,7 @@ export class Preferences extends React.Component<
       }
       case PreferencesTab.Git: {
         const { existingLockFilePath } = this.state
-        const error =
-          existingLockFilePath !== undefined ? (
+        const error = existingLockFilePath !== undefined ?
             <DialogError>
               <ConfigLockFileExists
                 lockFilePath={existingLockFilePath}
@@ -277,7 +276,7 @@ export class Preferences extends React.Component<
                 onError={this.onLockFileDeleteError}
               />
             </DialogError>
-          ) : null
+          : null
 
         View = (
           <>
@@ -382,8 +381,8 @@ export class Preferences extends React.Component<
   private onCommitterNameChanged = (committerName: string) => {
     this.setState({
       committerName,
-      disallowedCharactersMessage: gitAuthorNameIsValid(committerName)
-        ? null
+      disallowedCharactersMessage: gitAuthorNameIsValid(committerName) ?
+          null
         : InvalidGitAuthorNameMessage,
     })
   }

@@ -49,8 +49,8 @@ export class ToggleButton extends React.Component<
 
   /** check the current state of the toggle button */
   private isChecked(): boolean {
-    return this.props.checked !== undefined
-      ? this.props.checked
+    return this.props.checked !== undefined ?
+        this.props.checked
       : this.state.isChecked
   }
 

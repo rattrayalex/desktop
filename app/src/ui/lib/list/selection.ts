@@ -98,7 +98,10 @@ export function findNextSelectableRow(
   //  - move in a downward direction -> select first row
   //
   let currentRow =
-    row < 0 || row >= rowCount ? (direction === 'up' ? rowCount - 1 : 0) : row
+    row < 0 || row >= rowCount ?
+      direction === 'up' ? rowCount - 1
+      : 0
+    : row
 
   // handle specific case from switching from filter text to list
   //

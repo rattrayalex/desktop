@@ -75,8 +75,9 @@ export async function appendIgnoreRule(
 
   const currentContents = await formatGitIgnoreContents(text, repository)
 
-  const newPatternText =
-    patterns instanceof Array ? patterns.join('\n') : patterns
+  const newPatternText = patterns instanceof Array ?
+      patterns.join('\n')
+    : patterns
   const newText = await formatGitIgnoreContents(
     `${currentContents}${newPatternText}`,
     repository

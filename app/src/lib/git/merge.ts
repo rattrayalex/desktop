@@ -42,8 +42,8 @@ export async function merge(
     return MergeResult.Failed
   }
 
-  return stdout === noopMergeMessage
-    ? MergeResult.AlreadyUpToDate
+  return stdout === noopMergeMessage ?
+      MergeResult.AlreadyUpToDate
     : MergeResult.Success
 }
 

@@ -125,19 +125,19 @@ export class ConflictsDialog extends React.Component<
     return (
       <ul className="unmerged-file-statuses">
         {files.map(f =>
-          isConflictedFile(f.status)
-            ? renderUnmergedFile({
-                path: f.path,
-                status: f.status,
-                resolvedExternalEditor: this.props.resolvedExternalEditor,
-                openFileInExternalEditor: this.props.openFileInExternalEditor,
-                repository: this.props.repository,
-                dispatcher: this.props.dispatcher,
-                manualResolution: this.props.manualResolutions.get(f.path),
-                ourBranch: this.props.ourBranch,
-                theirBranch: this.props.theirBranch,
-              })
-            : null
+          isConflictedFile(f.status) ?
+            renderUnmergedFile({
+              path: f.path,
+              status: f.status,
+              resolvedExternalEditor: this.props.resolvedExternalEditor,
+              openFileInExternalEditor: this.props.openFileInExternalEditor,
+              repository: this.props.repository,
+              dispatcher: this.props.dispatcher,
+              manualResolution: this.props.manualResolutions.get(f.path),
+              ourBranch: this.props.ourBranch,
+              theirBranch: this.props.theirBranch,
+            })
+          : null
         )}
       </ul>
     )
@@ -175,10 +175,9 @@ export class ConflictsDialog extends React.Component<
       manualResolutions
     )
 
-    const tooltipString =
-      conflictedFiles.length > 0
-        ? 'Resolve all changes before continuing'
-        : undefined
+    const tooltipString = conflictedFiles.length > 0 ?
+        'Resolve all changes before continuing'
+      : undefined
 
     return (
       <Dialog

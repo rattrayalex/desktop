@@ -183,9 +183,9 @@ export class VerticalSegmentedControl<T extends Key> extends React.Component<
       return null
     }
 
-    const label = this.props.label ? (
-      <legend onClick={this.onLegendClick}>{this.props.label}</legend>
-    ) : undefined
+    const label = this.props.label ?
+        <legend onClick={this.onLegendClick}>{this.props.label}</legend>
+      : undefined
 
     const selectedIndex = this.findSelectedIndex(this.props.items)
     const activeDescendant = this.getListItemId(selectedIndex)

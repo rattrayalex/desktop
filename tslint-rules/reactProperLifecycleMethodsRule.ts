@@ -139,8 +139,8 @@ class ReactProperLifecycleMethodsWalker extends Lint.RuleWalker {
     // Remove trailing unused void parameters
     for (let i = node.parameters.length - 1; i >= 0; i--) {
       const parameter = node.parameters[i]
-      const parameterTypeName = parameter.type
-        ? parameter.type.getText()
+      const parameterTypeName = parameter.type ?
+          parameter.type.getText()
         : undefined
 
       if (parameterTypeName === 'void') {

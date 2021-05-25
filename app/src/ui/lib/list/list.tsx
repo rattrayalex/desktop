@@ -375,11 +375,11 @@ export class List extends React.Component<IListProps, IListState> {
 
     // Home is Cmd+ArrowUp on macOS, end is Cmd+ArrowDown, see
     // https://github.com/desktop/desktop/pull/8644#issuecomment-645965884
-    const isHomeKey = __DARWIN__
-      ? event.metaKey && event.key === 'ArrowUp'
+    const isHomeKey = __DARWIN__ ?
+        event.metaKey && event.key === 'ArrowUp'
       : event.key === 'Home'
-    const isEndKey = __DARWIN__
-      ? event.metaKey && event.key === 'ArrowDown'
+    const isEndKey = __DARWIN__ ?
+        event.metaKey && event.key === 'ArrowDown'
       : event.key === 'End'
 
     const isRangeSelection =
@@ -610,10 +610,9 @@ export class List extends React.Component<IListProps, IListState> {
     direction: SelectionDirection,
     source: SelectionSource
   ) {
-    const lastSelection =
-      this.props.selectedRows.length > 0
-        ? this.props.selectedRows[this.props.selectedRows.length - 1]
-        : -1
+    const lastSelection = this.props.selectedRows.length > 0 ?
+        this.props.selectedRows[this.props.selectedRows.length - 1]
+      : -1
 
     const newRow = findNextSelectableRow(
       this.props.rowCount,
@@ -797,8 +796,8 @@ export class List extends React.Component<IListProps, IListState> {
 
     const element = this.props.rowRenderer(params.rowIndex)
 
-    const id = this.state.rowIdPrefix
-      ? `${this.state.rowIdPrefix}-${rowIndex}`
+    const id = this.state.rowIdPrefix ?
+        `${this.state.rowIdPrefix}-${rowIndex}`
       : undefined
 
     return (
@@ -843,12 +842,13 @@ export class List extends React.Component<IListProps, IListState> {
     }
 
     // we select the last item from the selection array for this prop
-    const activeDescendant =
-      this.props.selectedRows.length && this.state.rowIdPrefix
-        ? `${this.state.rowIdPrefix}-${
-            this.props.selectedRows[this.props.selectedRows.length - 1]
-          }`
-        : undefined
+    const activeDescendant = (
+        this.props.selectedRows.length && this.state.rowIdPrefix
+      ) ?
+        `${this.state.rowIdPrefix}-${
+          this.props.selectedRows[this.props.selectedRows.length - 1]
+        }`
+      : undefined
 
     const role = this.props.ariaMode === 'menu' ? 'menu' : 'listbox'
 
@@ -906,8 +906,11 @@ export class List extends React.Component<IListProps, IListState> {
     // there's no focused item (and there's items to switch between)
     // the list itself needs to be focusable so that you can reach
     // it with keyboard navigation and select an item.
-    const tabIndex =
-      this.props.selectedRows.length < 1 && this.props.rowCount > 0 ? 0 : -1
+    const tabIndex = (
+        this.props.selectedRows.length < 1 && this.props.rowCount > 0
+      ) ?
+        0
+      : -1
 
     return (
       <FocusContainer

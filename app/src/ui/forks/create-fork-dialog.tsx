@@ -86,17 +86,19 @@ export class CreateForkDialog extends React.Component<
         key={this.props.repository.name}
         id="create-fork"
       >
-        {this.state.error !== undefined
-          ? renderCreateForkDialogError(
-              this.props.repository,
-              this.props.account,
-              this.state.error
-            )
-          : renderCreateForkDialogContent(
-              this.props.repository,
-              this.props.account,
-              this.state.loading
-            )}
+        {this.state.error !== undefined ?
+          renderCreateForkDialogError(
+            this.props.repository,
+            this.props.account,
+            this.state.error
+          )
+        : (
+          renderCreateForkDialogContent(
+            this.props.repository,
+            this.props.account,
+            this.state.loading
+          )
+        )}
       </Dialog>
     )
   }
@@ -144,8 +146,7 @@ function renderCreateForkDialogError(
   account: Account,
   error: Error
 ) {
-  const suggestion =
-    repository.gitHubRepository.htmlURL !== null ? (
+  const suggestion = repository.gitHubRepository.htmlURL !== null ?
       <>
         {`You can try `}
         <LinkButton uri={repository.gitHubRepository.htmlURL}>
@@ -153,7 +154,7 @@ function renderCreateForkDialogError(
         </LinkButton>
         .
       </>
-    ) : undefined
+    : undefined
   return (
     <>
       <DialogContent>

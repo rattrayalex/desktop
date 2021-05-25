@@ -115,8 +115,8 @@ export class CommitMessageAvatar extends React.Component<
   }
 
   private renderPopover() {
-    const accountTypeSuffix = this.props.isEnterpriseAccount
-      ? ' Enterprise'
+    const accountTypeSuffix = this.props.isEnterpriseAccount ?
+        ' Enterprise'
       : ''
 
     const updateEmailTitle = __DARWIN__ ? 'Update Email' : 'Update email'

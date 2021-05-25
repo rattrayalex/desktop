@@ -32,8 +32,8 @@ interface ISignInState {
   readonly otpToken: string
 }
 
-const SignInWithBrowserTitle = __DARWIN__
-  ? 'Sign in Using Your Browser'
+const SignInWithBrowserTitle = __DARWIN__ ?
+    'Sign in Using Your Browser'
   : 'Sign in using your browser'
 
 const DefaultTitle = 'Sign in'
@@ -140,8 +140,8 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
         break
       case SignInStep.Authentication:
         if (!state.supportsBasicAuth) {
-          primaryButtonText = __DARWIN__
-            ? 'Continue With Browser'
+          primaryButtonText = __DARWIN__ ?
+              'Continue With Browser'
             : 'Continue with browser'
         } else {
           const validUserName = this.state.username.length > 0
@@ -305,16 +305,17 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
 
     const disabled = state.loading
 
-    const errors = state.error ? (
-      <DialogError>{state.error.message}</DialogError>
-    ) : null
+    const errors = state.error ?
+        <DialogError>{state.error.message}</DialogError>
+      : null
 
-    const title =
-      this.props.signInState &&
-      this.props.signInState.kind === SignInStep.Authentication &&
-      !this.props.signInState.supportsBasicAuth
-        ? SignInWithBrowserTitle
-        : DefaultTitle
+    const title = (
+        this.props.signInState &&
+        this.props.signInState.kind === SignInStep.Authentication &&
+        !this.props.signInState.supportsBasicAuth
+      ) ?
+        SignInWithBrowserTitle
+      : DefaultTitle
 
     return (
       <Dialog

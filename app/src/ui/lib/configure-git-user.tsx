@@ -80,8 +80,9 @@ export class ConfigureGitUser extends React.Component<
       manualEmail: '',
       useGitHubAuthorInfo: this.account !== null,
       gitHubName: account?.name || account?.login || '',
-      gitHubEmail:
-        this.account !== null ? lookupPreferredEmail(this.account) : '',
+      gitHubEmail: this.account !== null ?
+          lookupPreferredEmail(this.account)
+        : '',
     }
   }
 
@@ -105,14 +106,12 @@ export class ConfigureGitUser extends React.Component<
       prevState => ({
         globalUserName,
         globalUserEmail,
-        manualName:
-          prevState.manualName.length === 0
-            ? globalUserName || ''
-            : prevState.manualName,
-        manualEmail:
-          prevState.manualEmail.length === 0
-            ? globalUserEmail || ''
-            : prevState.manualEmail,
+        manualName: prevState.manualName.length === 0 ?
+            globalUserName || ''
+          : prevState.manualName,
+        manualEmail: prevState.manualEmail.length === 0 ?
+            globalUserEmail || ''
+          : prevState.manualEmail,
       }),
       () => {
         // Chances are low that we actually have an account at mount-time
@@ -183,14 +182,13 @@ export class ConfigureGitUser extends React.Component<
   }
 
   public render() {
-    const error =
-      this.state.existingLockFilePath !== undefined ? (
+    const error = this.state.existingLockFilePath !== undefined ?
         <ConfigLockFileExists
           lockFilePath={this.state.existingLockFilePath}
           onLockFileDeleted={this.onLockFileDeleted}
           onError={this.onLockFileDeleteError}
         />
-      ) : null
+      : null
 
     return (
       <div id="configure-git-user">
@@ -198,9 +196,9 @@ export class ConfigureGitUser extends React.Component<
 
         {error}
 
-        {this.state.useGitHubAuthorInfo
-          ? this.renderGitHubInfo()
-          : this.renderGitConfigForm()}
+        {this.state.useGitHubAuthorInfo ? this.renderGitHubInfo() : (
+          this.renderGitConfigForm()
+        )}
 
         {this.renderExampleCommit()}
       </div>
@@ -263,8 +261,9 @@ export class ConfigureGitUser extends React.Component<
       return
     }
 
-    const accountTypeSuffix =
-      account.endpoint === getDotComAPIEndpoint() ? '' : ' Enterprise'
+    const accountTypeSuffix = account.endpoint === getDotComAPIEndpoint() ?
+        ''
+      : ' Enterprise'
 
     return (
       <div>

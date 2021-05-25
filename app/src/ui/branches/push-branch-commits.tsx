@@ -42,8 +42,8 @@ interface IPushBranchCommitsState {
  *                        greater than one.
  */
 function pluralize(numberOfCommits: number, unit: string) {
-  return numberOfCommits === 1
-    ? `${numberOfCommits} ${unit}`
+  return numberOfCommits === 1 ?
+      `${numberOfCommits} ${unit}`
     : `${numberOfCommits} ${unit}s`
 }
 

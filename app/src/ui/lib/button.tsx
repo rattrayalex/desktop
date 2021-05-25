@@ -107,8 +107,8 @@ export class Button extends React.Component<IButtonProps, {}> {
    * Get the client bounding box for the button element
    */
   public getBoundingClientRect = (): ClientRect | undefined => {
-    return this.innerButton
-      ? this.innerButton.getBoundingClientRect()
+    return this.innerButton ?
+        this.innerButton.getBoundingClientRect()
       : undefined
   }
 

@@ -34,8 +34,9 @@ export const SuggestedActionGroup: React.FunctionComponent<ISuggestedActionGroup
   props => {
     const cn = 'suggested-action-group ' + (props.type ? props.type : 'normal')
     if (props.transitions === 'replace') {
-      const enableTransitions =
-        props.enableTransitions !== undefined ? props.enableTransitions : true
+      const enableTransitions = props.enableTransitions !== undefined ?
+          props.enableTransitions
+        : true
       return (
         <ReactCSSTransitionReplace
           transitionAppear={false}

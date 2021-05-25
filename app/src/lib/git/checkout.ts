@@ -25,14 +25,13 @@ async function getCheckoutArgs(
 ) {
   const networkArguments = await gitNetworkArguments(repository, account)
 
-  const baseArgs =
-    progressCallback != null
-      ? [...networkArguments, 'checkout', '--progress']
-      : [...networkArguments, 'checkout']
+  const baseArgs = progressCallback != null ?
+      [...networkArguments, 'checkout', '--progress']
+    : [...networkArguments, 'checkout']
 
   if (enableRecurseSubmodulesFlag()) {
-    return branch.type === BranchType.Remote
-      ? baseArgs.concat(
+    return branch.type === BranchType.Remote ?
+        baseArgs.concat(
           branch.name,
           '-b',
           branch.nameWithoutRemote,
@@ -41,8 +40,8 @@ async function getCheckoutArgs(
         )
       : baseArgs.concat(branch.name, '--recurse-submodules', '--')
   } else {
-    return branch.type === BranchType.Remote
-      ? baseArgs.concat(branch.name, '-b', branch.nameWithoutRemote, '--')
+    return branch.type === BranchType.Remote ?
+        baseArgs.concat(branch.name, '-b', branch.nameWithoutRemote, '--')
       : baseArgs.concat(branch.name, '--')
   }
 }

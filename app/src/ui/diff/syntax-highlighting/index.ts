@@ -112,15 +112,17 @@ export async function getFileContents(
 ): Promise<IFileContents> {
   // If text-diff expansion is enabled, we'll always want to load both the old
   // and the new contents, so that we can expand the diff as needed.
-  const oldContentsPromise =
-    enableTextDiffExpansion() || lineFilters.oldLineFilter.length
-      ? getOldFileContent(repo, file)
-      : Promise.resolve(null)
+  const oldContentsPromise = (
+      enableTextDiffExpansion() || lineFilters.oldLineFilter.length
+    ) ?
+      getOldFileContent(repo, file)
+    : Promise.resolve(null)
 
-  const newContentsPromise =
-    enableTextDiffExpansion() || lineFilters.newLineFilter.length
-      ? getNewFileContent(repo, file)
-      : Promise.resolve(null)
+  const newContentsPromise = (
+      enableTextDiffExpansion() || lineFilters.newLineFilter.length
+    ) ?
+      getNewFileContent(repo, file)
+    : Promise.resolve(null)
 
   const [oldContents, newContents] = await Promise.all([
     oldContentsPromise.catch(e => {
@@ -203,30 +205,30 @@ export async function highlightContents(
   const oldPath = getOldPathOrDefault(file)
 
   const [oldTokens, newTokens] = await Promise.all([
-    oldContents === null
-      ? {}
-      : highlight(
-          oldContents,
-          Path.basename(oldPath),
-          Path.extname(oldPath),
-          tabSize,
-          lineFilters.oldLineFilter
-        ).catch(e => {
-          log.error('Highlighter worked failed for old contents', e)
-          return {}
-        }),
-    newContents === null
-      ? {}
-      : highlight(
-          newContents,
-          Path.basename(file.path),
-          Path.extname(file.path),
-          tabSize,
-          lineFilters.newLineFilter
-        ).catch(e => {
-          log.error('Highlighter worked failed for new contents', e)
-          return {}
-        }),
+    oldContents === null ?
+      {}
+    : highlight(
+        oldContents,
+        Path.basename(oldPath),
+        Path.extname(oldPath),
+        tabSize,
+        lineFilters.oldLineFilter
+      ).catch(e => {
+        log.error('Highlighter worked failed for old contents', e)
+        return {}
+      }),
+    newContents === null ?
+      {}
+    : highlight(
+        newContents,
+        Path.basename(file.path),
+        Path.extname(file.path),
+        tabSize,
+        lineFilters.newLineFilter
+      ).catch(e => {
+        log.error('Highlighter worked failed for new contents', e)
+        return {}
+      }),
   ])
 
   return { oldTokens, newTokens }

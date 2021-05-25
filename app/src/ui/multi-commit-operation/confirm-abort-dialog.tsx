@@ -53,9 +53,9 @@ export class ConfirmAbortDialog extends React.Component<
       <Dialog
         id="abort-warning"
         title={
-          __DARWIN__
-            ? `Confirm Abort ${operation}`
-            : `Confirm abort ${operation.toLowerCase()}`
+          __DARWIN__ ?
+            `Confirm Abort ${operation}`
+          : `Confirm abort ${operation.toLowerCase()}`
         }
         onDismissed={this.onCancel}
         onSubmit={this.onSubmit}
@@ -77,9 +77,9 @@ export class ConfirmAbortDialog extends React.Component<
           <OkCancelButtonGroup
             destructive={true}
             okButtonText={
-              __DARWIN__
-                ? `Abort ${operation}`
-                : `Abort ${operation.toLowerCase()}`
+              __DARWIN__ ?
+                `Abort ${operation}`
+              : `Abort ${operation.toLowerCase()}`
             }
           />
         </DialogFooter>

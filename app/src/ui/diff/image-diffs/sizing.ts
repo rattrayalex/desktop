@@ -11,14 +11,12 @@ export function getAspectFitSize(
   imageSize: ISize,
   containerSize: ISize
 ): ISize {
-  const heightRatio =
-    containerSize.height < imageSize.height
-      ? imageSize.height / containerSize.height
-      : 1
-  const widthRatio =
-    containerSize.width < imageSize.width
-      ? imageSize.width / containerSize.width
-      : 1
+  const heightRatio = containerSize.height < imageSize.height ?
+      imageSize.height / containerSize.height
+    : 1
+  const widthRatio = containerSize.width < imageSize.width ?
+      imageSize.width / containerSize.width
+    : 1
 
   let ratio = Math.max(1, widthRatio)
   if (widthRatio < heightRatio) {

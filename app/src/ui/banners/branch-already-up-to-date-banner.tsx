@@ -11,14 +11,13 @@ export function BranchAlreadyUpToDate({
   readonly theirBranch?: string
   readonly onDismissed: () => void
 }) {
-  const message =
-    theirBranch !== undefined ? (
+  const message = theirBranch !== undefined ?
       <span>
         <strong>{ourBranch}</strong>
         {' is already up to date with '}
         <strong>{theirBranch}</strong>
       </span>
-    ) : (
+    : (
       <span>
         <strong>{ourBranch}</strong>
         {' is already up to date'}

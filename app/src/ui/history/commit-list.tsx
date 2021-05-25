@@ -176,8 +176,9 @@ export class CommitList extends React.Component<ICommitListProps, {}> {
     const lastIndex = this.props.commitSHAs.length - 1
     /* If the commit is the first commit in the branch, you cannot reference it
     using the sha */
-    const lastRetainedCommitRef =
-      maxIndex !== lastIndex ? `${this.props.commitSHAs[maxIndex]}^` : null
+    const lastRetainedCommitRef = maxIndex !== lastIndex ?
+        `${this.props.commitSHAs[maxIndex]}^`
+      : null
     this.props.onSquash(toSquash, squashOnto, lastRetainedCommitRef)
   }
 

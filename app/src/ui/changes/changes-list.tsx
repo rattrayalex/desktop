@@ -255,16 +255,13 @@ export class ChangesList extends React.Component<
     const selection = file.selection.getSelectionType()
 
     const includeAll =
-      selection === DiffSelectionType.All
-        ? true
-        : selection === DiffSelectionType.None
-        ? false
-        : null
+      selection === DiffSelectionType.All ? true
+      : selection === DiffSelectionType.None ? false
+      : null
 
-    const include =
-      rebaseConflictState !== null
-        ? file.status.kind !== AppFileStatusKind.Untracked
-        : includeAll
+    const include = rebaseConflictState !== null ?
+        file.status.kind !== AppFileStatusKind.Untracked
+      : includeAll
 
     const disableSelection = isCommitting || rebaseConflictState !== null
 
@@ -328,13 +325,11 @@ export class ChangesList extends React.Component<
 
   private getDiscardChangesMenuItemLabel = (files: ReadonlyArray<string>) => {
     const label =
-      files.length === 1
-        ? __DARWIN__
-          ? `Discard Changes`
-          : `Discard changes`
-        : __DARWIN__
-        ? `Discard ${files.length} Selected Changes`
-        : `Discard ${files.length} selected changes`
+      files.length === 1 ?
+        __DARWIN__ ? `Discard Changes`
+        : `Discard changes`
+      : __DARWIN__ ? `Discard ${files.length} Selected Changes`
+      : `Discard ${files.length} selected changes`
 
     return this.props.askForConfirmationOnDiscardChanges ? `${label}…` : label
   }
@@ -353,11 +348,11 @@ export class ChangesList extends React.Component<
       this.props.conflictState !== null ||
       hasConflictedFiles(this.props.workingDirectory)
 
-    const stashAllChangesLabel = __DARWIN__
-      ? 'Stash All Changes'
+    const stashAllChangesLabel = __DARWIN__ ?
+        'Stash All Changes'
       : 'Stash all changes'
-    const confirmStashAllChangesLabel = __DARWIN__
-      ? 'Stash All Changes…'
+    const confirmStashAllChangesLabel = __DARWIN__ ?
+        'Stash All Changes…'
       : 'Stash all changes…'
 
     const items: IMenuItem[] = [
@@ -413,8 +408,8 @@ export class ChangesList extends React.Component<
   ): IMenuItem => {
     const { externalEditorLabel, repository } = this.props
 
-    const openInExternalEditor = externalEditorLabel
-      ? `Open in ${externalEditorLabel}`
+    const openInExternalEditor = externalEditorLabel ?
+        `Open in ${externalEditorLabel}`
       : DefaultEditorLabel
 
     return {
@@ -470,16 +465,16 @@ export class ChangesList extends React.Component<
     ]
     if (paths.length === 1) {
       items.push({
-        label: __DARWIN__
-          ? 'Ignore File (Add to .gitignore)'
+        label: __DARWIN__ ?
+            'Ignore File (Add to .gitignore)'
           : 'Ignore file (add to .gitignore)',
         action: () => this.props.onIgnore(path),
         enabled: Path.basename(path) !== GitIgnoreFileName,
       })
     } else if (paths.length > 1) {
       items.push({
-        label: __DARWIN__
-          ? `Ignore ${paths.length} Selected Files (Add to .gitignore)`
+        label: __DARWIN__ ?
+            `Ignore ${paths.length} Selected Files (Add to .gitignore)`
           : `Ignore ${paths.length} selected files (add to .gitignore)`,
         action: () => {
           // Filter out any .gitignores that happens to be selected, ignoring
@@ -498,8 +493,8 @@ export class ChangesList extends React.Component<
       .slice(0, 5)
       .forEach(extension => {
         items.push({
-          label: __DARWIN__
-            ? `Ignore All ${extension} Files (Add to .gitignore)`
+          label: __DARWIN__ ?
+              `Ignore All ${extension} Files (Add to .gitignore)`
             : `Ignore all ${extension} files (add to .gitignore)`,
           action: () => this.props.onIgnore(`*${extension}`),
         })
@@ -564,10 +559,9 @@ export class ChangesList extends React.Component<
 
     event.preventDefault()
 
-    const items =
-      this.props.rebaseConflictState === null
-        ? this.getDefaultContextMenu(file)
-        : this.getRebaseContextMenu(file)
+    const items = this.props.rebaseConflictState === null ?
+        this.getDefaultContextMenu(file)
+      : this.getRebaseContextMenu(file)
 
     showContextualMenu(items)
   }

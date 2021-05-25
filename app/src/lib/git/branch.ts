@@ -25,8 +25,9 @@ export async function createBranch(
   startPoint: string | null,
   noTrack?: boolean
 ): Promise<void> {
-  const args =
-    startPoint !== null ? ['branch', name, startPoint] : ['branch', name]
+  const args = startPoint !== null ?
+      ['branch', name, startPoint]
+    : ['branch', name]
 
   // if we're branching directly from a remote branch, we don't want to track it
   // tracking it will make the rest of desktop think we want to push to that

@@ -88,9 +88,9 @@ export function spawnAndComplete(
         process.on('close', (code, signal) => {
           const stdout = Buffer.concat(
             stdoutChunks,
-            stdOutMaxLength
-              ? Math.min(stdOutMaxLength, totalStdoutLength)
-              : totalStdoutLength
+            stdOutMaxLength ?
+              Math.min(stdOutMaxLength, totalStdoutLength)
+            : totalStdoutLength
           )
 
           const stderr = Buffer.concat(stderrChunks)

@@ -778,10 +778,11 @@ export class App extends React.Component<IAppProps, IAppState> {
 
   private getSelectedTutorialRepository() {
     const { selectedState } = this.state
-    const selectedRepository =
-      selectedState && selectedState.type === SelectionType.Repository
-        ? selectedState.repository
-        : null
+    const selectedRepository = (
+        selectedState && selectedState.type === SelectionType.Repository
+      ) ?
+        selectedState.repository
+      : null
 
     const isTutorialRepository =
       selectedRepository && selectedRepository.isTutorialRepository
@@ -1225,10 +1226,11 @@ export class App extends React.Component<IAppProps, IAppState> {
 
     // AppMenuBar requires us to pass a strongly typed AppMenuFoldout state or
     // null if the AppMenu foldout is not currently active.
-    const foldoutState =
-      currentFoldout && currentFoldout.type === FoldoutType.AppMenu
-        ? currentFoldout
-        : null
+    const foldoutState = (
+        currentFoldout && currentFoldout.type === FoldoutType.AppMenu
+      ) ?
+        currentFoldout
+      : null
 
     return (
       <AppMenuBar
@@ -1278,8 +1280,11 @@ export class App extends React.Component<IAppProps, IAppState> {
     // the app menu in the no-repositories blank slate on Windows but
     // the menu doesn't support the light style at the moment so we're
     // forcing it to use the dark style.
-    const titleBarStyle =
-      inWelcomeFlow || (__DARWIN__ && inNoRepositoriesView) ? 'light' : 'dark'
+    const titleBarStyle = (
+        inWelcomeFlow || (__DARWIN__ && inNoRepositoriesView)
+      ) ?
+        'light'
+      : 'dark'
 
     return (
       <TitleBar
@@ -1325,11 +1330,12 @@ export class App extends React.Component<IAppProps, IAppState> {
 
     switch (popup.type) {
       case PopupType.RenameBranch:
-        const stash =
-          this.state.selectedState !== null &&
-          this.state.selectedState.type === SelectionType.Repository
-            ? this.state.selectedState.state.changesState.stashEntry
-            : null
+        const stash = (
+            this.state.selectedState !== null &&
+            this.state.selectedState.type === SelectionType.Repository
+          ) ?
+            this.state.selectedState.state.changesState.stashEntry
+          : null
         return (
           <RenameBranch
             key="rename-branch"
@@ -1364,14 +1370,12 @@ export class App extends React.Component<IAppProps, IAppState> {
           />
         )
       case PopupType.ConfirmDiscardChanges:
-        const showSetting =
-          popup.showDiscardChangesSetting === undefined
-            ? true
-            : popup.showDiscardChangesSetting
-        const discardingAllChanges =
-          popup.discardingAllChanges === undefined
-            ? false
-            : popup.discardingAllChanges
+        const showSetting = popup.showDiscardChangesSetting === undefined ?
+            true
+          : popup.showDiscardChangesSetting
+        const discardingAllChanges = popup.discardingAllChanges === undefined ?
+            false
+          : popup.discardingAllChanges
 
         return (
           <DiscardChanges
@@ -2046,11 +2050,12 @@ export class App extends React.Component<IAppProps, IAppState> {
       case PopupType.LocalChangesOverwritten:
         const selectedState = this.state.selectedState
 
-        const existingStash =
-          selectedState !== null &&
-          selectedState.type === SelectionType.Repository
-            ? selectedState.state.changesState.stashEntry
-            : null
+        const existingStash = (
+            selectedState !== null &&
+            selectedState.type === SelectionType.Repository
+          ) ?
+            selectedState.state.changesState.stashEntry
+          : null
 
         return (
           <LocalChangesOverwrittenDialog
@@ -2137,8 +2142,9 @@ export class App extends React.Component<IAppProps, IAppState> {
         )
 
         const { tip } = repositoryState.branchesState
-        const currentBranchName: string | null =
-          tip.kind === TipState.Valid ? tip.branch.name : null
+        const currentBranchName: string | null = tip.kind === TipState.Valid ?
+            tip.branch.name
+          : null
 
         const hasWritePermissionForRepository =
           popup.repository.gitHubRepository === null ||
@@ -2402,11 +2408,11 @@ export class App extends React.Component<IAppProps, IAppState> {
   }
 
   private renderRepositoryList = (): JSX.Element => {
-    const selectedRepository = this.state.selectedState
-      ? this.state.selectedState.repository
+    const selectedRepository = this.state.selectedState ?
+        this.state.selectedState.repository
       : null
-    const externalEditorLabel = this.state.selectedExternalEditor
-      ? this.state.selectedExternalEditor
+    const externalEditorLabel = this.state.selectedExternalEditor ?
+        this.state.selectedExternalEditor
       : undefined
     const shellLabel = this.state.selectedShell
     const filterText = this.state.repositoryFilterText
@@ -2770,8 +2776,8 @@ export class App extends React.Component<IAppProps, IAppState> {
     }
 
     if (selectedState.type === SelectionType.Repository) {
-      const externalEditorLabel = state.selectedExternalEditor
-        ? state.selectedExternalEditor
+      const externalEditorLabel = state.selectedExternalEditor ?
+          state.selectedExternalEditor
         : undefined
 
       return (
@@ -2849,17 +2855,17 @@ export class App extends React.Component<IAppProps, IAppState> {
 
     const className = this.state.appIsFocused ? 'focused' : 'blurred'
 
-    const currentTheme = this.state.showWelcomeFlow
-      ? ApplicationTheme.Light
+    const currentTheme = this.state.showWelcomeFlow ?
+        ApplicationTheme.Light
       : this.state.currentTheme
 
     return (
       <div id="desktop-app-chrome" className={className}>
         <AppTheme theme={currentTheme} />
         {this.renderTitlebar()}
-        {this.state.showWelcomeFlow
-          ? this.renderWelcomeFlow()
-          : this.renderApp()}
+        {this.state.showWelcomeFlow ? this.renderWelcomeFlow() : (
+          this.renderApp()
+        )}
         {this.renderZoomInfo()}
         {this.renderFullScreenInfo()}
       </div>

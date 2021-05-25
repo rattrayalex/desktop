@@ -1483,8 +1483,9 @@ export class StatsStore implements IStatsStore {
     // track `optOut` so we need to invert the value before we send
     // it.
     const optIn = !optOut
-    const previousOptInValue =
-      previousValue === undefined ? null : !previousValue
+    const previousOptInValue = previousValue === undefined ? null : (
+      !previousValue
+    )
     const direction = optIn ? 'in' : 'out'
 
     try {
@@ -1551,8 +1552,8 @@ function timeTo(key: string): number | undefined {
   }
 
   const endTime = getLocalStorageTimestamp(key)
-  return endTime === null || endTime <= startTime
-    ? -1
+  return endTime === null || endTime <= startTime ?
+      -1
     : Math.round((endTime - startTime) / 1000)
 }
 

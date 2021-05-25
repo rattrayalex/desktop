@@ -14,10 +14,9 @@ export class FilesChangedBadge extends React.Component<
 > {
   public render() {
     const filesChangedCount = this.props.filesChangedCount
-    const badgeCount =
-      filesChangedCount > MaximumChangesCount
-        ? `${MaximumChangesCount}+`
-        : filesChangedCount
+    const badgeCount = filesChangedCount > MaximumChangesCount ?
+        `${MaximumChangesCount}+`
+      : filesChangedCount
 
     return <span className="counter">{badgeCount}</span>
   }

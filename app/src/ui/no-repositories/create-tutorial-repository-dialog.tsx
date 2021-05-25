@@ -53,9 +53,9 @@ export class CreateTutorialRepositoryDialog extends React.Component<ICreateTutor
       return null
     }
 
-    const description = progress.description ? (
-      <div className="description">{progress.description}</div>
-    ) : null
+    const description = progress.description ?
+        <div className="description">{progress.description}</div>
+      : null
 
     return (
       <div className="progress-container">

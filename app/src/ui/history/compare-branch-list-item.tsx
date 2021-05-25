@@ -108,19 +108,19 @@ export class CompareBranchListItem extends React.Component<
     const isCurrentBranch = branch.name === currentBranch?.name
     const icon = isCurrentBranch ? OcticonSymbol.check : OcticonSymbol.gitBranch
 
-    const aheadBehindElement = aheadBehind ? (
-      <div className="branch-commit-counter">
-        <span className="branch-commit-counter-item">
-          {aheadBehind.behind}
-          <Octicon className="icon" symbol={OcticonSymbol.arrowDown} />
-        </span>
+    const aheadBehindElement = aheadBehind ?
+        <div className="branch-commit-counter">
+          <span className="branch-commit-counter-item">
+            {aheadBehind.behind}
+            <Octicon className="icon" symbol={OcticonSymbol.arrowDown} />
+          </span>
 
-        <span className="branch-commit-counter-item">
-          {aheadBehind.ahead}
-          <Octicon className="icon" symbol={OcticonSymbol.arrowUp} />
-        </span>
-      </div>
-    ) : null
+          <span className="branch-commit-counter-item">
+            {aheadBehind.ahead}
+            <Octicon className="icon" symbol={OcticonSymbol.arrowUp} />
+          </span>
+        </div>
+      : null
 
     return (
       <div className="branches-list-item">

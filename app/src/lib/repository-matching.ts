@@ -57,8 +57,8 @@ export function matchExistingRepository<
   T extends Repository | CloningRepository
 >(repos: ReadonlyArray<T>, path: string): T | undefined {
   // Windows is guaranteed to be case-insensitive so we can be a bit less strict
-  const normalize = __WIN32__
-    ? (p: string) => Path.normalize(p).toLowerCase()
+  const normalize = __WIN32__ ?
+      (p: string) => Path.normalize(p).toLowerCase()
     : (p: string) => Path.normalize(p)
 
   const needle = normalize(path)

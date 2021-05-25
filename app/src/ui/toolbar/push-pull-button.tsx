@@ -151,8 +151,8 @@ function unbornRepositoryButton() {
 }
 
 function detachedHeadButton(rebaseInProgress: boolean) {
-  const description = rebaseInProgress
-    ? 'Rebase in progress'
+  const description = rebaseInProgress ?
+      'Rebase in progress'
     : 'Cannot publish detached HEAD'
 
   return (
@@ -171,8 +171,8 @@ function publishBranchButton(
   onClick: () => void,
   shouldNudge: boolean
 ) {
-  const description = isGitHub
-    ? 'Publish this branch to GitHub'
+  const description = isGitHub ?
+      'Publish this branch to GitHub'
     : 'Publish this branch to the remote'
 
   const className = classNames(defaultProps.className, 'nudge-arrow', {
@@ -220,8 +220,8 @@ function pullButton(
   pullWithRebase: boolean,
   onClick: () => void
 ) {
-  const title = pullWithRebase
-    ? `Pull ${remoteName} with rebase`
+  const title = pullWithRebase ?
+      `Pull ${remoteName} with rebase`
     : `Pull ${remoteName}`
 
   return (

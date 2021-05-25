@@ -97,8 +97,8 @@ export function readEmoji(rootDir: string): Promise<Map<string, string>> {
         db.forEach(emoji => {
           // Custom emoji don't have a unicode string and are instead stored
           // on disk as their first alias.
-          const url = emoji.emoji
-            ? getUrlFromUnicodeEmoji(emoji.emoji)
+          const url = emoji.emoji ?
+              getUrlFromUnicodeEmoji(emoji.emoji)
             : getEmojiImageUrlFromRelativePath(`${emoji.aliases[0]}.png`)
 
           if (!url) {

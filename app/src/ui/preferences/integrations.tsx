@@ -39,8 +39,8 @@ export class Integrations extends React.Component<
     const editors = nextProps.availableEditors
     let selectedExternalEditor = nextProps.selectedExternalEditor
     if (editors.length) {
-      const indexOf = selectedExternalEditor
-        ? editors.indexOf(selectedExternalEditor)
+      const indexOf = selectedExternalEditor ?
+          editors.indexOf(selectedExternalEditor)
         : -1
       if (indexOf === -1) {
         selectedExternalEditor = editors[0]

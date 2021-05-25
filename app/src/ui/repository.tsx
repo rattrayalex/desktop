@@ -142,10 +142,11 @@ export class RepositoryView extends React.Component<
   }
 
   private renderTabs(): JSX.Element {
-    const selectedTab =
-      this.props.state.selectedSection === RepositorySectionTab.Changes
-        ? Tab.Changes
-        : Tab.History
+    const selectedTab = (
+        this.props.state.selectedSection === RepositorySectionTab.Changes
+      ) ?
+        Tab.Changes
+      : Tab.History
 
     return (
       <TabBar selectedIndex={selectedTab} onTabClicked={this.onTabClicked}>
@@ -182,20 +183,20 @@ export class RepositoryView extends React.Component<
     }
 
     const localCommitSHAs = this.props.state.localCommitSHAs
-    const mostRecentLocalCommitSHA =
-      localCommitSHAs.length > 0 ? localCommitSHAs[0] : null
+    const mostRecentLocalCommitSHA = localCommitSHAs.length > 0 ?
+        localCommitSHAs[0]
+      : null
     const mostRecentLocalCommit =
-      (mostRecentLocalCommitSHA
-        ? this.props.state.commitLookup.get(mostRecentLocalCommitSHA)
-        : null) || null
+      (mostRecentLocalCommitSHA ?
+        this.props.state.commitLookup.get(mostRecentLocalCommitSHA)
+      : null) || null
 
     // -1 Because of right hand side border
     const availableWidth = this.props.sidebarWidth - 1
 
-    const scrollTop =
-      this.previousSection === RepositorySectionTab.History
-        ? this.state.changesListScrollTop
-        : undefined
+    const scrollTop = this.previousSection === RepositorySectionTab.History ?
+        this.state.changesListScrollTop
+      : undefined
     this.previousSection = RepositorySectionTab.Changes
 
     return (
@@ -233,10 +234,9 @@ export class RepositoryView extends React.Component<
     const tip = this.props.state.branchesState.tip
     const currentBranch = tip.kind === TipState.Valid ? tip.branch : null
 
-    const scrollTop =
-      this.previousSection === RepositorySectionTab.Changes
-        ? this.state.compareListScrollTop
-        : undefined
+    const scrollTop = this.previousSection === RepositorySectionTab.Changes ?
+        this.state.compareListScrollTop
+      : undefined
     this.previousSection = RepositorySectionTab.History
 
     return (
@@ -345,11 +345,13 @@ export class RepositoryView extends React.Component<
   private renderContentForHistory(): JSX.Element {
     const { commitSelection } = this.props.state
 
-    const sha =
-      commitSelection.shas.length === 1 ? commitSelection.shas[0] : null
+    const sha = commitSelection.shas.length === 1 ?
+        commitSelection.shas[0]
+      : null
 
-    const selectedCommit =
-      sha != null ? this.props.state.commitLookup.get(sha) || null : null
+    const selectedCommit = sha != null ?
+        this.props.state.commitLookup.get(sha) || null
+      : null
 
     const { changedFiles, file, diff } = commitSelection
 
@@ -521,10 +523,11 @@ export class RepositoryView extends React.Component<
   }
 
   private changeTab() {
-    const section =
-      this.props.state.selectedSection === RepositorySectionTab.History
-        ? RepositorySectionTab.Changes
-        : RepositorySectionTab.History
+    const section = (
+        this.props.state.selectedSection === RepositorySectionTab.History
+      ) ?
+        RepositorySectionTab.Changes
+      : RepositorySectionTab.History
 
     this.props.dispatcher.changeRepositorySection(
       this.props.repository,
@@ -533,10 +536,9 @@ export class RepositoryView extends React.Component<
   }
 
   private onTabClicked = (tab: Tab) => {
-    const section =
-      tab === Tab.History
-        ? RepositorySectionTab.History
-        : RepositorySectionTab.Changes
+    const section = tab === Tab.History ?
+        RepositorySectionTab.History
+      : RepositorySectionTab.Changes
 
     this.props.dispatcher.changeRepositorySection(
       this.props.repository,

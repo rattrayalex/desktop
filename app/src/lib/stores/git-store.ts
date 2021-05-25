@@ -727,9 +727,9 @@ export class GitStore extends BaseStore {
     // For an initial commit, just delete the reference but leave HEAD. This
     // will make the branch unborn again.
     const success = await this.performFailableOperation(() =>
-      commit.parentSHAs.length === 0
-        ? this.undoFirstCommit(this.repository)
-        : reset(this.repository, GitResetMode.Mixed, commit.parentSHAs[0])
+      commit.parentSHAs.length === 0 ?
+        this.undoFirstCommit(this.repository)
+      : reset(this.repository, GitResetMode.Mixed, commit.parentSHAs[0])
     )
 
     if (success === undefined) {
@@ -1188,8 +1188,8 @@ export class GitStore extends BaseStore {
    * null if no entry exists
    */
   public get currentBranchStashEntry() {
-    return this._tip && this._tip.kind === TipState.Valid
-      ? this._desktopStashEntries.get(this._tip.branch.name) || null
+    return this._tip && this._tip.kind === TipState.Valid ?
+        this._desktopStashEntries.get(this._tip.branch.name) || null
       : null
   }
 
@@ -1249,19 +1249,19 @@ export class GitStore extends BaseStore {
     const remotes = await getRemotes(this.repository)
     this._defaultRemote = findDefaultRemote(remotes)
 
-    const currentRemoteName =
-      this.tip.kind === TipState.Valid &&
-      this.tip.branch.upstreamRemoteName !== null
-        ? this.tip.branch.upstreamRemoteName
-        : null
+    const currentRemoteName = (
+        this.tip.kind === TipState.Valid &&
+        this.tip.branch.upstreamRemoteName !== null
+      ) ?
+        this.tip.branch.upstreamRemoteName
+      : null
 
     // Load the remote that the current branch is tracking. If the branch
     // is not tracking any remote or the remote which it's tracking has
     // been removed we'll default to the default branch.
-    this._currentRemote =
-      currentRemoteName !== null
-        ? remotes.find(r => r.name === currentRemoteName) || this._defaultRemote
-        : this._defaultRemote
+    this._currentRemote = currentRemoteName !== null ?
+        remotes.find(r => r.name === currentRemoteName) || this._defaultRemote
+      : this._defaultRemote
 
     const parent =
       this.repository.gitHubRepository &&
@@ -1626,14 +1626,12 @@ export class GitStore extends BaseStore {
       return null
     }
 
-    const revisionRange =
-      comparisonMode === ComparisonMode.Ahead
-        ? revRange(branch.name, base.name)
-        : revRange(base.name, branch.name)
-    const commitsToLoad =
-      comparisonMode === ComparisonMode.Ahead
-        ? aheadBehind.ahead
-        : aheadBehind.behind
+    const revisionRange = comparisonMode === ComparisonMode.Ahead ?
+        revRange(branch.name, base.name)
+      : revRange(base.name, branch.name)
+    const commitsToLoad = comparisonMode === ComparisonMode.Ahead ?
+        aheadBehind.ahead
+      : aheadBehind.behind
     const commits = await getCommits(
       this.repository,
       revisionRange,

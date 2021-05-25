@@ -73,8 +73,8 @@ export class UserAutocompletionProvider
 
     // dotcom doesn't let you autocomplete on your own handle
     const account = this.account
-    const filtered = account
-      ? users.filter(x => x.login !== account.login)
+    const filtered = account ?
+        users.filter(x => x.login !== account.login)
       : users
 
     return filtered.map(x => userToHit(this.repository, x))

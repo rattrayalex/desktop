@@ -99,11 +99,13 @@ function formatHunkHeader(
   // >
   // > In many versions of GNU diff, each range can omit the comma and trailing value s,
   // > in which case s defaults to 1
-  const lineInfoBefore =
-    oldLineCount === 1 ? `${oldStartLine}` : `${oldStartLine},${oldLineCount}`
+  const lineInfoBefore = oldLineCount === 1 ?
+      `${oldStartLine}`
+    : `${oldStartLine},${oldLineCount}`
 
-  const lineInfoAfter =
-    newLineCount === 1 ? `${newStartLine}` : `${newStartLine},${newLineCount}`
+  const lineInfoAfter = newLineCount === 1 ?
+      `${newStartLine}`
+    : `${newStartLine},${newLineCount}`
 
   sectionHeading = sectionHeading ? ` ${sectionHeading}` : ''
 

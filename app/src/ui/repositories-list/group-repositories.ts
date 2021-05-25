@@ -46,8 +46,9 @@ export function groupRepositories(
   const grouped = new Map<RepositoryGroupIdentifier, Repositoryish[]>()
   const gitHubOwners = new Set<string>()
   for (const repository of repositories) {
-    const gitHubRepository =
-      repository instanceof Repository ? repository.gitHubRepository : null
+    const gitHubRepository = repository instanceof Repository ?
+        repository.gitHubRepository
+      : null
     let group: RepositoryGroupIdentifier = KnownRepositoryGroup.NonGitHub
     if (gitHubRepository) {
       if (gitHubRepository.endpoint === getDotComAPIEndpoint()) {
@@ -88,8 +89,9 @@ export function groupRepositories(
       const nameCount = names.get(r.name) || 0
       const { aheadBehind, changedFilesCount } =
         localRepositoryStateLookup.get(r.id) || fallbackValue
-      const repositoryText =
-        r instanceof Repository ? [r.alias ?? r.name, nameOf(r)] : [r.name]
+      const repositoryText = r instanceof Repository ?
+          [r.alias ?? r.name, nameOf(r)]
+        : [r.name]
 
       return {
         text: repositoryText,
@@ -149,12 +151,12 @@ export function makeRecentRepositoriesGroup(
 
     const { aheadBehind, changedFilesCount } =
       localRepositoryStateLookup.get(id) || fallbackValue
-    const repositoryAlias =
-      repository instanceof Repository ? repository.alias : null
-    const repositoryText =
-      repository instanceof Repository
-        ? [repositoryAlias ?? repository.name, nameOf(repository)]
-        : [repository.name]
+    const repositoryAlias = repository instanceof Repository ?
+        repository.alias
+      : null
+    const repositoryText = repository instanceof Repository ?
+        [repositoryAlias ?? repository.name, nameOf(repository)]
+      : [repository.name]
     const nameCount = names.get(repositoryAlias ?? repository.name) || 0
     items.push({
       text: repositoryText,

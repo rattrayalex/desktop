@@ -60,9 +60,9 @@ export class AttributeMismatch extends React.Component<
       <Dialog
         id="lfs-attribute-mismatch"
         title={
-          __DARWIN__
-            ? 'Update Existing Git LFS Filters?'
-            : 'Update existing Git LFS filters?'
+          __DARWIN__ ?
+            'Update Existing Git LFS Filters?'
+          : 'Update existing Git LFS filters?'
         }
         onDismissed={this.props.onDismissed}
         onSubmit={this.onSubmit}

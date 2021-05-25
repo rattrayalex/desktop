@@ -108,9 +108,9 @@ export class RepositoriesList extends React.Component<
       repositories: ReadonlyArray<Repositoryish> | null,
       localRepositoryStateLookup: ReadonlyMap<number, ILocalRepositoryState>
     ) =>
-      repositories === null
-        ? []
-        : groupRepositories(repositories, localRepositoryStateLookup)
+      repositories === null ?
+        []
+      : groupRepositories(repositories, localRepositoryStateLookup)
   )
 
   /**
@@ -173,9 +173,9 @@ export class RepositoriesList extends React.Component<
   private onItemClick = (item: IRepositoryListItem) => {
     const hasIndicator =
       item.changedFilesCount > 0 ||
-      (item.aheadBehind !== null
-        ? item.aheadBehind.ahead > 0 || item.aheadBehind.behind > 0
-        : false)
+      (item.aheadBehind !== null ?
+        item.aheadBehind.ahead > 0 || item.aheadBehind.behind > 0
+      : false)
     this.props.dispatcher.recordRepoClicked(hasIndicator)
     this.props.onSelectionChanged(item.repository)
   }
@@ -191,17 +191,18 @@ export class RepositoriesList extends React.Component<
       this.props.selectedRepository
     )
 
-    const groups =
-      this.props.repositories.length > recentRepositoriesThreshold
-        ? [
-            makeRecentRepositoriesGroup(
-              this.props.recentRepositories,
-              this.props.repositories,
-              this.props.localRepositoryStateLookup
-            ),
-            ...baseGroups,
-          ]
-        : baseGroups
+    const groups = (
+        this.props.repositories.length > recentRepositoriesThreshold
+      ) ?
+        [
+          makeRecentRepositoriesGroup(
+            this.props.recentRepositories,
+            this.props.repositories,
+            this.props.localRepositoryStateLookup
+          ),
+          ...baseGroups,
+        ]
+      : baseGroups
 
     return (
       <div className="repository-list">
@@ -298,8 +299,8 @@ export class RepositoriesList extends React.Component<
         action: this.onCreateNewRepository,
       },
       {
-        label: __DARWIN__
-          ? 'Add Existing Repository…'
+        label: __DARWIN__ ?
+            'Add Existing Repository…'
           : 'Add existing repository…',
         action: this.onAddExistingRepository,
       },

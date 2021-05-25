@@ -134,8 +134,8 @@ export class CreateBranch extends React.Component<
   }
 
   private renderBranchSelection() {
-    const tip = this.state.isCreatingBranch
-      ? this.state.tipAtCreateStart
+    const tip = this.state.isCreatingBranch ?
+        this.state.tipAtCreateStart
       : this.props.tip
 
     const tipKind = tip.kind
@@ -176,8 +176,8 @@ export class CreateBranch extends React.Component<
         )
       }
 
-      const defaultBranch = this.state.isCreatingBranch
-        ? this.props.defaultBranch
+      const defaultBranch = this.state.isCreatingBranch ?
+          this.props.defaultBranch
         : this.state.defaultBranchAtCreateStart
 
       return this.renderRegularBranchSelection(tip.branch.name, defaultBranch)
@@ -208,7 +208,9 @@ export class CreateBranch extends React.Component<
         loading={this.state.isCreatingBranch}
         disabled={this.state.isCreatingBranch}
       >
-        {error ? <DialogError>{error.message}</DialogError> : null}
+        {error ?
+          <DialogError>{error.message}</DialogError>
+        : null}
 
         <DialogContent>
           <RefNameTextBox
@@ -259,8 +261,8 @@ export class CreateBranch extends React.Component<
     const alreadyExists =
       this.props.allBranches.findIndex(b => b.name === branchName) > -1
 
-    const currentError = alreadyExists
-      ? new Error(`A branch named ${branchName} already exists`)
+    const currentError = alreadyExists ?
+        new Error(`A branch named ${branchName} already exists`)
       : null
 
     this.setState({
@@ -360,10 +362,9 @@ export class CreateBranch extends React.Component<
         },
       ]
 
-      const selectedValue =
-        this.state.startPoint === StartPoint.DefaultBranch
-          ? this.state.startPoint
-          : StartPoint.CurrentBranch
+      const selectedValue = this.state.startPoint === StartPoint.DefaultBranch ?
+          this.state.startPoint
+        : StartPoint.CurrentBranch
 
       return this.renderOptions(items, selectedValue)
     }
@@ -407,10 +408,11 @@ export class CreateBranch extends React.Component<
         },
       ]
 
-      const selectedValue =
-        this.state.startPoint === StartPoint.UpstreamDefaultBranch
-          ? this.state.startPoint
-          : StartPoint.CurrentBranch
+      const selectedValue = (
+          this.state.startPoint === StartPoint.UpstreamDefaultBranch
+        ) ?
+          this.state.startPoint
+        : StartPoint.CurrentBranch
 
       return this.renderOptions(items, selectedValue)
     }
@@ -447,9 +449,10 @@ function getBranchForStartPoint(
     readonly upstreamDefaultBranch: Branch | null
   }
 ) {
-  return startPoint === StartPoint.UpstreamDefaultBranch
-    ? branchInfo.upstreamDefaultBranch
-    : startPoint === StartPoint.DefaultBranch
-    ? branchInfo.defaultBranch
+  return (
+    startPoint === StartPoint.UpstreamDefaultBranch ?
+      branchInfo.upstreamDefaultBranch
+    : startPoint === StartPoint.DefaultBranch ? branchInfo.defaultBranch
     : null
+  )
 }

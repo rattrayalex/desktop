@@ -63,8 +63,8 @@ export function getWindowsStandalonePath() {
 export function getWindowsFullNugetPackageName(
   includeArchitecture: boolean = false
 ) {
-  const architectureInfix = includeArchitecture
-    ? `-${getDistArchitecture()}`
+  const architectureInfix = includeArchitecture ?
+      `-${getDistArchitecture()}`
     : ''
   return `${getWindowsIdentifierName()}-${version}${architectureInfix}-full.nupkg`
 }
@@ -81,8 +81,8 @@ export function getWindowsFullNugetPackagePath() {
 export function getWindowsDeltaNugetPackageName(
   includeArchitecture: boolean = false
 ) {
-  const architectureInfix = includeArchitecture
-    ? `-${getDistArchitecture()}`
+  const architectureInfix = includeArchitecture ?
+      `-${getDistArchitecture()}`
     : ''
   return `${getWindowsIdentifierName()}-${version}${architectureInfix}-delta.nupkg`
 }
@@ -112,16 +112,16 @@ export function getBundleSizes() {
 
 export function isPublishable(): boolean {
   const channelFromBranch = getChannelFromBranch()
-  return channelFromBranch !== undefined
-    ? publishChannels.includes(channelFromBranch)
+  return channelFromBranch !== undefined ?
+      publishChannels.includes(channelFromBranch)
     : false
 }
 
 export function getChannel() {
   const channelFromBranch = getChannelFromBranch()
-  return channelFromBranch !== undefined
-    ? channelFromBranch
-    : process.env.NODE_ENV || 'development'
+  return channelFromBranch !== undefined ? channelFromBranch : (
+    process.env.NODE_ENV || 'development'
+  )
 }
 
 function getChannelFromBranch(): string | undefined {

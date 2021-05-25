@@ -85,10 +85,11 @@ export class ReleaseNotes extends React.Component<IReleaseNotesProps, {}> {
   public render() {
     const release = this.props.newRelease
 
-    const contents =
-      release.enhancements.length > 0 && release.bugfixes.length > 0
-        ? this.drawTwoColumnLayout(release)
-        : this.drawSingleColumnLayout(release)
+    const contents = (
+        release.enhancements.length > 0 && release.bugfixes.length > 0
+      ) ?
+        this.drawTwoColumnLayout(release)
+      : this.drawSingleColumnLayout(release)
 
     const dialogHeader = (
       <div className="release-notes-header">

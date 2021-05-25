@@ -75,8 +75,8 @@ function buildRecursiveContextMenu(
           enabled: item.enabled,
           role: item.role,
           click: () => actionFn(indices),
-          submenu: item.submenu
-            ? buildRecursiveContextMenu(item.submenu, actionFn, indices)
+          submenu: item.submenu ?
+              buildRecursiveContextMenu(item.submenu, actionFn, indices)
             : undefined,
         })
       )

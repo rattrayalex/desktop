@@ -172,10 +172,9 @@ export function findInteractiveDiffRange(
     rangeType = getNextRangeType(rangeType, line)
   }
 
-  const from =
-    contextLineBeforeIndex !== null
-      ? contextLineBeforeIndex
-      : hunk.unifiedDiffStart + 1
+  const from = contextLineBeforeIndex !== null ? contextLineBeforeIndex : (
+    hunk.unifiedDiffStart + 1
+  )
 
   let contextLineAfterIndex: number | null = null
 
@@ -190,8 +189,9 @@ export function findInteractiveDiffRange(
     rangeType = getNextRangeType(rangeType, line)
   }
 
-  const to =
-    contextLineAfterIndex !== null ? contextLineAfterIndex : hunk.unifiedDiffEnd
+  const to = contextLineAfterIndex !== null ?
+      contextLineAfterIndex
+    : hunk.unifiedDiffEnd
 
   return { from, to, type: rangeType }
 }
@@ -211,8 +211,8 @@ function getNextRangeType(
   if (currentRangeType === null) {
     // If the current range type hasn't been set yet, we set it
     // temporarily to the current line type.
-    return currentLine.type === DiffLineType.Add
-      ? DiffRangeType.Additions
+    return currentLine.type === DiffLineType.Add ?
+        DiffRangeType.Additions
       : DiffRangeType.Deletions
   }
 

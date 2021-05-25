@@ -65,18 +65,18 @@ export class Prompts extends React.Component<
         <Checkbox
           label="Removing repositories"
           value={
-            this.state.confirmRepositoryRemoval
-              ? CheckboxValue.On
-              : CheckboxValue.Off
+            this.state.confirmRepositoryRemoval ?
+              CheckboxValue.On
+            : CheckboxValue.Off
           }
           onChange={this.onConfirmRepositoryRemovalChanged}
         />
         <Checkbox
           label="Discarding changes"
           value={
-            this.state.confirmDiscardChanges
-              ? CheckboxValue.On
-              : CheckboxValue.Off
+            this.state.confirmDiscardChanges ?
+              CheckboxValue.On
+            : CheckboxValue.Off
           }
           onChange={this.onConfirmDiscardChangesChanged}
         />

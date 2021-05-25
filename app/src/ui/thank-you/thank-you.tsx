@@ -84,8 +84,9 @@ export class ThankYou extends React.Component<IThankYouProps, {}> {
       </div>
     )
 
-    const version =
-      this.props.latestVersion !== null ? ` ${this.props.latestVersion}` : ''
+    const version = this.props.latestVersion !== null ?
+        ` ${this.props.latestVersion}`
+      : ''
     const thankYouNote = (
       <>
         Thanks so much for all your hard work on GitHub Desktop{version}. We're

@@ -226,10 +226,9 @@ const renderConflictedFileWithConflictMarkers: React.FunctionComponent<{
   const humanReadableConflicts = calculateConflicts(
     props.status.conflictMarkerCount
   )
-  const message =
-    humanReadableConflicts === 1
-      ? `1 conflict`
-      : `${humanReadableConflicts} conflicts`
+  const message = humanReadableConflicts === 1 ?
+      `1 conflict`
+    : `${humanReadableConflicts} conflicts`
 
   const disabled = props.resolvedExternalEditor === null
   const tooltip = editorButtonTooltip(props.resolvedExternalEditor)

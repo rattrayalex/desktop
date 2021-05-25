@@ -66,9 +66,9 @@ export class TwoFactorAuthentication extends React.Component<
     // ensure user has entered non-whitespace characters
     const codeProvided = /\S+/.test(this.state.otp)
     const signInDisabled = !codeProvided || this.props.loading
-    const errors = this.props.error ? (
-      <Errors>{this.props.error.message}</Errors>
-    ) : null
+    const errors = this.props.error ?
+        <Errors>{this.props.error.message}</Errors>
+      : null
 
     return (
       <div>
@@ -86,7 +86,10 @@ export class TwoFactorAuthentication extends React.Component<
 
           <div className="actions">
             <Button type="submit" disabled={signInDisabled}>
-              {this.props.loading ? <Loading /> : null} Verify
+              {this.props.loading ?
+                <Loading />
+              : null}{' '}
+              Verify
             </Button>
             {this.props.additionalButtons}
           </div>

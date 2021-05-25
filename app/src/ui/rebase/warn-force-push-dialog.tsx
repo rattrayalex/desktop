@@ -35,8 +35,8 @@ export class WarnForcePushDialog extends React.Component<
   public render() {
     const { baseBranch, targetBranch } = this.props.step
 
-    const title = __DARWIN__
-      ? 'Rebase Will Require Force Push'
+    const title = __DARWIN__ ?
+        'Rebase Will Require Force Push'
       : 'Rebase will require force push'
 
     return (
@@ -62,9 +62,9 @@ export class WarnForcePushDialog extends React.Component<
             <Checkbox
               label="Do not show this message again"
               value={
-                this.state.askForConfirmationOnForcePush
-                  ? CheckboxValue.Off
-                  : CheckboxValue.On
+                this.state.askForConfirmationOnForcePush ?
+                  CheckboxValue.Off
+                : CheckboxValue.On
               }
               onChange={this.onAskForConfirmationOnForcePushChanged}
             />

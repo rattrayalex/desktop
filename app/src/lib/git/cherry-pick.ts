@@ -336,10 +336,9 @@ export async function getCherryPickSnapshot(
   // To get all the commits for the cherry-pick operation, we need to get the
   // ones already cherry-picked. If abortSafetySha is headSha; none have been
   // cherry-picked yet.
-  const commitsCherryPicked =
-    abortSafetySha !== headSha
-      ? await getCommitsInRange(repository, revRange(headSha, abortSafetySha))
-      : []
+  const commitsCherryPicked = abortSafetySha !== headSha ?
+      await getCommitsInRange(repository, revRange(headSha, abortSafetySha))
+    : []
 
   if (commitsCherryPicked === null) {
     // This should only be possible with corrupt sequencer files resulting in a

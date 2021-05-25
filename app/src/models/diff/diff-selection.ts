@@ -106,8 +106,8 @@ export class DiffSelection {
       )
 
       if (allSelectableLinesAreDivergent) {
-        return this.defaultSelectionType === DiffSelectionType.All
-          ? DiffSelectionType.None
+        return this.defaultSelectionType === DiffSelectionType.All ?
+            DiffSelectionType.None
           : DiffSelectionType.All
       }
     }
@@ -270,8 +270,8 @@ export class DiffSelection {
    * what all lines mean).
    */
   public withSelectableLines(selectableLines: Set<number>) {
-    const divergingLines = this.divergingLines
-      ? new Set([...this.divergingLines].filter(x => selectableLines.has(x)))
+    const divergingLines = this.divergingLines ?
+        new Set([...this.divergingLines].filter(x => selectableLines.has(x)))
       : null
 
     return new DiffSelection(

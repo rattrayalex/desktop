@@ -209,7 +209,7 @@ export function getNonForkGitHubRepository(
 export function getForkContributionTarget(
   repository: Repository
 ): ForkContributionTarget {
-  return repository.workflowPreferences.forkContributionTarget !== undefined
-    ? repository.workflowPreferences.forkContributionTarget
+  return repository.workflowPreferences.forkContributionTarget !== undefined ?
+      repository.workflowPreferences.forkContributionTarget
     : ForkContributionTarget.Parent
 }

@@ -10,15 +10,14 @@ export function SuccessfulRebase({
   readonly targetBranch: string
   readonly onDismissed: () => void
 }) {
-  const message =
-    baseBranch !== undefined ? (
+  const message = baseBranch !== undefined ?
       <span>
         {'Successfully rebased '}
         <strong>{targetBranch}</strong>
         {' onto '}
         <strong>{baseBranch}</strong>
       </span>
-    ) : (
+    : (
       <span>
         {'Successfully rebased '}
         <strong>{targetBranch}</strong>

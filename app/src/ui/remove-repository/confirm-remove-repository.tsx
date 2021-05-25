@@ -80,9 +80,9 @@ export class ConfirmRemoveRepository extends React.Component<
             <Checkbox
               label={'Also move this repository to ' + TrashNameLabel}
               value={
-                this.state.deleteRepoFromDisk
-                  ? CheckboxValue.On
-                  : CheckboxValue.Off
+                this.state.deleteRepoFromDisk ?
+                  CheckboxValue.On
+                : CheckboxValue.Off
               }
               onChange={this.onConfirmRepositoryDeletion}
             />

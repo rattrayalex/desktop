@@ -213,8 +213,8 @@ export class FilterList<T extends IFilterListItem> extends React.Component<
       )
 
       if (oldSelectedItemId !== newSelectedItemId) {
-        const propSelectionId = this.props.selectedItem
-          ? this.props.selectedItem.id
+        const propSelectionId = this.props.selectedItem ?
+            this.props.selectedItem.id
           : null
 
         if (propSelectionId !== newSelectedItemId) {
@@ -541,8 +541,8 @@ function createStateUpdate<T extends IFilterListItem>(
   const filter = (props.filterText || '').toLowerCase()
 
   for (const group of props.groups) {
-    const items: ReadonlyArray<IMatch<T>> = filter
-      ? match(filter, group.items, getText)
+    const items: ReadonlyArray<IMatch<T>> = filter ?
+        match(filter, group.items, getText)
       : group.items.map(item => ({
           score: 1,
           matches: { title: [], subtitle: [] },

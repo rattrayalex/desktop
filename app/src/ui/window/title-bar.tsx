@@ -84,22 +84,25 @@ export class TitleBar extends React.Component<ITitleBarProps> {
     // window controls need to disable dragging so we add a 3px tall element which
     // disables drag while still letting users drag the app by the titlebar below
     // those 3px.
-    const topResizeHandle =
-      __WIN32__ && !isMaximized ? <div className="resize-handle top" /> : null
+    const topResizeHandle = __WIN32__ && !isMaximized ?
+        <div className="resize-handle top" />
+      : null
 
     // And a 3px wide element on the left hand side.
-    const leftResizeHandle =
-      __WIN32__ && !isMaximized ? <div className="resize-handle left" /> : null
+    const leftResizeHandle = __WIN32__ && !isMaximized ?
+        <div className="resize-handle left" />
+      : null
 
-    const titleBarClass =
-      this.props.titleBarStyle === 'light' ? 'light-title-bar' : ''
+    const titleBarClass = this.props.titleBarStyle === 'light' ?
+        'light-title-bar'
+      : ''
 
-    const appIcon = this.props.showAppIcon ? (
-      <Octicon className="app-icon" symbol={OcticonSymbol.markGithub} />
-    ) : null
+    const appIcon = this.props.showAppIcon ?
+        <Octicon className="app-icon" symbol={OcticonSymbol.markGithub} />
+      : null
 
-    const onTitlebarDoubleClick = __DARWIN__
-      ? this.onTitlebarDoubleClickDarwin
+    const onTitlebarDoubleClick = __DARWIN__ ?
+        this.onTitlebarDoubleClickDarwin
       : undefined
 
     return (

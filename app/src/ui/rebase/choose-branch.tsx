@@ -218,8 +218,10 @@ export class ChooseBranchDialog extends React.Component<
   private selectedBranchIsAheadOfCurrentBranch() {
     const { rebasePreview } = this.state
 
-    return rebasePreview !== null && rebasePreview.kind === ComputedAction.Clean
-      ? rebasePreview.commits.length > 0
+    return (
+        rebasePreview !== null && rebasePreview.kind === ComputedAction.Clean
+      ) ?
+        rebasePreview.commits.length > 0
       : false
   }
 
@@ -235,10 +237,11 @@ export class ChooseBranchDialog extends React.Component<
     const { selectedBranch } = this.state
     const { currentBranch } = this.props
 
-    const tooltip = this.selectedBranchIsCurrentBranch()
-      ? 'You are not able to rebase this branch onto itself'
-      : !this.selectedBranchIsAheadOfCurrentBranch()
-      ? 'There are no commits on the current branch to rebase'
+    const tooltip =
+      this.selectedBranchIsCurrentBranch() ?
+        'You are not able to rebase this branch onto itself'
+      : !this.selectedBranchIsAheadOfCurrentBranch() ?
+        'There are no commits on the current branch to rebase'
       : undefined
 
     const currentBranchName = currentBranch.name

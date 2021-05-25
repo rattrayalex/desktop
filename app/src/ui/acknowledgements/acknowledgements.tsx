@@ -131,7 +131,9 @@ export class Acknowledgements extends React.Component<
 
           <p>GitHub Desktop also distributes these libraries:</p>
 
-          {licenses ? this.renderLicenses(licenses) : <Loading />}
+          {licenses ? this.renderLicenses(licenses) : (
+            <Loading />
+          )}
         </DialogContent>
 
         <DefaultDialogFooter />

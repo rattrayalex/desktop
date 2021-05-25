@@ -414,16 +414,18 @@ export class TextDiff extends React.Component<ITextDiffProps, ITextDiffState> {
       return
     }
 
-    const newContentLines =
-      contents.newContents === null ? [] : contents.newContents.split('\n')
-    const oldContentLines =
-      contents.oldContents === null ? [] : contents.oldContents.split('\n')
+    const newContentLines = contents.newContents === null ?
+        []
+      : contents.newContents.split('\n')
+    const oldContentLines = contents.oldContents === null ?
+        []
+      : contents.oldContents.split('\n')
 
     const currentDiff = this.state.diff
     const shouldEnableDiffExpansion =
       enableTextDiffExpansion() && contents.canBeExpanded
-    const newDiff = shouldEnableDiffExpansion
-      ? getTextDiffWithBottomDummyHunk(
+    const newDiff = shouldEnableDiffExpansion ?
+        getTextDiffWithBottomDummyHunk(
           currentDiff,
           currentDiff.hunks,
           oldContentLines.length,
@@ -684,8 +686,8 @@ export class TextDiff extends React.Component<ITextDiffProps, ITextDiffState> {
 
     const diff = this.state.diff
 
-    return this.diffToRestore === null
-      ? {
+    return this.diffToRestore === null ?
+        {
           label: __DARWIN__ ? 'Expand Whole File' : 'Expand whole file',
           action: this.onExpandWholeFile,
           // If there is only one hunk that can't be expanded, disable this item
@@ -694,8 +696,8 @@ export class TextDiff extends React.Component<ITextDiffProps, ITextDiffState> {
             diff.hunks[0].expansionType !== DiffHunkExpansionType.None,
         }
       : {
-          label: __DARWIN__
-            ? 'Collapse Expanded Lines'
+          label: __DARWIN__ ?
+              'Collapse Expanded Lines'
             : 'Collapse expanded lines',
           action: this.onCollapseExpandedLines,
         }
@@ -839,8 +841,8 @@ export class TextDiff extends React.Component<ITextDiffProps, ITextDiffState> {
     }
 
     const plural = numLines > 1 ? 's' : ''
-    return __DARWIN__
-      ? `Discard ${type} Line${plural}${suffix}`
+    return __DARWIN__ ?
+        `Discard ${type} Line${plural}${suffix}`
       : `Discard ${type} line${plural}${suffix}`
   }
 
@@ -1015,9 +1017,9 @@ export class TextDiff extends React.Component<ITextDiffProps, ITextDiffState> {
    */
   private isIncluded(index: number) {
     const { file } = this.props
-    return inSelection(this.selection, index)
-      ? this.selection.isSelected
-      : canSelect(file) && file.selection.isSelected(index)
+    return inSelection(this.selection, index) ? this.selection.isSelected : (
+      canSelect(file) && file.selection.isSelected(index)
+    )
   }
 
   private getGutterLineClassNameInfo(
@@ -1277,13 +1279,15 @@ export class TextDiff extends React.Component<ITextDiffProps, ITextDiffState> {
 
     const oldLineNumber = marker.childNodes[0]
 
-    oldLineNumber.textContent =
-      diffLine.oldLineNumber === null ? '' : `${diffLine.oldLineNumber}`
+    oldLineNumber.textContent = diffLine.oldLineNumber === null ? '' : (
+      `${diffLine.oldLineNumber}`
+    )
 
     const newLineNumber = marker.childNodes[1]
 
-    newLineNumber.textContent =
-      diffLine.newLineNumber === null ? '' : `${diffLine.newLineNumber}`
+    newLineNumber.textContent = diffLine.newLineNumber === null ? '' : (
+      `${diffLine.newLineNumber}`
+    )
   }
 
   private onHunkHandleMouseEnter = (ev: MouseEvent) => {

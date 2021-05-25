@@ -249,10 +249,11 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
 
   private renderNoItems = () => {
     const { loading, repositories } = this.props
-    const endpointName =
-      this.props.account.endpoint === getDotComAPIEndpoint()
-        ? 'GitHub.com'
-        : getHTMLURL(this.props.account.endpoint)
+    const endpointName = (
+        this.props.account.endpoint === getDotComAPIEndpoint()
+      ) ?
+        'GitHub.com'
+      : getHTMLURL(this.props.account.endpoint)
 
     if (loading && (repositories === null || repositories.length === 0)) {
       return (

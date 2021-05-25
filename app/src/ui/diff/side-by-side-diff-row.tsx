@@ -448,8 +448,8 @@ export class SideBySideDiffRow extends React.Component<ISideBySideDiffRowProps> 
       case DiffRowType.Deleted:
         return DiffColumn.Before
       case DiffRowType.Modified:
-        return targetElement?.closest('.after')
-          ? DiffColumn.After
+        return targetElement?.closest('.after') ?
+            DiffColumn.After
           : DiffColumn.Before
     }
 
