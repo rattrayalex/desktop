@@ -17,12 +17,10 @@ export function BranchAlreadyUpToDate({
         {' is already up to date with '}
         <strong>{theirBranch}</strong>
       </span>
-    : (
-      <span>
+    : <span>
         <strong>{ourBranch}</strong>
         {' is already up to date'}
       </span>
-    )
 
   return (
     <Banner id="successful-merge" timeout={5000} onDismissed={onDismissed}>

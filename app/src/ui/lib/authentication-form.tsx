@@ -173,12 +173,10 @@ export class AuthenticationForm extends React.Component<
   private renderSignInForm() {
     return this.props.endpoint === getDotComAPIEndpoint() ?
         this.renderUsernamePassword()
-      : (
-        <>
+      : <>
           {this.renderSignInWithBrowser()}
           {this.renderUsernamePassword()}
         </>
-      )
   }
 
   /**

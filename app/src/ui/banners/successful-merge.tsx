@@ -17,12 +17,10 @@ export function SuccessfulMerge({
         {' into '}
         <strong>{ourBranch}</strong>
       </span>
-    : (
-      <span>
+    : <span>
         {'Successfully merged into '}
         <strong>{ourBranch}</strong>
       </span>
-    )
 
   return (
     <SuccessBanner timeout={5000} onDismissed={onDismissed}>

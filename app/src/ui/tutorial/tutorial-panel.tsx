@@ -136,8 +136,7 @@ export class TutorialPanel extends React.Component<
                   </LinkButton>
                 </div>
               </>
-            : (
-              <p className="description">
+            : <p className="description">
                 Your default editor is{' '}
                 <strong>{this.props.resolvedExternalEditor}</strong>. You can
                 change your preferred editor in{' '}
@@ -145,7 +144,7 @@ export class TutorialPanel extends React.Component<
                   {__DARWIN__ ? 'Preferences' : 'options'}
                 </LinkButton>
               </p>
-            )}
+            }
           </TutorialStepInstructions>
           <TutorialStepInstructions
             summaryText="Create a branch"
@@ -167,13 +166,12 @@ export class TutorialPanel extends React.Component<
                   <kbd>⇧</kbd>
                   <kbd>N</kbd>
                 </>
-              : (
-                <>
+              : <>
                   <kbd>Ctrl</kbd>
                   <kbd>Shift</kbd>
                   <kbd>N</kbd>
                 </>
-              )}
+              }
             </div>
           </TutorialStepInstructions>
           <TutorialStepInstructions
@@ -202,13 +200,12 @@ export class TutorialPanel extends React.Component<
                     <kbd>⇧</kbd>
                     <kbd>A</kbd>
                   </>
-                : (
-                  <>
+                : <>
                     <kbd>Ctrl</kbd>
                     <kbd>Shift</kbd>
                     <kbd>A</kbd>
                   </>
-                )}
+                }
               </div>
             )}
           </TutorialStepInstructions>
@@ -246,12 +243,11 @@ export class TutorialPanel extends React.Component<
                   <kbd>⌘</kbd>
                   <kbd>P</kbd>
                 </>
-              : (
-                <>
+              : <>
                   <kbd>Ctrl</kbd>
                   <kbd>P</kbd>
                 </>
-              )}
+              }
             </div>
           </TutorialStepInstructions>
           <TutorialStepInstructions
@@ -279,12 +275,11 @@ export class TutorialPanel extends React.Component<
                   <kbd>⌘</kbd>
                   <kbd>R</kbd>
                 </>
-              : (
-                <>
+              : <>
                   <kbd>Ctrl</kbd>
                   <kbd>R</kbd>
                 </>
-              )}
+              }
             </div>
           </TutorialStepInstructions>
         </ol>

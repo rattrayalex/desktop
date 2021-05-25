@@ -17,12 +17,10 @@ export function SuccessfulRebase({
         {' onto '}
         <strong>{baseBranch}</strong>
       </span>
-    : (
-      <span>
+    : <span>
         {'Successfully rebased '}
         <strong>{targetBranch}</strong>
       </span>
-    )
 
   return (
     <SuccessBanner timeout={5000} onDismissed={onDismissed}>

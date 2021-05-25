@@ -92,13 +92,12 @@ export class CreateForkDialog extends React.Component<
             this.props.account,
             this.state.error
           )
-        : (
-          renderCreateForkDialogContent(
+        : renderCreateForkDialogContent(
             this.props.repository,
             this.props.account,
             this.state.loading
           )
-        )}
+        }
       </Dialog>
     )
   }

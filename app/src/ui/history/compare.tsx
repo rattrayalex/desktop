@@ -211,12 +211,10 @@ export class CompareSidebar extends React.Component<
             The compared branch (<Ref>{currentlyComparedBranchName}</Ref>) is up
             to date with your branch
           </p>
-        : (
-          <p>
+        : <p>
             Your branch is up to date with the compared branch (
             <Ref>{currentlyComparedBranchName}</Ref>)
           </p>
-        )
     }
 
     return (

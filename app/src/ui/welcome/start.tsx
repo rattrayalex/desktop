@@ -44,9 +44,7 @@ export class Start extends React.Component<IStartProps, {}> {
               </LinkButton>
             </p>
           </>
-        : (
-          <p>{BrowserRedirectMessage}</p>
-        )}
+        : <p>{BrowserRedirectMessage}</p>}
 
         <div className="welcome-main-buttons">
           <Button
@@ -61,11 +59,10 @@ export class Start extends React.Component<IStartProps, {}> {
           </Button>
           {this.props.loadingBrowserAuth ?
             <Button onClick={this.cancelBrowserAuth}>Cancel</Button>
-          : (
-            <Button onClick={this.signInToEnterprise}>
+          : <Button onClick={this.signInToEnterprise}>
               Sign in to GitHub Enterprise
             </Button>
-          )}
+          }
         </div>
         <div className="skip-action-container">
           <LinkButton className="skip-button" onClick={this.skip}>
