@@ -196,9 +196,9 @@ export class ConfigureGitUser extends React.Component<
 
         {error}
 
-        {this.state.useGitHubAuthorInfo ? this.renderGitHubInfo() : (
-          this.renderGitConfigForm()
-        )}
+        {this.state.useGitHubAuthorInfo ?
+          this.renderGitHubInfo()
+        : this.renderGitConfigForm()}
 
         {this.renderExampleCommit()}
       </div>
@@ -261,8 +261,7 @@ export class ConfigureGitUser extends React.Component<
       return
     }
 
-    const accountTypeSuffix = account.endpoint === getDotComAPIEndpoint() ?
-        ''
+    const accountTypeSuffix = account.endpoint === getDotComAPIEndpoint() ? ''
       : ' Enterprise'
 
     return (

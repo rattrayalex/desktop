@@ -277,9 +277,9 @@ function renderUserAutocompleteItem(elem: HTMLElement, self: any, data: any) {
  * address.
  */
 function getEmailAddressForUser(user: IUserHit) {
-  return user.email && user.email.length > 0 ? user.email : (
-    getLegacyStealthEmailForUser(user.username, user.endpoint)
-  )
+  return user.email && user.email.length > 0 ?
+      user.email
+    : getLegacyStealthEmailForUser(user.username, user.endpoint)
 }
 
 function getDisplayTextForAuthor(author: IAuthor) {

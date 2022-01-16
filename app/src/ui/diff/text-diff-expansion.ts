@@ -93,11 +93,10 @@ export function getHunkHeaderExpansionType(
     return DiffHunkExpansionType.None
   }
 
-  const distanceToPrevious = previousHunk === null ? Infinity : (
-    hunkHeader.oldStartLine -
-    previousHunk.header.oldStartLine -
-    previousHunk.header.oldLineCount
-  )
+  const distanceToPrevious = previousHunk === null ? Infinity
+    : hunkHeader.oldStartLine -
+      previousHunk.header.oldStartLine -
+      previousHunk.header.oldLineCount
 
   // In order to simplify the whole logic around expansion, only the hunk at the
   // top can be expanded up exclusively, and only the hunk at the bottom (the
@@ -351,8 +350,7 @@ export function expandTextDiffHunk(
   // if the currently expanded hunk didn't reach the bottom of the file.
   const newHunkLastLine =
     newHunkHeader.newStartLine + newHunkHeader.newLineCount - 1
-  const followingHunks = newHunkLastLine >= newContentLines.length ?
-      []
+  const followingHunks = newHunkLastLine >= newContentLines.length ? []
     : diff.hunks.slice(followingHunksStartIndex).map((hunk, hunkIndex) => {
         const isLastDummyHunk =
           hunkIndex + followingHunksStartIndex === diff.hunks.length - 1 &&

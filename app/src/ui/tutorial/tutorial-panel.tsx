@@ -351,9 +351,9 @@ class TutorialStepInstructions extends React.Component<ITutorialStepInstructions
         {this.renderTutorialStepIcon()}
         <span className="summary-text">{this.props.summaryText}</span>
         <span className="hang-right">
-          {shouldShowSkipLink ? this.props.skipLinkButton : (
-            <Octicon symbol={OcticonSymbol.chevronDown} />
-          )}
+          {shouldShowSkipLink ?
+            this.props.skipLinkButton
+          : <Octicon symbol={OcticonSymbol.chevronDown} />}
         </span>
       </summary>
     )

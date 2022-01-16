@@ -414,11 +414,9 @@ export class TextDiff extends React.Component<ITextDiffProps, ITextDiffState> {
       return
     }
 
-    const newContentLines = contents.newContents === null ?
-        []
+    const newContentLines = contents.newContents === null ? []
       : contents.newContents.split('\n')
-    const oldContentLines = contents.oldContents === null ?
-        []
+    const oldContentLines = contents.oldContents === null ? []
       : contents.oldContents.split('\n')
 
     const currentDiff = this.state.diff
@@ -1017,9 +1015,9 @@ export class TextDiff extends React.Component<ITextDiffProps, ITextDiffState> {
    */
   private isIncluded(index: number) {
     const { file } = this.props
-    return inSelection(this.selection, index) ? this.selection.isSelected : (
-      canSelect(file) && file.selection.isSelected(index)
-    )
+    return inSelection(this.selection, index) ?
+        this.selection.isSelected
+      : canSelect(file) && file.selection.isSelected(index)
   }
 
   private getGutterLineClassNameInfo(
@@ -1279,15 +1277,13 @@ export class TextDiff extends React.Component<ITextDiffProps, ITextDiffState> {
 
     const oldLineNumber = marker.childNodes[0]
 
-    oldLineNumber.textContent = diffLine.oldLineNumber === null ? '' : (
-      `${diffLine.oldLineNumber}`
-    )
+    oldLineNumber.textContent = diffLine.oldLineNumber === null ? ''
+      : `${diffLine.oldLineNumber}`
 
     const newLineNumber = marker.childNodes[1]
 
-    newLineNumber.textContent = diffLine.newLineNumber === null ? '' : (
-      `${diffLine.newLineNumber}`
-    )
+    newLineNumber.textContent = diffLine.newLineNumber === null ? ''
+      : `${diffLine.newLineNumber}`
   }
 
   private onHunkHandleMouseEnter = (ev: MouseEvent) => {

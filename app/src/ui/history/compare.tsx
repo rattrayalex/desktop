@@ -176,9 +176,9 @@ export class CompareSidebar extends React.Component<
     const formState = this.props.compareState.formState
     return (
       <div className="compare-commit-list">
-        {formState.kind === HistoryTabMode.History ? this.renderCommitList() : (
-          this.renderTabBar(formState)
-        )}
+        {formState.kind === HistoryTabMode.History ?
+          this.renderCommitList()
+        : this.renderTabBar(formState)}
       </div>
     )
   }
@@ -344,8 +344,7 @@ export class CompareSidebar extends React.Component<
   }
 
   private renderTabBar(formState: ICompareBranch) {
-    const selectedTab = formState.comparisonMode === ComparisonMode.Behind ?
-        0
+    const selectedTab = formState.comparisonMode === ComparisonMode.Behind ? 0
       : 1
 
     return (

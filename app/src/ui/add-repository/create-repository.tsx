@@ -95,9 +95,9 @@ export class CreateRepository extends React.Component<
   public constructor(props: ICreateRepositoryProps) {
     super(props)
 
-    const path = this.props.initialPath ? this.props.initialPath : (
-      getDefaultDir()
-    )
+    const path = this.props.initialPath ?
+        this.props.initialPath
+      : getDefaultDir()
 
     const name = this.props.initialPath ?
         sanitizedRepositoryName(Path.basename(this.props.initialPath))
@@ -279,8 +279,7 @@ export class CreateRepository extends React.Component<
       }
     }
 
-    const licenseName = this.state.license === NoLicenseValue.name ?
-        null
+    const licenseName = this.state.license === NoLicenseValue.name ? null
       : this.state.license
     const license = (this.state.licenses || []).find(
       l => l.name === licenseName

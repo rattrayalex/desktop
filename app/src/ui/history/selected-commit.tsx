@@ -132,8 +132,7 @@ export class SelectedCommit extends React.Component<
 
     if (file == null) {
       // don't show both 'empty' messages
-      const message = this.props.changedFiles.length === 0 ?
-          ''
+      const message = this.props.changedFiles.length === 0 ? ''
         : 'No file selected'
 
       return (

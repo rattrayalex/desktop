@@ -384,11 +384,9 @@ export class SideBySideDiff extends React.Component<
       return
     }
 
-    const newContentLines = contents.newContents === null ?
-        []
+    const newContentLines = contents.newContents === null ? []
       : contents.newContents.split('\n')
-    const oldContentLines = contents.oldContents === null ?
-        []
+    const oldContentLines = contents.oldContents === null ? []
       : contents.oldContents.split('\n')
 
     const currentDiff = this.state.diff
@@ -1290,9 +1288,8 @@ class SearchResults {
 
   public get(index: number) {
     const hit = this.hits[index]
-    return hit === undefined ? undefined : (
-      { row: hit[0], column: hit[1], offset: hit[2], length: hit[3] }
-    )
+    return hit === undefined ? undefined
+      : { row: hit[0], column: hit[1], offset: hit[2], length: hit[3] }
   }
 
   public getLineTokens(row: number, column: DiffColumn) {

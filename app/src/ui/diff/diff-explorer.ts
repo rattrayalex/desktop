@@ -172,9 +172,9 @@ export function findInteractiveDiffRange(
     rangeType = getNextRangeType(rangeType, line)
   }
 
-  const from = contextLineBeforeIndex !== null ? contextLineBeforeIndex : (
-    hunk.unifiedDiffStart + 1
-  )
+  const from = contextLineBeforeIndex !== null ?
+      contextLineBeforeIndex
+    : hunk.unifiedDiffStart + 1
 
   let contextLineAfterIndex: number | null = null
 

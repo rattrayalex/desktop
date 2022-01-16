@@ -558,8 +558,7 @@ export async function rebaseInteractive(
   let options = baseOptions
 
   if (progressCallback !== undefined) {
-    const ref = lastRetainedCommitRef == null ?
-        undefined
+    const ref = lastRetainedCommitRef == null ? undefined
       : lastRetainedCommitRef
     const commits = await getCommits(repository, ref)
 

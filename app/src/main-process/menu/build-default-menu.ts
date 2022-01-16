@@ -607,8 +607,7 @@ const ZoomOutFactors = ZoomInFactors.slice().reverse()
  */
 function findClosestValue(arr: Array<number>, value: number) {
   return arr.reduce((previous, current) => {
-    return Math.abs(current - value) < Math.abs(previous - value) ?
-        current
+    return Math.abs(current - value) < Math.abs(previous - value) ? current
       : previous
   })
 }

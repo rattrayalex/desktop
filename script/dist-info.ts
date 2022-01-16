@@ -119,9 +119,9 @@ export function isPublishable(): boolean {
 
 export function getChannel() {
   const channelFromBranch = getChannelFromBranch()
-  return channelFromBranch !== undefined ? channelFromBranch : (
-    process.env.NODE_ENV || 'development'
-  )
+  return channelFromBranch !== undefined ?
+      channelFromBranch
+    : process.env.NODE_ENV || 'development'
 }
 
 function getChannelFromBranch(): string | undefined {

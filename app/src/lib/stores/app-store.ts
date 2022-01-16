@@ -1072,9 +1072,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
     }))
 
     const cachedState = compareState.formState
-    const action = initialAction != null ? initialAction : (
-      getInitialAction(cachedState)
-    )
+    const action = initialAction != null ?
+        initialAction
+      : getInitialAction(cachedState)
     this._executeCompare(repository, action)
   }
 
@@ -1752,9 +1752,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
     this.updateMenuLabelsForSelectedRepository()
 
     const imageDiffTypeValue = localStorage.getItem(imageDiffTypeKey)
-    this.imageDiffType = imageDiffTypeValue === null ? imageDiffTypeDefault : (
-      parseInt(imageDiffTypeValue)
-    )
+    this.imageDiffType = imageDiffTypeValue === null ?
+        imageDiffTypeDefault
+      : parseInt(imageDiffTypeValue)
 
     this.hideWhitespaceInChangesDiff = getBoolean(
       hideWhitespaceInChangesDiffKey,

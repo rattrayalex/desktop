@@ -148,8 +148,7 @@ function buildMenuItemInfoMap(
     const infoItem: IMenuItemInfo = {
       label: item.label,
       acceleratorKeys: getItemAcceleratorKeys(item),
-      parentMenuLabels: parent === undefined ?
-          []
+      parentMenuLabels: parent === undefined ? []
         : [parent.label, ...parent.parentMenuLabels],
       enabled: item.enabled,
     }

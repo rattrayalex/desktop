@@ -218,8 +218,7 @@ export class NoRepositoriesView extends React.Component<
   ) {
     const loading = accountState === undefined ? true : accountState.loading
 
-    const repositories = accountState === undefined ?
-        null
+    const repositories = accountState === undefined ? null
       : accountState.repositories
 
     const selectedItem = this.getSelectedItemForAccount(account)

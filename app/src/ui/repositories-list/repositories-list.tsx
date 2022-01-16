@@ -108,8 +108,7 @@ export class RepositoriesList extends React.Component<
       repositories: ReadonlyArray<Repositoryish> | null,
       localRepositoryStateLookup: ReadonlyMap<number, ILocalRepositoryState>
     ) =>
-      repositories === null ?
-        []
+      repositories === null ? []
       : groupRepositories(repositories, localRepositoryStateLookup)
   )
 

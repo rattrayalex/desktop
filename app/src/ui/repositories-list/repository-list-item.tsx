@@ -172,8 +172,7 @@ export class RepositoryListItem extends React.Component<
       },
       { type: 'separator' },
       {
-        label: this.props.askForConfirmationOnRemoveRepository ?
-            'Remove…'
+        label: this.props.askForConfirmationOnRemoveRepository ? 'Remove…'
           : 'Remove',
         action: this.removeRepository,
       },

@@ -381,8 +381,7 @@ export class Preferences extends React.Component<
   private onCommitterNameChanged = (committerName: string) => {
     this.setState({
       committerName,
-      disallowedCharactersMessage: gitAuthorNameIsValid(committerName) ?
-          null
+      disallowedCharactersMessage: gitAuthorNameIsValid(committerName) ? null
         : InvalidGitAuthorNameMessage,
     })
   }

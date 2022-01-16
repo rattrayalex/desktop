@@ -205,8 +205,7 @@ export async function highlightContents(
   const oldPath = getOldPathOrDefault(file)
 
   const [oldTokens, newTokens] = await Promise.all([
-    oldContents === null ?
-      {}
+    oldContents === null ? {}
     : highlight(
         oldContents,
         Path.basename(oldPath),
@@ -217,8 +216,7 @@ export async function highlightContents(
         log.error('Highlighter worked failed for old contents', e)
         return {}
       }),
-    newContents === null ?
-      {}
+    newContents === null ? {}
     : highlight(
         newContents,
         Path.basename(file.path),

@@ -40,9 +40,8 @@ export class PullRequestUpdater {
 
   private getTimeSinceLastRefresh() {
     const lastRefreshed = this.coordinator.getLastRefreshed(this.repository)
-    const timeSince = lastRefreshed === undefined ? Infinity : (
-      Date.now() - lastRefreshed
-    )
+    const timeSince = lastRefreshed === undefined ? Infinity
+      : Date.now() - lastRefreshed
     return timeSince
   }
 

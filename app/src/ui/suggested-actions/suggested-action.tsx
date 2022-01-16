@@ -65,9 +65,8 @@ export class SuggestedAction extends React.Component<ISuggestedActionProps> {
   public render() {
     const primary = this.props.type === 'primary'
     const cn = classNames('suggested-action', { primary })
-    const description = this.props.description === undefined ? undefined : (
-      <p className="description">{this.props.description}</p>
-    )
+    const description = this.props.description === undefined ? undefined
+      : <p className="description">{this.props.description}</p>
     return (
       <div className={cn}>
         {this.props.image && (

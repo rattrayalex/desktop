@@ -52,8 +52,7 @@ export async function squash(
 
     const commits = await getCommits(
       repository,
-      lastRetainedCommitRef === null ?
-        undefined
+      lastRetainedCommitRef === null ? undefined
       : revRange(lastRetainedCommitRef, 'HEAD')
     )
 

@@ -1370,8 +1370,7 @@ export class App extends React.Component<IAppProps, IAppState> {
           />
         )
       case PopupType.ConfirmDiscardChanges:
-        const showSetting = popup.showDiscardChangesSetting === undefined ?
-            true
+        const showSetting = popup.showDiscardChangesSetting === undefined ? true
           : popup.showDiscardChangesSetting
         const discardingAllChanges = popup.discardingAllChanges === undefined ?
             false
@@ -2863,9 +2862,9 @@ export class App extends React.Component<IAppProps, IAppState> {
       <div id="desktop-app-chrome" className={className}>
         <AppTheme theme={currentTheme} />
         {this.renderTitlebar()}
-        {this.state.showWelcomeFlow ? this.renderWelcomeFlow() : (
-          this.renderApp()
-        )}
+        {this.state.showWelcomeFlow ?
+          this.renderWelcomeFlow()
+        : this.renderApp()}
         {this.renderZoomInfo()}
         {this.renderFullScreenInfo()}
       </div>
