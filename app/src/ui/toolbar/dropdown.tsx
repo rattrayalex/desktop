@@ -198,8 +198,9 @@ export class ToolbarDropdown extends React.Component<
   }
 
   private onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const newState: DropdownState =
-      this.props.dropdownState === 'open' ? 'closed' : 'open'
+    const newState: DropdownState = this.props.dropdownState === 'open' ?
+        'closed'
+      : 'open'
 
     // This is probably one of the hackiest things I've ever done.
     // We need to be able to determine whether the button was clicked

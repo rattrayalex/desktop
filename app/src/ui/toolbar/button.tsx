@@ -130,18 +130,18 @@ export class ToolbarButton extends React.Component<IToolbarButtonProps, {}> {
    * Returns undefined if the button hasn't been mounted yet.
    */
   public getButtonBoundingClientRect = (): ClientRect | undefined => {
-    return this.innerButton
-      ? this.innerButton.getBoundingClientRect()
+    return this.innerButton ?
+        this.innerButton.getBoundingClientRect()
       : undefined
   }
 
   public render() {
-    const icon = this.props.icon ? (
-      <Octicon
-        symbol={this.props.icon}
-        className={classNames('icon', this.props.iconClassName)}
-      />
-    ) : null
+    const icon = this.props.icon ?
+        <Octicon
+          symbol={this.props.icon}
+          className={classNames('icon', this.props.iconClassName)}
+        />
+      : null
 
     const className = classNames(
       'toolbar-button',
@@ -149,18 +149,16 @@ export class ToolbarButton extends React.Component<IToolbarButtonProps, {}> {
       this.props.className
     )
 
-    const progressValue =
-      this.props.progressValue !== undefined
-        ? Math.round(clamp(this.props.progressValue, 0, 1) * 100) / 100
-        : undefined
+    const progressValue = this.props.progressValue !== undefined ?
+        Math.round(clamp(this.props.progressValue, 0, 1) * 100) / 100
+      : undefined
 
-    const progress =
-      progressValue !== undefined ? (
+    const progress = progressValue !== undefined ?
         <div
           className="progress"
           style={{ transform: `scaleX(${progressValue})` }}
         />
-      ) : undefined
+      : undefined
 
     return (
       <div
@@ -194,15 +192,13 @@ export class ToolbarButton extends React.Component<IToolbarButtonProps, {}> {
       return null
     }
 
-    const title =
-      this.props.title !== undefined ? (
+    const title = this.props.title !== undefined ?
         <div className="title">{this.props.title}</div>
-      ) : null
+      : null
 
-    const description =
-      this.props.description !== undefined ? (
+    const description = this.props.description !== undefined ?
         <div className="description">{this.props.description}</div>
-      ) : null
+      : null
 
     const style = this.props.style || ToolbarButtonStyle.Standard
     switch (style) {

@@ -3000,11 +3000,11 @@ export class Dispatcher {
     }
 
     const isGHRepo = isRepositoryWithGitHubRepository(repository)
-    const upstreamGhRepo = isGHRepo
-      ? getNonForkGitHubRepository(repository as RepositoryWithGitHubRepository)
+    const upstreamGhRepo = isGHRepo ?
+        getNonForkGitHubRepository(repository as RepositoryWithGitHubRepository)
       : null
-    const upstreamDefaultBranch = isGHRepo
-      ? findDefaultUpstreamBranch(
+    const upstreamDefaultBranch = isGHRepo ?
+        findDefaultUpstreamBranch(
           repository as RepositoryWithGitHubRepository,
           allBranches
         )

@@ -54,8 +54,8 @@ function isEmailPublic(email: IAPIEmail): boolean {
  * endpoint host.
  */
 function getStealthEmailHostForEndpoint(endpoint: string) {
-  return getDotComAPIEndpoint() !== endpoint
-    ? `users.noreply.${URL.parse(endpoint).hostname}`
+  return getDotComAPIEndpoint() !== endpoint ?
+      `users.noreply.${URL.parse(endpoint).hostname}`
     : 'users.noreply.github.com'
 }
 

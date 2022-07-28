@@ -31,10 +31,11 @@ export function updateLastThankYou(
 ): void {
   const newCheckedUsers = [login]
   // If new version, clear out last versions checked users.
-  const lastCheckedUsers =
-    lastThankYou === undefined || lastThankYou.version !== currentVersion
-      ? []
-      : lastThankYou.checkedUsers
+  const lastCheckedUsers = (
+      lastThankYou === undefined || lastThankYou.version !== currentVersion
+    ) ?
+      []
+    : lastThankYou.checkedUsers
 
   const updatedLastThankYou = {
     version: currentVersion,

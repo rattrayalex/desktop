@@ -147,8 +147,8 @@ function getAllMenusDisabledBuilder(): MenuStateBuilder {
 
 function getRepositoryMenuBuilder(state: IAppState): MenuStateBuilder {
   const selectedState = state.selectedState
-  const isHostedOnGitHub = selectedState
-    ? isRepositoryHostedOnGitHub(selectedState.repository)
+  const isHostedOnGitHub = selectedState ?
+      isRepositoryHostedOnGitHub(selectedState.repository)
     : false
 
   let repositorySelected = false

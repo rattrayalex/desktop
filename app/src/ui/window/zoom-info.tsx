@@ -62,10 +62,11 @@ export class ZoomInfo extends React.Component<IZoomInfoProps, IZoomInfoState> {
       transitionDuration + holdDuration + transitionDuration
     )
 
-    const transitionName =
-      nextProps.windowZoomFactor > this.state.windowZoomFactor
-        ? 'zoom-in'
-        : 'zoom-out'
+    const transitionName = (
+        nextProps.windowZoomFactor > this.state.windowZoomFactor
+      ) ?
+        'zoom-in'
+      : 'zoom-out'
 
     this.setState({
       windowZoomFactor: nextProps.windowZoomFactor,

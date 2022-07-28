@@ -57,9 +57,9 @@ export class MoveToApplicationsFolder extends React.Component<
             <Checkbox
               label="Do not show this message again"
               value={
-                this.state.askToMoveToApplicationsFolder
-                  ? CheckboxValue.Off
-                  : CheckboxValue.On
+                this.state.askToMoveToApplicationsFolder ?
+                  CheckboxValue.Off
+                : CheckboxValue.On
               }
               onChange={this.onAskToMoveToApplicationsFolderChanged}
             />

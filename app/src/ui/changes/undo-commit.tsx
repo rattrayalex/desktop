@@ -27,8 +27,8 @@ export class UndoCommit extends React.Component<IUndoCommitProps, {}> {
   public render() {
     const disabled =
       this.props.isPushPullFetchInProgress || this.props.isCommitting
-    const title = disabled
-      ? 'Undo is disabled while the repository is being updated'
+    const title = disabled ?
+        'Undo is disabled while the repository is being updated'
       : undefined
 
     const authorDate = this.props.commit.author.date

@@ -11,19 +11,16 @@ export function BranchAlreadyUpToDate({
   readonly theirBranch?: string
   readonly onDismissed: () => void
 }) {
-  const message =
-    theirBranch !== undefined ? (
+  const message = theirBranch !== undefined ?
       <span>
         <strong>{ourBranch}</strong>
         {' is already up to date with '}
         <strong>{theirBranch}</strong>
       </span>
-    ) : (
-      <span>
+    : <span>
         <strong>{ourBranch}</strong>
         {' is already up to date'}
       </span>
-    )
 
   return (
     <Banner id="successful-merge" timeout={5000} onDismissed={onDismissed}>

@@ -53,12 +53,13 @@ export async function getBranches(
     const author = CommitIdentity.parseIdentity(ref.author)
     const tip: IBranchTip = { sha: ref.sha, author }
 
-    const type = ref.fullName.startsWith('refs/heads')
-      ? BranchType.Local
+    const type = ref.fullName.startsWith('refs/heads') ?
+        BranchType.Local
       : BranchType.Remote
 
-    const upstream =
-      ref.upstreamShortName.length > 0 ? ref.upstreamShortName : null
+    const upstream = ref.upstreamShortName.length > 0 ?
+        ref.upstreamShortName
+      : null
 
     branches.push(new Branch(ref.shortName, upstream, tip, type, ref.fullName))
   }

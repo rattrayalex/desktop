@@ -27,7 +27,7 @@ export class Start extends React.Component<IStartProps, {}> {
     return (
       <div id="start">
         <h1 className="welcome-title">Welcome to GitHub&nbsp;Desktop</h1>
-        {!this.props.loadingBrowserAuth ? (
+        {!this.props.loadingBrowserAuth ?
           <>
             <p className="welcome-text">
               GitHub Desktop is a seamless way to contribute to projects on
@@ -44,9 +44,7 @@ export class Start extends React.Component<IStartProps, {}> {
               </LinkButton>
             </p>
           </>
-        ) : (
-          <p>{BrowserRedirectMessage}</p>
-        )}
+        : <p>{BrowserRedirectMessage}</p>}
 
         <div className="welcome-main-buttons">
           <Button
@@ -59,13 +57,12 @@ export class Start extends React.Component<IStartProps, {}> {
             Sign in to GitHub.com
             <Octicon symbol={OcticonSymbol.linkExternal} />
           </Button>
-          {this.props.loadingBrowserAuth ? (
+          {this.props.loadingBrowserAuth ?
             <Button onClick={this.cancelBrowserAuth}>Cancel</Button>
-          ) : (
-            <Button onClick={this.signInToEnterprise}>
+          : <Button onClick={this.signInToEnterprise}>
               Sign in to GitHub Enterprise
             </Button>
-          )}
+          }
         </div>
         <div className="skip-action-container">
           <LinkButton className="skip-button" onClick={this.skip}>

@@ -155,16 +155,16 @@ function getSpellCheckLanguageMenuItem(
     return null
   }
 
-  const languageCode =
-    spellcheckLanguageCodes.includes(englishLanguageCode) &&
-    !spellcheckLanguageCodes.includes(userLanguageCode)
-      ? userLanguageCode
-      : englishLanguageCode
+  const languageCode = (
+      spellcheckLanguageCodes.includes(englishLanguageCode) &&
+      !spellcheckLanguageCodes.includes(userLanguageCode)
+    ) ?
+      userLanguageCode
+    : englishLanguageCode
 
-  const label =
-    languageCode === englishLanguageCode
-      ? 'Set spellcheck to English'
-      : 'Set spellcheck to system language'
+  const label = languageCode === englishLanguageCode ?
+      'Set spellcheck to English'
+    : 'Set spellcheck to system language'
 
   return {
     label,

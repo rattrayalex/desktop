@@ -10,7 +10,7 @@ import { getDotComAPIEndpoint } from './api'
  * hostname without the protocol and/or path.
  */
 export function friendlyEndpointName(account: Account) {
-  return account.endpoint === getDotComAPIEndpoint()
-    ? 'GitHub.com'
+  return account.endpoint === getDotComAPIEndpoint() ?
+      'GitHub.com'
     : URL.parse(account.endpoint).hostname || account.endpoint
 }

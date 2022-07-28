@@ -64,14 +64,14 @@ export class GitConfig extends React.Component<IGitConfigProps> {
           </Row>
           <GitConfigUserForm
             email={
-              this.props.gitConfigLocation === GitConfigLocation.Global
-                ? this.props.globalEmail
-                : this.props.email
+              this.props.gitConfigLocation === GitConfigLocation.Global ?
+                this.props.globalEmail
+              : this.props.email
             }
             name={
-              this.props.gitConfigLocation === GitConfigLocation.Global
-                ? this.props.globalName
-                : this.props.name
+              this.props.gitConfigLocation === GitConfigLocation.Global ?
+                this.props.globalName
+              : this.props.name
             }
             enterpriseAccount={enterpriseAccount}
             dotComAccount={dotComAccount}

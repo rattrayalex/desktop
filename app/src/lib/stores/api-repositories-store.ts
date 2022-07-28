@@ -155,10 +155,9 @@ export class ApiRepositoriesStore extends BaseStore {
     const newOrExistingAccount = resolveAccount(account, newState)
     const existingRepositories = newState.get(newOrExistingAccount)
 
-    const newRepositories =
-      existingRepositories === undefined
-        ? merge({ loading: false, repositories: [] }, repositories)
-        : merge(existingRepositories, repositories)
+    const newRepositories = existingRepositories === undefined ?
+        merge({ loading: false, repositories: [] }, repositories)
+      : merge(existingRepositories, repositories)
 
     newState.set(newOrExistingAccount, newRepositories)
 

@@ -245,8 +245,8 @@ export class CommitListItem extends React.PureComponent<
 
     const items: IMenuItem[] = [
       {
-        label: __DARWIN__
-          ? 'Revert Changes in Commit'
+        label: __DARWIN__ ?
+            'Revert Changes in Commit'
           : 'Revert changes in commit',
         action: () => {
           if (this.props.onRevertCommit) {
@@ -259,8 +259,8 @@ export class CommitListItem extends React.PureComponent<
 
     if (enableBranchFromCommit()) {
       items.push({
-        label: __DARWIN__
-          ? 'Create Branch from Commit'
+        label: __DARWIN__ ?
+            'Create Branch from Commit'
           : 'Create branch from commit',
         action: () => {
           if (this.props.onCreateBranch) {
@@ -314,8 +314,8 @@ export class CommitListItem extends React.PureComponent<
 
     const count = this.props.selectedCommits.length
     items.push({
-      label: __DARWIN__
-        ? `Cherry-pick ${count} Commits…`
+      label: __DARWIN__ ?
+          `Cherry-pick ${count} Commits…`
         : `Cherry-pick ${count} commits…`,
       action: this.onCherryPick,
       enabled: this.canCherryPick(),
@@ -323,8 +323,8 @@ export class CommitListItem extends React.PureComponent<
 
     if (enableSquashing()) {
       items.push({
-        label: __DARWIN__
-          ? `Squash ${count} Commits…`
+        label: __DARWIN__ ?
+            `Squash ${count} Commits…`
           : `Squash ${count} commits…`,
         action: this.onSquash,
       })

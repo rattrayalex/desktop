@@ -191,10 +191,9 @@ async function findHyper(): Promise<string | null> {
     const commandPieces = first.data.match(/(["'])(.*?)\1/)
     const localAppData = process.env.LocalAppData
 
-    const path = commandPieces
-      ? commandPieces[2]
-      : localAppData != null
-      ? localAppData.concat('\\hyper\\Hyper.exe')
+    const path =
+      commandPieces ? commandPieces[2]
+      : localAppData != null ? localAppData.concat('\\hyper\\Hyper.exe')
       : null // fall back to the launcher in install root
 
     if (path == null) {

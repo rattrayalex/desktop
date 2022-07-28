@@ -155,9 +155,9 @@ export class DiffOptions extends React.Component<
         <h3>Whitespace</h3>
         <Checkbox
           value={
-            this.props.hideWhitespaceChanges
-              ? CheckboxValue.On
-              : CheckboxValue.Off
+            this.props.hideWhitespaceChanges ?
+              CheckboxValue.On
+            : CheckboxValue.Off
           }
           onChange={this.onHideWhitespaceChangesChanged}
           label={

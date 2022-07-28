@@ -221,7 +221,9 @@ export class CloneRepository extends React.Component<
           <span>URL</span>
         </TabBar>
 
-        {error ? <DialogError>{error.message}</DialogError> : null}
+        {error ?
+          <DialogError>{error.message}</DialogError>
+        : null}
 
         {this.renderActiveTab()}
 
@@ -290,10 +292,10 @@ export class CloneRepository extends React.Component<
           return <DialogContent>{this.renderSignIn(tab)}</DialogContent>
         } else {
           const accountState = this.props.apiRepositories.get(account)
-          const repositories =
-            accountState === undefined ? null : accountState.repositories
-          const loading =
-            accountState === undefined ? false : accountState.loading
+          const repositories = accountState === undefined ? null
+            : accountState.repositories
+          const loading = accountState === undefined ? false
+            : accountState.loading
           const tabState = this.getGitHubTabState(tab)
 
           return (
@@ -523,8 +525,8 @@ export class CloneRepository extends React.Component<
 
     const tabState = this.getSelectedTabState()
     const lastParsedIdentifier = tabState.lastParsedIdentifier
-    const directory = lastParsedIdentifier
-      ? Path.join(filePaths[0], lastParsedIdentifier.name)
+    const directory = lastParsedIdentifier ?
+        Path.join(filePaths[0], lastParsedIdentifier.name)
       : filePaths[0]
 
     this.setSelectedTabState(

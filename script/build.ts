@@ -155,8 +155,8 @@ function packageApp() {
   }
 
   // get notarization deets, unless we're not going to publish this
-  const notarizationCredentials = isPublishableBuild
-    ? getNotarizationCredentials()
+  const notarizationCredentials = isPublishableBuild ?
+      getNotarizationCredentials()
     : undefined
   if (
     isPublishableBuild &&
@@ -205,9 +205,9 @@ function packageApp() {
       {
         name: getBundleID(),
         schemes: [
-          !isDevelopmentBuild
-            ? 'x-github-desktop-auth'
-            : 'x-github-desktop-dev-auth',
+          !isDevelopmentBuild ?
+            'x-github-desktop-auth'
+          : 'x-github-desktop-dev-auth',
           'x-github-client',
           'github-mac',
         ],
@@ -329,10 +329,9 @@ function copyDependencies() {
 
   console.log('  Copying desktop-trampoline…')
   const desktopTrampolineDir = path.resolve(outRoot, 'desktop-trampoline')
-  const desktopTrampolineFile =
-    process.platform === 'win32'
-      ? 'desktop-trampoline.exe'
-      : 'desktop-trampoline'
+  const desktopTrampolineFile = process.platform === 'win32' ?
+      'desktop-trampoline.exe'
+    : 'desktop-trampoline'
   fs.removeSync(desktopTrampolineDir)
   fs.mkdirSync(desktopTrampolineDir)
   fs.copySync(

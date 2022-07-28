@@ -30,7 +30,7 @@ export async function formatCommitMessage(
   // interpret-trailers to work)
   const message = `${summary}\n\n${description || ''}\n`.replace(/\s+$/, '\n')
 
-  return trailers !== undefined && trailers.length > 0
-    ? mergeTrailers(repository, message, trailers)
+  return trailers !== undefined && trailers.length > 0 ?
+      mergeTrailers(repository, message, trailers)
     : message
 }

@@ -42,14 +42,12 @@ export class RepositoryIndicatorUpdater {
 
   private scheduleRefresh() {
     if (this.running && this.refreshTimeoutId === null) {
-      const timeSinceLastRefresh =
-        this.lastRefreshStartedAt === null
-          ? Infinity
-          : Date.now() - this.lastRefreshStartedAt
+      const timeSinceLastRefresh = this.lastRefreshStartedAt === null ? Infinity
+        : Date.now() - this.lastRefreshStartedAt
 
       const timeout = Math.max(RefreshInterval - timeSinceLastRefresh, 0) + skew
-      const lastRefreshText = isFinite(timeSinceLastRefresh)
-        ? `${(timeSinceLastRefresh / 1000).toFixed(3)}s ago`
+      const lastRefreshText = isFinite(timeSinceLastRefresh) ?
+          `${(timeSinceLastRefresh / 1000).toFixed(3)}s ago`
         : 'never'
       const timeoutText = `${(timeout / 1000).toFixed(3)}s`
 

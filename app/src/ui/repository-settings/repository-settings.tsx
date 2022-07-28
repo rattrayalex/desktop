@@ -119,10 +119,11 @@ export class RepositorySettings extends React.Component<
     const globalCommitterEmail =
       (await getGlobalConfigValue('user.email')) || ''
 
-    const gitConfigLocation =
-      localCommitterName === null && localCommitterEmail === null
-        ? GitConfigLocation.Global
-        : GitConfigLocation.Local
+    const gitConfigLocation = (
+        localCommitterName === null && localCommitterEmail === null
+      ) ?
+        GitConfigLocation.Global
+      : GitConfigLocation.Local
 
     let committerName = globalCommitterName
     let committerEmail = globalCommitterEmail

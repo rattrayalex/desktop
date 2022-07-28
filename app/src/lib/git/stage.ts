@@ -38,10 +38,9 @@ export async function stageManualConflictResolution(
     return
   }
 
-  const chosen =
-    manualResolution === ManualConflictResolution.theirs
-      ? status.entry.them
-      : status.entry.us
+  const chosen = manualResolution === ManualConflictResolution.theirs ?
+      status.entry.them
+    : status.entry.us
 
   const addedInBoth =
     status.entry.us === GitStatusEntry.Added &&

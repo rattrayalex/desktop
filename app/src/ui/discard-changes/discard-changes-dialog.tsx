@@ -64,8 +64,8 @@ export class DiscardChanges extends React.Component<
 
   private getDialogTitle() {
     if (this.props.discardingAllChanges) {
-      return __DARWIN__
-        ? 'Confirm Discard All Changes'
+      return __DARWIN__ ?
+          'Confirm Discard All Changes'
         : 'Confirm discard all changes'
     }
     return __DARWIN__ ? 'Confirm Discard Changes' : 'Confirm discard changes'
@@ -110,9 +110,9 @@ export class DiscardChanges extends React.Component<
         <Checkbox
           label="Do not show this message again"
           value={
-            this.state.confirmDiscardChanges
-              ? CheckboxValue.Off
-              : CheckboxValue.On
+            this.state.confirmDiscardChanges ?
+              CheckboxValue.Off
+            : CheckboxValue.On
           }
           onChange={this.onConfirmDiscardChangesChanged}
         />

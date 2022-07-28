@@ -143,9 +143,9 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
           <span>GitHub Enterprise</span>
         </TabBar>
 
-        {currentTabState.error ? (
+        {currentTabState.error ?
           <DialogError>{currentTabState.error.message}</DialogError>
-        ) : null}
+        : null}
 
         {this.renderContent()}
         {this.renderFooter()}
@@ -314,9 +314,9 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
   }
 
   private getCurrentTabState = () =>
-    this.state.currentTab === PublishTab.DotCom
-      ? this.state.dotcomTabState
-      : this.state.enterpriseTabState
+    this.state.currentTab === PublishTab.DotCom ?
+      this.state.dotcomTabState
+    : this.state.enterpriseTabState
 
   private setTabState = (state: TabState) => {
     if (state.kind === 'enterprise') {

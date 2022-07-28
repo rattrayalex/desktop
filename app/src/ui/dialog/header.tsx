@@ -79,9 +79,9 @@ export class DialogHeader extends React.Component<IDialogHeaderProps, {}> {
   }
 
   public render() {
-    const spinner = this.props.loading ? (
-      <Octicon className="icon spin" symbol={syncClockwise} />
-    ) : null
+    const spinner = this.props.loading ?
+        <Octicon className="icon spin" symbol={syncClockwise} />
+      : null
 
     return (
       <header className="dialog-header">

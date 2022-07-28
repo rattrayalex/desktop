@@ -127,8 +127,8 @@ export class ChooseTargetBranchDialog extends React.Component<
     const { selectedBranch, isCreateBranchState } = this.state
 
     if (isCreateBranchState) {
-      return __DARWIN__
-        ? 'Cherry-pick to New Branch'
+      return __DARWIN__ ?
+          'Cherry-pick to New Branch'
         : 'Cherry-pick to new branch'
     }
 
@@ -156,8 +156,8 @@ export class ChooseTargetBranchDialog extends React.Component<
   }
 
   public render() {
-    const tooltip = this.selectedBranchIsCurrentBranch()
-      ? 'You are not able to cherry-pick from and to the same branch'
+    const tooltip = this.selectedBranchIsCurrentBranch() ?
+        'You are not able to cherry-pick from and to the same branch'
       : undefined
 
     const pluralize = this.props.commitCount > 1 ? 'commits' : 'commit'

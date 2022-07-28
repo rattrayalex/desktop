@@ -580,10 +580,9 @@ onmessage = async (ev: MessageEvent) => {
     return
   }
 
-  const lineFilter =
-    request.lines && request.lines.length
-      ? new Set<number>(request.lines)
-      : null
+  const lineFilter = request.lines && request.lines.length ?
+      new Set<number>(request.lines)
+    : null
 
   // If we've got a set of requested lines we can keep track of the maximum
   // line we need so that we can bail immediately when we've reached it.

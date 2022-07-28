@@ -235,8 +235,8 @@ export async function getRebaseSnapshot(repository: Repository): Promise<{
       nextCommitIndex >= 0 &&
       nextCommitIndex < commits.length
 
-    const currentCommitSummary = hasValidCommit
-      ? commits[nextCommitIndex].summary
+    const currentCommitSummary = hasValidCommit ?
+        commits[nextCommitIndex].summary
       : null
 
     return {
@@ -558,8 +558,8 @@ export async function rebaseInteractive(
   let options = baseOptions
 
   if (progressCallback !== undefined) {
-    const ref =
-      lastRetainedCommitRef == null ? undefined : lastRetainedCommitRef
+    const ref = lastRetainedCommitRef == null ? undefined
+      : lastRetainedCommitRef
     const commits = await getCommits(repository, ref)
 
     if (commits === null) {

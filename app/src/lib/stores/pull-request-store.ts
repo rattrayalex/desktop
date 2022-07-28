@@ -122,9 +122,9 @@ export class PullRequestStore {
       .catch(e =>
         // Any other error we'll bubble up but these ones we
         // can handle, see below.
-        e instanceof MaxResultsError || e instanceof APIError
-          ? Promise.resolve(null)
-          : Promise.reject(e)
+        e instanceof MaxResultsError || e instanceof APIError ?
+          Promise.resolve(null)
+        : Promise.reject(e)
       )
 
     if (updated !== null) {
@@ -151,8 +151,8 @@ export class PullRequestStore {
   }
 
   public getLastRefreshed(repository: GitHubRepository) {
-    return repository.dbID
-      ? this.lastRefreshForRepository.get(repository.dbID)
+    return repository.dbID ?
+        this.lastRefreshForRepository.get(repository.dbID)
       : undefined
   }
 

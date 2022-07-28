@@ -121,10 +121,9 @@ export class BranchListItem extends React.Component<IBranchListItemProps, {}> {
 
     const date = lastCommitDate ? moment(lastCommitDate).fromNow() : ''
     const icon = isCurrentBranch ? OcticonSymbol.check : OcticonSymbol.gitBranch
-    const infoTitle = isCurrentBranch
-      ? 'Current branch'
-      : lastCommitDate
-      ? lastCommitDate.toString()
+    const infoTitle =
+      isCurrentBranch ? 'Current branch'
+      : lastCommitDate ? lastCommitDate.toString()
       : ''
 
     return (

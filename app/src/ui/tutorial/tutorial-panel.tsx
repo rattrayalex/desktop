@@ -110,7 +110,7 @@ export class TutorialPanel extends React.Component<
             skipLinkButton={<SkipLinkButton onClick={this.skipEditorInstall} />}
             onSummaryClick={this.onStepSummaryClick}
           >
-            {!this.isStepComplete(TutorialStep.PickEditor) ? (
+            {!this.isStepComplete(TutorialStep.PickEditor) ?
               <>
                 <p className="description">
                   It doesn’t look like you have a text editor installed. We can
@@ -136,8 +136,7 @@ export class TutorialPanel extends React.Component<
                   </LinkButton>
                 </div>
               </>
-            ) : (
-              <p className="description">
+            : <p className="description">
                 Your default editor is{' '}
                 <strong>{this.props.resolvedExternalEditor}</strong>. You can
                 change your preferred editor in{' '}
@@ -145,7 +144,7 @@ export class TutorialPanel extends React.Component<
                   {__DARWIN__ ? 'Preferences' : 'options'}
                 </LinkButton>
               </p>
-            )}
+            }
           </TutorialStepInstructions>
           <TutorialStepInstructions
             summaryText="Create a branch"
@@ -161,19 +160,18 @@ export class TutorialPanel extends React.Component<
               clicking "${__DARWIN__ ? 'New Branch' : 'New branch'}".`}
             </p>
             <div className="action">
-              {__DARWIN__ ? (
+              {__DARWIN__ ?
                 <>
                   <kbd>⌘</kbd>
                   <kbd>⇧</kbd>
                   <kbd>N</kbd>
                 </>
-              ) : (
-                <>
+              : <>
                   <kbd>Ctrl</kbd>
                   <kbd>Shift</kbd>
                   <kbd>N</kbd>
                 </>
-              )}
+              }
             </div>
           </TutorialStepInstructions>
           <TutorialStepInstructions
@@ -196,19 +194,18 @@ export class TutorialPanel extends React.Component<
                 <Button onClick={this.openTutorialFileInEditor}>
                   {__DARWIN__ ? 'Open Editor' : 'Open editor'}
                 </Button>
-                {__DARWIN__ ? (
+                {__DARWIN__ ?
                   <>
                     <kbd>⌘</kbd>
                     <kbd>⇧</kbd>
                     <kbd>A</kbd>
                   </>
-                ) : (
-                  <>
+                : <>
                     <kbd>Ctrl</kbd>
                     <kbd>Shift</kbd>
                     <kbd>A</kbd>
                   </>
-                )}
+                }
               </div>
             )}
           </TutorialStepInstructions>
@@ -241,17 +238,16 @@ export class TutorialPanel extends React.Component<
               top bar.
             </p>
             <div className="action">
-              {__DARWIN__ ? (
+              {__DARWIN__ ?
                 <>
                   <kbd>⌘</kbd>
                   <kbd>P</kbd>
                 </>
-              ) : (
-                <>
+              : <>
                   <kbd>Ctrl</kbd>
                   <kbd>P</kbd>
                 </>
-              )}
+              }
             </div>
           </TutorialStepInstructions>
           <TutorialStepInstructions
@@ -274,17 +270,16 @@ export class TutorialPanel extends React.Component<
                 {__DARWIN__ ? 'Open Pull Request' : 'Open pull request'}
                 <Octicon symbol={OcticonSymbol.linkExternal} />
               </Button>
-              {__DARWIN__ ? (
+              {__DARWIN__ ?
                 <>
                   <kbd>⌘</kbd>
                   <kbd>R</kbd>
                 </>
-              ) : (
-                <>
+              : <>
                   <kbd>Ctrl</kbd>
                   <kbd>R</kbd>
                 </>
-              )}
+              }
             </div>
           </TutorialStepInstructions>
         </ol>
@@ -356,11 +351,9 @@ class TutorialStepInstructions extends React.Component<ITutorialStepInstructions
         {this.renderTutorialStepIcon()}
         <span className="summary-text">{this.props.summaryText}</span>
         <span className="hang-right">
-          {shouldShowSkipLink ? (
+          {shouldShowSkipLink ?
             this.props.skipLinkButton
-          ) : (
-            <Octicon symbol={OcticonSymbol.chevronDown} />
-          )}
+          : <Octicon symbol={OcticonSymbol.chevronDown} />}
         </span>
       </summary>
     )
@@ -377,11 +370,9 @@ class TutorialStepInstructions extends React.Component<ITutorialStepInstructions
 
     // ugh zero-indexing
     const stepNumber = orderedTutorialSteps.indexOf(this.props.sectionId) + 1
-    return this.props.isNextStepTodo(this.props.sectionId) ? (
-      <div className="blue-circle">{stepNumber}</div>
-    ) : (
-      <div className="empty-circle">{stepNumber}</div>
-    )
+    return this.props.isNextStepTodo(this.props.sectionId) ?
+        <div className="blue-circle">{stepNumber}</div>
+      : <div className="empty-circle">{stepNumber}</div>
   }
 
   private onSummaryClick = (e: React.MouseEvent<HTMLElement>) => {

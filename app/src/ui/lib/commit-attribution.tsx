@@ -72,8 +72,8 @@ export class CommitAttribution extends React.Component<
         isWebFlowCommitter(commit, this.props.gitHubRepository)
       )
 
-    const authors: Array<CommitIdentity | GitAuthor> = committerAttribution
-      ? [author, committer, ...coAuthors]
+    const authors: Array<CommitIdentity | GitAuthor> = committerAttribution ?
+        [author, committer, ...coAuthors]
       : [author, ...coAuthors]
 
     return (

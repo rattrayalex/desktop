@@ -10,10 +10,11 @@ interface IForkSettingsDescription {
 export function ForkSettingsDescription(props: IForkSettingsDescription) {
   // We can't use the getNonForkGitHubRepository() helper since we need to calculate
   // the value based on the temporary form state.
-  const targetRepository =
-    props.forkContributionTarget === ForkContributionTarget.Self
-      ? props.repository.gitHubRepository
-      : props.repository.gitHubRepository.parent
+  const targetRepository = (
+      props.forkContributionTarget === ForkContributionTarget.Self
+    ) ?
+      props.repository.gitHubRepository
+    : props.repository.gitHubRepository.parent
 
   return (
     <ul className="fork-settings-description">

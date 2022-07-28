@@ -61,11 +61,16 @@ export class EnterpriseServerEntry extends React.Component<
           placeholder="https://github.example.com"
         />
 
-        {this.props.error ? <Errors>{this.props.error.message}</Errors> : null}
+        {this.props.error ?
+          <Errors>{this.props.error.message}</Errors>
+        : null}
 
         <div className="actions">
           <Button type="submit" disabled={disableSubmission}>
-            {this.props.loading ? <Loading /> : null} Continue
+            {this.props.loading ?
+              <Loading />
+            : null}{' '}
+            Continue
           </Button>
           {this.props.additionalButtons}
         </div>

@@ -1007,8 +1007,8 @@ export class API {
         buf.push(...items)
       }
 
-      nextPath = opts.getNextPagePath
-        ? opts.getNextPagePath(response)
+      nextPath = opts.getNextPagePath ?
+          opts.getNextPagePath(response)
         : getNextPagePathFromLink(response)
     } while (nextPath && (!opts.continue || opts.continue(buf)))
 
@@ -1418,7 +1418,7 @@ export async function requestOAuthToken(
 }
 
 function getOAuthScopesForEndpoint(endpoint: string) {
-  return endpoint === getDotComAPIEndpoint()
-    ? DotComOAuthScopes
+  return endpoint === getDotComAPIEndpoint() ?
+      DotComOAuthScopes
     : EnterpriseOAuthScopes
 }

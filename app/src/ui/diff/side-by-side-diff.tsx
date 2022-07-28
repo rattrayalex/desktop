@@ -384,16 +384,16 @@ export class SideBySideDiff extends React.Component<
       return
     }
 
-    const newContentLines =
-      contents.newContents === null ? [] : contents.newContents.split('\n')
-    const oldContentLines =
-      contents.oldContents === null ? [] : contents.oldContents.split('\n')
+    const newContentLines = contents.newContents === null ? []
+      : contents.newContents.split('\n')
+    const oldContentLines = contents.oldContents === null ? []
+      : contents.oldContents.split('\n')
 
     const currentDiff = this.state.diff
     const shouldEnableDiffExpansion =
       enableTextDiffExpansion() && contents.canBeExpanded
-    const newDiff = shouldEnableDiffExpansion
-      ? getTextDiffWithBottomDummyHunk(
+    const newDiff = shouldEnableDiffExpansion ?
+        getTextDiffWithBottomDummyHunk(
           currentDiff,
           currentDiff.hunks,
           oldContentLines.length,
@@ -567,8 +567,8 @@ export class SideBySideDiff extends React.Component<
     }
 
     if (row.type === DiffRowType.Modified) {
-      return column === DiffColumn.After
-        ? row.afterData.diffLineNumber
+      return column === DiffColumn.After ?
+          row.afterData.diffLineNumber
         : row.beforeData.diffLineNumber
     }
 
@@ -759,8 +759,8 @@ export class SideBySideDiff extends React.Component<
 
     const diff = this.state.diff
 
-    return this.diffToRestore === null
-      ? {
+    return this.diffToRestore === null ?
+        {
           label: __DARWIN__ ? 'Expand Whole File' : 'Expand whole file',
           action: this.onExpandWholeFile,
           // If there is only one hunk that can't be expanded, disable this item
@@ -769,8 +769,8 @@ export class SideBySideDiff extends React.Component<
             diff.hunks[0].expansionType !== DiffHunkExpansionType.None,
         }
       : {
-          label: __DARWIN__
-            ? 'Collapse Expanded Lines'
+          label: __DARWIN__ ?
+              'Collapse Expanded Lines'
             : 'Collapse expanded lines',
           action: this.onCollapseExpandedLines,
         }
@@ -863,8 +863,8 @@ export class SideBySideDiff extends React.Component<
     }
 
     const plural = numLines > 1 ? 's' : ''
-    return __DARWIN__
-      ? `Discard ${type} Line${plural}${suffix}`
+    return __DARWIN__ ?
+        `Discard ${type} Line${plural}${suffix}`
       : `Discard ${type} line${plural}${suffix}`
   }
 
@@ -892,8 +892,8 @@ export class SideBySideDiff extends React.Component<
       return
     }
 
-    const isCmdOrCtrl = __DARWIN__
-      ? event.metaKey && !event.ctrlKey
+    const isCmdOrCtrl = __DARWIN__ ?
+        event.metaKey && !event.ctrlKey
       : event.ctrlKey
 
     if (isCmdOrCtrl && !event.shiftKey && !event.altKey && event.key === 'f') {
@@ -1082,8 +1082,8 @@ function getDiffRowsFromHunk(
       rows.push({
         type: DiffRowType.Hunk,
         content: line.text,
-        expansionType: enableDiffExpansion
-          ? hunk.expansionType
+        expansionType: enableDiffExpansion ?
+            hunk.expansionType
           : DiffHunkExpansionType.None,
         hunkIndex,
       })
@@ -1288,8 +1288,7 @@ class SearchResults {
 
   public get(index: number) {
     const hit = this.hits[index]
-    return hit === undefined
-      ? undefined
+    return hit === undefined ? undefined
       : { row: hit[0], column: hit[1], offset: hit[2], length: hit[3] }
   }
 

@@ -225,11 +225,11 @@ export class BranchList extends React.Component<
   private renderGroupHeader = (label: string) => {
     const identifier = this.parseHeader(label)
 
-    return identifier !== null ? (
-      <div className="branches-list-content filter-list-group-header">
-        {this.getGroupLabel(identifier)}
-      </div>
-    ) : null
+    return identifier !== null ?
+        <div className="branches-list-content filter-list-group-header">
+          {this.getGroupLabel(identifier)}
+        </div>
+      : null
   }
 
   private getGroupLabel(identifier: BranchGroupIdentifier) {
@@ -254,11 +254,11 @@ export class BranchList extends React.Component<
   }
 
   private onRenderNewButton = () => {
-    return this.props.canCreateNewBranch ? (
-      <Button className="new-branch-button" onClick={this.onCreateNewBranch}>
-        {__DARWIN__ ? 'New Branch' : 'New branch'}
-      </Button>
-    ) : null
+    return this.props.canCreateNewBranch ?
+        <Button className="new-branch-button" onClick={this.onCreateNewBranch}>
+          {__DARWIN__ ? 'New Branch' : 'New branch'}
+        </Button>
+      : null
   }
 
   private onItemClick = (item: IBranchListItem, source: ClickSource) => {

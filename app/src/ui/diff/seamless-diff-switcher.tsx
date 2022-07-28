@@ -208,15 +208,15 @@ export class SeamlessDiffSwitcher extends React.Component<
       'has-diff': diff !== null,
     })
 
-    const loadingIndicator = isLoadingDiff ? (
-      <div className="loading-indicator">
-        <Loading />
-      </div>
-    ) : null
+    const loadingIndicator = isLoadingDiff ?
+        <div className="loading-indicator">
+          <Loading />
+        </div>
+      : null
 
     return (
       <div className={className}>
-        {diff !== null ? (
+        {diff !== null ?
           <Diff
             repository={repository}
             imageDiffType={imageDiffType}
@@ -233,7 +233,7 @@ export class SeamlessDiffSwitcher extends React.Component<
             onOpenBinaryFile={isLoadingDiff ? noop : onOpenBinaryFile}
             onChangeImageDiffType={isLoadingDiff ? noop : onChangeImageDiffType}
           />
-        ) : null}
+        : null}
         {loadingIndicator}
       </div>
     )

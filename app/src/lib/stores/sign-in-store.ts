@@ -247,10 +247,8 @@ export class SignInStore extends TypedBaseStore<SignInState | null> {
     }
 
     const cached = this.endpointSupportBasicAuth.get(endpoint)
-    const fallbackValue =
-      cached === undefined
-        ? null
-        : { verifiable_password_authentication: cached }
+    const fallbackValue = cached === undefined ? null
+      : { verifiable_password_authentication: cached }
 
     const response = await timeout(
       fetchMetadata(endpoint),

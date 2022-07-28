@@ -159,8 +159,8 @@ export abstract class AutocompletingTextInput<
 
     const left = coordinates.left
     const top = coordinates.top + YOffset
-    const selectedRow = state.selectedItem
-      ? items.indexOf(state.selectedItem)
+    const selectedRow = state.selectedItem ?
+        items.indexOf(state.selectedItem)
       : -1
     const rect = element.getBoundingClientRect()
     const popupAbsoluteTop = rect.top + coordinates.top
@@ -406,8 +406,8 @@ export abstract class AutocompletingTextInput<
       return
     }
 
-    const selectedRow = currentAutoCompletionState.selectedItem
-      ? currentAutoCompletionState.items.indexOf(
+    const selectedRow = currentAutoCompletionState.selectedItem ?
+        currentAutoCompletionState.items.indexOf(
           currentAutoCompletionState.selectedItem
         )
       : -1

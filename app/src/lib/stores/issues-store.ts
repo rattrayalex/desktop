@@ -158,11 +158,10 @@ export class IssuesStore {
     text: string,
     maxHits = DefaultMaxHits
   ): Promise<ReadonlyArray<IIssueHit>> {
-    const issues =
-      this.queryCache?.repository.dbID === repository.dbID
-        ? // Dexie gets confused if we return without wrapping in promise
-          await Promise.resolve(this.queryCache?.issues)
-        : await this.getAllIssueHitsFor(repository)
+    const issues = this.queryCache?.repository.dbID === repository.dbID ?
+        // Dexie gets confused if we return without wrapping in promise
+        await Promise.resolve(this.queryCache?.issues)
+      : await this.getAllIssueHitsFor(repository)
 
     this.setQueryCache(repository, issues)
 

@@ -40,8 +40,9 @@ export async function revertCommit(
       { trackLFSProgress: true },
       new RevertProgressParser(),
       progress => {
-        const description =
-          progress.kind === 'progress' ? progress.details.text : progress.text
+        const description = progress.kind === 'progress' ?
+            progress.details.text
+          : progress.text
         const title = progress.kind === 'progress' ? progress.details.title : ''
         const value = progress.percent
 

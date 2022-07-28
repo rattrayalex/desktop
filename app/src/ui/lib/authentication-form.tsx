@@ -85,8 +85,8 @@ export class AuthenticationForm extends React.Component<
   }
 
   public render() {
-    const content = this.props.supportsBasicAuth
-      ? this.renderSignInForm()
+    const content = this.props.supportsBasicAuth ?
+        this.renderSignInForm()
       : this.renderEndpointRequiresWebFlow()
 
     return (
@@ -129,22 +129,25 @@ export class AuthenticationForm extends React.Component<
     )
     return (
       <div className="actions">
-        {this.props.supportsBasicAuth ? (
+        {this.props.supportsBasicAuth ?
           <Button type="submit" disabled={signInDisabled}>
-            {this.props.loading ? <Loading /> : null} Sign in
+            {this.props.loading ?
+              <Loading />
+            : null}{' '}
+            Sign in
           </Button>
-        ) : null}
+        : null}
 
         {this.props.additionalButtons}
 
-        {this.props.supportsBasicAuth ? (
+        {this.props.supportsBasicAuth ?
           <LinkButton
             className="forgot-password-link"
             uri={this.props.forgotPasswordUrl}
           >
             Forgot password?
           </LinkButton>
-        ) : null}
+        : null}
       </div>
     )
   }
@@ -168,14 +171,12 @@ export class AuthenticationForm extends React.Component<
    * earlier in the UI flow).
    */
   private renderSignInForm() {
-    return this.props.endpoint === getDotComAPIEndpoint() ? (
-      this.renderUsernamePassword()
-    ) : (
-      <>
-        {this.renderSignInWithBrowser()}
-        {this.renderUsernamePassword()}
-      </>
-    )
+    return this.props.endpoint === getDotComAPIEndpoint() ?
+        this.renderUsernamePassword()
+      : <>
+          {this.renderSignInWithBrowser()}
+          {this.renderUsernamePassword()}
+        </>
   }
 
   /**

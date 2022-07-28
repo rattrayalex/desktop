@@ -8,20 +8,20 @@ import { UNSAFE_openDirectory } from '../shell'
 import { MenuLabelsEvent } from '../../models/menu-labels'
 
 const platformDefaultShell = __WIN32__ ? 'Command Prompt' : 'Terminal'
-const createPullRequestLabel = __DARWIN__
-  ? 'Create Pull Request'
+const createPullRequestLabel = __DARWIN__ ?
+    'Create Pull Request'
   : 'Create &pull request'
-const showPullRequestLabel = __DARWIN__
-  ? 'Show Pull Request'
+const showPullRequestLabel = __DARWIN__ ?
+    'Show Pull Request'
   : 'Show &pull request'
 const defaultBranchNameValue = __DARWIN__ ? 'Default Branch' : 'default branch'
 const confirmRepositoryRemovalLabel = __DARWIN__ ? 'Remove…' : '&Remove…'
 const repositoryRemovalLabel = __DARWIN__ ? 'Remove' : '&Remove'
-const confirmStashAllChangesLabel = __DARWIN__
-  ? 'Stash All Changes…'
+const confirmStashAllChangesLabel = __DARWIN__ ?
+    'Stash All Changes…'
   : '&Stash all changes…'
-const stashAllChangesLabel = __DARWIN__
-  ? 'Stash All Changes'
+const stashAllChangesLabel = __DARWIN__ ?
+    'Stash All Changes'
   : '&Stash all changes'
 
 enum ZoomDirection {
@@ -43,12 +43,12 @@ export function buildDefaultMenu({
 }: MenuLabelsEvent): Electron.Menu {
   defaultBranchName = truncateWithEllipsis(defaultBranchName, 25)
 
-  const removeRepoLabel = askForConfirmationOnRepositoryRemoval
-    ? confirmRepositoryRemovalLabel
+  const removeRepoLabel = askForConfirmationOnRepositoryRemoval ?
+      confirmRepositoryRemovalLabel
     : repositoryRemovalLabel
 
-  const pullRequestLabel = hasCurrentPullRequest
-    ? showPullRequestLabel
+  const pullRequestLabel = hasCurrentPullRequest ?
+      showPullRequestLabel
     : createPullRequestLabel
 
   const template = new Array<Electron.MenuItemConstructorOptions>()
@@ -200,8 +200,8 @@ export function buildDefaultMenu({
         label: getStashedChangesLabel(isStashedChangesVisible),
         id: 'toggle-stashed-changes',
         accelerator: 'Ctrl+H',
-        click: isStashedChangesVisible
-          ? emit('hide-stashed-changes')
+        click: isStashedChangesVisible ?
+            emit('hide-stashed-changes')
           : emit('show-stashed-changes'),
       },
       {
@@ -242,8 +242,8 @@ export function buildDefaultMenu({
       },
       {
         id: 'show-devtools',
-        label: __DARWIN__
-          ? 'Toggle Developer Tools'
+        label: __DARWIN__ ?
+            'Toggle Developer Tools'
           : '&Toggle developer tools',
         accelerator: (() => {
           return __DARWIN__ ? 'Alt+Command+I' : 'Ctrl+Shift+I'
@@ -294,26 +294,25 @@ export function buildDefaultMenu({
         click: emit('view-repository-on-github'),
       },
       {
-        label: __DARWIN__
-          ? `Open in ${selectedShell ?? platformDefaultShell}`
+        label: __DARWIN__ ?
+            `Open in ${selectedShell ?? platformDefaultShell}`
           : `O&pen in ${selectedShell ?? platformDefaultShell}`,
         id: 'open-in-shell',
         accelerator: 'Ctrl+`',
         click: emit('open-in-shell'),
       },
       {
-        label: __DARWIN__
-          ? 'Show in Finder'
-          : __WIN32__
-          ? 'Show in E&xplorer'
+        label:
+          __DARWIN__ ? 'Show in Finder'
+          : __WIN32__ ? 'Show in E&xplorer'
           : 'Show in your File Manager',
         id: 'open-working-directory',
         accelerator: 'CmdOrCtrl+Shift+F',
         click: emit('open-working-directory'),
       },
       {
-        label: __DARWIN__
-          ? `Open in ${selectedExternalEditor ?? 'External Editor'}`
+        label: __DARWIN__ ?
+            `Open in ${selectedExternalEditor ?? 'External Editor'}`
           : `&Open in ${selectedExternalEditor ?? 'external editor'}`,
         id: 'open-external-editor',
         accelerator: 'CmdOrCtrl+Shift+A',
@@ -322,8 +321,8 @@ export function buildDefaultMenu({
       separator,
       {
         id: 'create-issue-in-repository-on-github',
-        label: __DARWIN__
-          ? 'Create Issue on GitHub'
+        label: __DARWIN__ ?
+            'Create Issue on GitHub'
           : 'Create &issue on GitHub',
         accelerator: 'CmdOrCtrl+I',
         click: emit('create-issue-in-repository-on-github'),
@@ -367,8 +366,8 @@ export function buildDefaultMenu({
         click: emit('discard-all-changes'),
       },
       {
-        label: askForConfirmationWhenStashingAllChanges
-          ? confirmStashAllChangesLabel
+        label: askForConfirmationWhenStashingAllChanges ?
+            confirmStashAllChangesLabel
           : stashAllChangesLabel,
         id: 'stash-all-changes',
         accelerator: 'CmdOrCtrl+Shift+S',
@@ -376,8 +375,8 @@ export function buildDefaultMenu({
       },
       separator,
       {
-        label: __DARWIN__
-          ? `Update from ${defaultBranchName}`
+        label: __DARWIN__ ?
+            `Update from ${defaultBranchName}`
           : `&Update from ${defaultBranchName}`,
         id: 'update-branch',
         accelerator: 'CmdOrCtrl+Shift+U',
@@ -390,16 +389,16 @@ export function buildDefaultMenu({
         click: emit('compare-to-branch'),
       },
       {
-        label: __DARWIN__
-          ? 'Merge into Current Branch…'
+        label: __DARWIN__ ?
+            'Merge into Current Branch…'
           : '&Merge into current branch…',
         id: 'merge-branch',
         accelerator: 'CmdOrCtrl+Shift+M',
         click: emit('merge-branch'),
       },
       {
-        label: __DARWIN__
-          ? 'Rebase Current Branch…'
+        label: __DARWIN__ ?
+            'Rebase Current Branch…'
           : 'R&ebase current branch…',
         id: 'rebase-branch',
         accelerator: 'CmdOrCtrl+Shift+E',
@@ -474,10 +473,9 @@ export function buildDefaultMenu({
     },
   }
 
-  const showLogsLabel = __DARWIN__
-    ? 'Show Logs in Finder'
-    : __WIN32__
-    ? 'S&how logs in Explorer'
+  const showLogsLabel =
+    __DARWIN__ ? 'Show Logs in Finder'
+    : __WIN32__ ? 'S&how logs in Explorer'
     : 'S&how logs in your File Manager'
 
   const showLogsItem: Electron.MenuItemConstructorOptions = {
@@ -609,8 +607,7 @@ const ZoomOutFactors = ZoomInFactors.slice().reverse()
  */
 function findClosestValue(arr: Array<number>, value: number) {
   return arr.reduce((previous, current) => {
-    return Math.abs(current - value) < Math.abs(previous - value)
-      ? current
+    return Math.abs(current - value) < Math.abs(previous - value) ? current
       : previous
   })
 }
@@ -632,8 +629,9 @@ function zoom(direction: ZoomDirection): ClickHandler {
       webContents.send('zoom-factor-changed', 1)
     } else {
       const rawZoom = webContents.zoomFactor
-      const zoomFactors =
-        direction === ZoomDirection.In ? ZoomInFactors : ZoomOutFactors
+      const zoomFactors = direction === ZoomDirection.In ?
+          ZoomInFactors
+        : ZoomOutFactors
 
       // So the values that we get from zoomFactor property are floating point
       // precision numbers from chromium, that don't always round nicely, so

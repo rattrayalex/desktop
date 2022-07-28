@@ -1016,10 +1016,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
     commitSHAs: ReadonlyArray<string>
   ) {
     const state = this.repositoryStateCache.get(repository)
-    let selectedSHA =
-      state.commitSelection.shas.length === 1
-        ? state.commitSelection.shas[0]
-        : null
+    let selectedSHA = state.commitSelection.shas.length === 1 ?
+        state.commitSelection.shas[0]
+      : null
     if (selectedSHA != null) {
       const index = commitSHAs.findIndex(sha => sha === selectedSHA)
       if (index < 0) {
@@ -1050,20 +1049,21 @@ export class AppStore extends TypedBaseStore<IAppState> {
     const branches = branchesState.allBranches.filter(
       b => b.name !== currentBranch?.name && !b.isDesktopForkRemoteBranch
     )
-    const recentBranches = currentBranch
-      ? branchesState.recentBranches.filter(b => b.name !== currentBranch.name)
+    const recentBranches = currentBranch ?
+        branchesState.recentBranches.filter(b => b.name !== currentBranch.name)
       : branchesState.recentBranches
 
     const cachedDefaultBranch = branchesState.defaultBranch
 
     // only include the default branch when comparing if the user is not on the default branch
     // and it also exists in the repository
-    const defaultBranch =
-      currentBranch != null &&
-      cachedDefaultBranch != null &&
-      currentBranch.name !== cachedDefaultBranch.name
-        ? cachedDefaultBranch
-        : null
+    const defaultBranch = (
+        currentBranch != null &&
+        cachedDefaultBranch != null &&
+        currentBranch.name !== cachedDefaultBranch.name
+      ) ?
+        cachedDefaultBranch
+      : null
 
     this.repositoryStateCache.updateCompareState(repository, () => ({
       branches,
@@ -1072,8 +1072,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
     }))
 
     const cachedState = compareState.formState
-    const action =
-      initialAction != null ? initialAction : getInitialAction(cachedState)
+    const action = initialAction != null ?
+        initialAction
+      : getInitialAction(cachedState)
     this._executeCompare(repository, action)
   }
 
@@ -1316,10 +1317,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
 
     const noFileSelected = commitSelection.file === null
 
-    const firstFileOrDefault =
-      noFileSelected && changedFiles.length
-        ? changedFiles[0]
-        : commitSelection.file
+    const firstFileOrDefault = noFileSelected && changedFiles.length ?
+        changedFiles[0]
+      : commitSelection.file
 
     this.repositoryStateCache.updateCommitSelection(repository, () => ({
       file: firstFileOrDefault,
@@ -1432,8 +1432,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
 
     setNumber(LastSelectedRepositoryIDKey, repository.id)
 
-    const previousRepositoryId = previouslySelectedRepository
-      ? previouslySelectedRepository.id
+    const previousRepositoryId = previouslySelectedRepository ?
+        previouslySelectedRepository.id
       : null
 
     this.updateRecentRepositories(previousRepositoryId, repository.id)
@@ -1752,10 +1752,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
     this.updateMenuLabelsForSelectedRepository()
 
     const imageDiffTypeValue = localStorage.getItem(imageDiffTypeKey)
-    this.imageDiffType =
-      imageDiffTypeValue === null
-        ? imageDiffTypeDefault
-        : parseInt(imageDiffTypeValue)
+    this.imageDiffType = imageDiffTypeValue === null ?
+        imageDiffTypeDefault
+      : parseInt(imageDiffTypeValue)
 
     this.hideWhitespaceInChangesDiff = getBoolean(
       hideWhitespaceInChangesDiffKey,
@@ -1868,10 +1867,11 @@ export class AppStore extends TypedBaseStore<IAppState> {
     const { changesState, branchesState, aheadBehind } = state
     const { defaultBranch, currentPullRequest } = branchesState
 
-    const defaultBranchName =
-      defaultBranch === null || defaultBranch.upstreamWithoutRemote === null
-        ? undefined
-        : defaultBranch.upstreamWithoutRemote
+    const defaultBranchName = (
+        defaultBranch === null || defaultBranch.upstreamWithoutRemote === null
+      ) ?
+        undefined
+      : defaultBranch.upstreamWithoutRemote
 
     const isForcePushForCurrentRepository = isCurrentBranchForcePush(
       branchesState,
@@ -2126,10 +2126,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
     if (possibleTheirsBranches === null) {
       return
     }
-    const theirBranch =
-      possibleTheirsBranches.length === 1
-        ? possibleTheirsBranches[0]
-        : undefined
+    const theirBranch = possibleTheirsBranches.length === 1 ?
+        possibleTheirsBranches[0]
+      : undefined
 
     const ourBranch = conflictState.currentBranch
     this._showPopup({
@@ -2350,16 +2349,18 @@ export class AppStore extends TypedBaseStore<IAppState> {
       let selectedStashedFile: CommittedFileChange | null = null
       const { stashEntry, selection } = state
 
-      const currentlySelectedFile =
-        selection.kind === ChangesSelectionKind.Stash
-          ? selection.selectedStashedFile
-          : null
+      const currentlySelectedFile = (
+          selection.kind === ChangesSelectionKind.Stash
+        ) ?
+          selection.selectedStashedFile
+        : null
 
-      const currentFiles =
-        stashEntry !== null &&
-        stashEntry.files.kind === StashedChangesLoadStates.Loaded
-          ? stashEntry.files.files
-          : []
+      const currentFiles = (
+          stashEntry !== null &&
+          stashEntry.files.kind === StashedChangesLoadStates.Loaded
+        ) ?
+          stashEntry.files.files
+        : []
 
       if (file === undefined) {
         if (currentlySelectedFile !== null) {
@@ -2589,8 +2590,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
     file: WorkingDirectoryFileChange,
     include: boolean
   ): Promise<void> {
-    const selection = include
-      ? file.selection.withSelectAll()
+    const selection = include ?
+        file.selection.withSelectAll()
       : file.selection.withSelectNone()
     this.updateWorkingDirectoryFileSelection(repository, file, selection)
     return Promise.resolve()
@@ -3228,8 +3229,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
         throw checkoutError
       }
 
-      const stash = (await this.createStashEntry(repository, branch))
-        ? await getLastDesktopStashEntryForBranch(repository, branch)
+      const stash = (await this.createStashEntry(repository, branch)) ?
+          await getLastDesktopStashEntryForBranch(repository, branch)
         : null
 
       // Failing to stash the changes when we know that there are changes
@@ -3407,8 +3408,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
     }
 
     const remote = gitStore.defaultRemote
-    return remote !== null
-      ? matchGitHubRepository(this.accounts, remote.url)
+    return remote !== null ?
+        matchGitHubRepository(this.accounts, remote.url)
       : null
   }
 
@@ -3726,8 +3727,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
               }
             )
 
-            const refreshTitle = __DARWIN__
-              ? 'Refreshing Repository'
+            const refreshTitle = __DARWIN__ ?
+                'Refreshing Repository'
               : 'Refreshing repository'
             const refreshStartProgress = pushWeight + fetchWeight
 
@@ -3919,8 +3920,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
           )
 
           const refreshStartProgress = pullWeight + fetchWeight
-          const refreshTitle = __DARWIN__
-            ? 'Refreshing Repository'
+          const refreshTitle = __DARWIN__ ?
+              'Refreshing Repository'
             : 'Refreshing repository'
 
           this.updatePushPullFetchProgress(repository, {
@@ -4002,8 +4003,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
   private getAccountForRemoteURL(remote: string): IGitAccount | null {
     const account = matchGitHubRepository(this.accounts, remote)?.account
     if (account !== undefined) {
-      const hasValidToken =
-        account.token.length > 0 ? 'has token' : 'empty token'
+      const hasValidToken = account.token.length > 0 ?
+          'has token'
+        : 'empty token'
       log.info(
         `[AppStore.getAccountForRemoteURL] account found for remote: ${remote} - ${account.login} (${hasValidToken})`
       )
@@ -4199,8 +4201,8 @@ export class AppStore extends TypedBaseStore<IAppState> {
           )
         }
 
-        const refreshTitle = __DARWIN__
-          ? 'Refreshing Repository'
+        const refreshTitle = __DARWIN__ ?
+            'Refreshing Repository'
           : 'Refreshing repository'
 
         this.updatePushPullFetchProgress(repository, {
@@ -5083,9 +5085,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
       .slice(0, MaxInvalidFoldersToDisplay)
       .map(path => `- ${path}`)
       .join('\n')}${
-      invalidPaths.length > MaxInvalidFoldersToDisplay
-        ? `\n\n(and ${invalidPaths.length - MaxInvalidFoldersToDisplay} more)`
-        : ''
+      invalidPaths.length > MaxInvalidFoldersToDisplay ?
+        `\n\n(and ${invalidPaths.length - MaxInvalidFoldersToDisplay} more)`
+      : ''
     }`
   }
 
@@ -5123,8 +5125,9 @@ export class AppStore extends TypedBaseStore<IAppState> {
     }
 
     if (account instanceof Account) {
-      const hasValidToken =
-        account.token.length > 0 ? 'has token' : 'empty token'
+      const hasValidToken = account.token.length > 0 ?
+          'has token'
+        : 'empty token'
       log.info(
         `[AppStore.withAuthenticatingUser] account found for repository: ${repository.name} - ${account.login} (${hasValidToken})`
       )

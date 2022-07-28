@@ -176,9 +176,9 @@ export class CompareSidebar extends React.Component<
     const formState = this.props.compareState.formState
     return (
       <div className="compare-commit-list">
-        {formState.kind === HistoryTabMode.History
-          ? this.renderCommitList()
-          : this.renderTabBar(formState)}
+        {formState.kind === HistoryTabMode.History ?
+          this.renderCommitList()
+        : this.renderTabBar(formState)}
       </div>
     )
   }
@@ -206,18 +206,15 @@ export class CompareSidebar extends React.Component<
     } else {
       const currentlyComparedBranchName = formState.comparisonBranch.name
 
-      emptyListMessage =
-        formState.comparisonMode === ComparisonMode.Ahead ? (
+      emptyListMessage = formState.comparisonMode === ComparisonMode.Ahead ?
           <p>
             The compared branch (<Ref>{currentlyComparedBranchName}</Ref>) is up
             to date with your branch
           </p>
-        ) : (
-          <p>
+        : <p>
             Your branch is up to date with the compared branch (
             <Ref>{currentlyComparedBranchName}</Ref>)
           </p>
-        )
     }
 
     return (
@@ -231,9 +228,9 @@ export class CompareSidebar extends React.Component<
         emoji={this.props.emoji}
         onViewCommitOnGitHub={this.props.onViewCommitOnGitHub}
         onRevertCommit={
-          ableToRevertCommit(this.props.compareState.formState)
-            ? this.props.onRevertCommit
-            : undefined
+          ableToRevertCommit(this.props.compareState.formState) ?
+            this.props.onRevertCommit
+          : undefined
         }
         onCommitsSelected={this.onCommitsSelected}
         onScroll={this.onScroll}
@@ -279,9 +276,9 @@ export class CompareSidebar extends React.Component<
     return (
       <div className="compare-commit-list">
         {this.renderCommitList()}
-        {view.comparisonMode === ComparisonMode.Behind
-          ? this.renderMergeCallToAction(view)
-          : null}
+        {view.comparisonMode === ComparisonMode.Behind ?
+          this.renderMergeCallToAction(view)
+        : null}
       </div>
     )
   }
@@ -334,8 +331,9 @@ export class CompareSidebar extends React.Component<
       return
     }
 
-    const comparisonMode =
-      index === 0 ? ComparisonMode.Behind : ComparisonMode.Ahead
+    const comparisonMode = index === 0 ?
+        ComparisonMode.Behind
+      : ComparisonMode.Ahead
     const branch = formState.comparisonBranch
 
     this.props.dispatcher.executeCompare(this.props.repository, {
@@ -346,8 +344,8 @@ export class CompareSidebar extends React.Component<
   }
 
   private renderTabBar(formState: ICompareBranch) {
-    const selectedTab =
-      formState.comparisonMode === ComparisonMode.Behind ? 0 : 1
+    const selectedTab = formState.comparisonMode === ComparisonMode.Behind ? 0
+      : 1
 
     return (
       <div className="compare-content">
@@ -601,8 +599,8 @@ function getPlaceholderText(state: ICompareState) {
   if (!branches.some(b => !b.isDesktopForkRemoteBranch)) {
     return __DARWIN__ ? 'No Branches to Compare' : 'No branches to compare'
   } else if (formState.kind === HistoryTabMode.History) {
-    return __DARWIN__
-      ? 'Select Branch to Compare...'
+    return __DARWIN__ ?
+        'Select Branch to Compare...'
       : 'Select branch to compare...'
   } else {
     return undefined

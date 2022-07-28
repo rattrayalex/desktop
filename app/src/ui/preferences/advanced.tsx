@@ -107,9 +107,9 @@ export class Advanced extends React.Component<
           <Checkbox
             label="Periodically fetch and refresh status of all repositories"
             value={
-              this.props.repositoryIndicatorsEnabled
-                ? CheckboxValue.On
-                : CheckboxValue.Off
+              this.props.repositoryIndicatorsEnabled ?
+                CheckboxValue.On
+              : CheckboxValue.Off
             }
             onChange={this.onRepositoryIndicatorsEnabledChanged}
           />
@@ -123,9 +123,9 @@ export class Advanced extends React.Component<
           <Checkbox
             label={this.reportDesktopUsageLabel()}
             value={
-              this.state.optOutOfUsageTracking
-                ? CheckboxValue.Off
-                : CheckboxValue.On
+              this.state.optOutOfUsageTracking ?
+                CheckboxValue.Off
+              : CheckboxValue.On
             }
             onChange={this.onReportingOptOutChanged}
           />

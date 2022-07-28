@@ -30,8 +30,8 @@ export function isBranchPushable(pushControl: IAPIPushControl) {
   // See https://github.com/desktop/desktop/issues/9054#issuecomment-582768322
   // We'll guard against this being undefined until we can determine the
   // root cause and fix that.
-  const requiredStatusCheckCount = Array.isArray(required_status_checks)
-    ? required_status_checks.length
+  const requiredStatusCheckCount = Array.isArray(required_status_checks) ?
+      required_status_checks.length
     : 0
 
   // If user is admin and branch is not admin-enforced,

@@ -178,8 +178,8 @@ export async function git(
   const exitCode = result.exitCode
 
   let gitError: DugiteError | null = null
-  const acceptableExitCode = opts.successExitCodes
-    ? opts.successExitCodes.has(exitCode)
+  const acceptableExitCode = opts.successExitCodes ?
+      opts.successExitCodes.has(exitCode)
     : false
   if (!acceptableExitCode) {
     gitError = GitProcess.parseError(result.stderr)
@@ -293,8 +293,8 @@ export function parseConfigLockFilePathFromError(result: IGitResult) {
 
 function getDescriptionForError(error: DugiteError): string | null {
   if (isAuthFailureError(error)) {
-    const menuHint = __DARWIN__
-      ? 'GitHub Desktop > Preferences.'
+    const menuHint = __DARWIN__ ?
+        'GitHub Desktop > Preferences.'
       : 'File > Options.'
     return `Authentication failed. Some common reasons include:
 
@@ -460,10 +460,9 @@ export async function gitNetworkArguments(
 
   const name = 'protocol.version'
 
-  const protocolVersion =
-    repository != null
-      ? await getConfigValue(repository, name)
-      : await getGlobalConfigValue(name)
+  const protocolVersion = repository != null ?
+      await getConfigValue(repository, name)
+    : await getGlobalConfigValue(name)
 
   if (protocolVersion !== null) {
     // protocol.version is already set, we should not override it with our own

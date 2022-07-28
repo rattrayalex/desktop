@@ -39,8 +39,8 @@ export class WarnForcePushDialog extends React.Component<
   public render() {
     const { operation, onDismissed } = this.props
 
-    const title = __DARWIN__
-      ? `${operation} Will Require Force Push`
+    const title = __DARWIN__ ?
+        `${operation} Will Require Force Push`
       : `${operation} will require force push'`
 
     return (
@@ -63,9 +63,9 @@ export class WarnForcePushDialog extends React.Component<
             <Checkbox
               label="Do not show this message again"
               value={
-                this.state.askForConfirmationOnForcePush
-                  ? CheckboxValue.Off
-                  : CheckboxValue.On
+                this.state.askForConfirmationOnForcePush ?
+                  CheckboxValue.Off
+                : CheckboxValue.On
               }
               onChange={this.onAskForConfirmationOnForcePushChanged}
             />

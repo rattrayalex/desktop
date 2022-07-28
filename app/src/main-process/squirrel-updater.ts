@@ -158,8 +158,8 @@ async function updateShortcut(): Promise<void> {
       'GitHub Desktop.lnk'
     )
     const exists = await pathExists(desktopShortcutPath)
-    const locations: ShortcutLocations = exists
-      ? ['StartMenu', 'Desktop']
+    const locations: ShortcutLocations = exists ?
+        ['StartMenu', 'Desktop']
       : ['StartMenu']
     return createShortcut(locations)
   } else {

@@ -277,8 +277,8 @@ function renderUserAutocompleteItem(elem: HTMLElement, self: any, data: any) {
  * address.
  */
 function getEmailAddressForUser(user: IUserHit) {
-  return user.email && user.email.length > 0
-    ? user.email
+  return user.email && user.email.length > 0 ?
+      user.email
     : getLegacyStealthEmailForUser(user.username, user.endpoint)
 }
 
@@ -302,8 +302,8 @@ function renderUnknownHandleMarkReplacementElement(
   const elem = document.createElement('span')
 
   elem.classList.add('handle', isError ? 'error' : 'progress')
-  elem.title = isError
-    ? `Could not find user with username ${username}`
+  elem.title = isError ?
+      `Could not find user with username ${username}`
     : `Searching for @${username}`
 
   const symbol = isError ? OcticonSymbol.stop : syncClockwise

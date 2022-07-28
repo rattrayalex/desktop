@@ -20,7 +20,7 @@ export enum AuthenticationMode {
 }
 
 export function getWelcomeMessage(type: AuthenticationMode): string {
-  return type === AuthenticationMode.Sms
-    ? smsMessageWelcomeText
+  return type === AuthenticationMode.Sms ?
+      smsMessageWelcomeText
     : authenticatorAppWelcomeText
 }

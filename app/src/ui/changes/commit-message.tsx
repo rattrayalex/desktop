@@ -257,10 +257,11 @@ export class CommitMessage extends React.Component<
 
     const trailers = this.getCoAuthorTrailers()
 
-    const summaryOrPlaceholder =
-      this.props.prepopulateCommitSummary && !this.state.summary
-        ? this.props.placeholder
-        : summary
+    const summaryOrPlaceholder = (
+        this.props.prepopulateCommitSummary && !this.state.summary
+      ) ?
+        this.props.placeholder
+      : summary
 
     const commitContext = {
       summary: summaryOrPlaceholder,
@@ -299,13 +300,12 @@ export class CommitMessage extends React.Component<
   private renderAvatar() {
     const { commitAuthor, repository } = this.props
     const { gitHubRepository } = repository
-    const avatarTitle = commitAuthor
-      ? `Committing as ${commitAuthor.name} <${commitAuthor.email}>`
+    const avatarTitle = commitAuthor ?
+        `Committing as ${commitAuthor.name} <${commitAuthor.email}>`
       : undefined
-    const avatarUser: IAvatarUser | undefined =
-      commitAuthor !== null
-        ? getAvatarUserFromAuthor(commitAuthor, gitHubRepository)
-        : undefined
+    const avatarUser: IAvatarUser | undefined = commitAuthor !== null ?
+        getAvatarUserFromAuthor(commitAuthor, gitHubRepository)
+      : undefined
 
     const repositoryAccount = this.props.repositoryAccount
     const accountEmails = repositoryAccount?.emails.map(e => e.email) ?? []
@@ -328,9 +328,9 @@ export class CommitMessage extends React.Component<
         warningBadgeVisible={warningBadgeVisible}
         accountEmails={accountEmails}
         preferredAccountEmail={
-          repositoryAccount !== null && repositoryAccount !== undefined
-            ? lookupPreferredEmail(repositoryAccount)
-            : ''
+          repositoryAccount !== null && repositoryAccount !== undefined ?
+            lookupPreferredEmail(repositoryAccount)
+          : ''
         }
         onUpdateEmail={this.onUpdateUserEmail}
         onOpenRepositorySettings={this.onOpenRepositorySettings}
@@ -406,13 +406,13 @@ export class CommitMessage extends React.Component<
   }
 
   private get toggleCoAuthorsText(): string {
-    return this.state.showCoAuthoredBy
-      ? __DARWIN__
-        ? 'Remove Co-Authors'
+    return (
+      this.state.showCoAuthoredBy ?
+        __DARWIN__ ? 'Remove Co-Authors'
         : 'Remove co-authors'
-      : __DARWIN__
-      ? 'Add Co-Authors'
+      : __DARWIN__ ? 'Add Co-Authors'
       : 'Add co-authors'
+    )
   }
 
   private getAddRemoveCoAuthorsMenuItem(): IMenuItem {
@@ -454,11 +454,11 @@ export class CommitMessage extends React.Component<
   }
 
   private getCommitSpellcheckEnabilityMenuItem(isEnabled: boolean): IMenuItem {
-    const enableLabel = __DARWIN__
-      ? 'Enable Commit Spellcheck'
+    const enableLabel = __DARWIN__ ?
+        'Enable Commit Spellcheck'
       : 'Enable commit spellcheck'
-    const disableLabel = __DARWIN__
-      ? 'Disable Commit Spellcheck'
+    const disableLabel = __DARWIN__ ?
+        'Disable Commit Spellcheck'
       : 'Disable commit spellcheck'
     return {
       label: isEnabled ? disableLabel : enableLabel,
@@ -625,16 +625,14 @@ export class CommitMessage extends React.Component<
 
     const loading = isCommitting === true ? <Loading /> : undefined
     const commitVerb = loading ? 'Committing' : 'Commit'
-    const commitTitle =
-      branchName !== null ? `${commitVerb} to ${branchName}` : commitVerb
-    const defaultContents =
-      branchName !== null ? (
+    const commitTitle = branchName !== null ?
+        `${commitVerb} to ${branchName}`
+      : commitVerb
+    const defaultContents = branchName !== null ?
         <>
           {commitVerb} to <strong>{branchName}</strong>
         </>
-      ) : (
-        commitVerb
-      )
+      : commitVerb
 
     const commitButton = commitButtonText ? commitButtonText : defaultContents
 

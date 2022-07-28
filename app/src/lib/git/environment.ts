@@ -27,8 +27,8 @@ export function getFallbackUrlForProxyResolve(
   // so we'll try to leverage that.
   if (account !== null) {
     // A GitHub.com Account will have api.github.com as its endpoint
-    return account.endpoint === getDotComAPIEndpoint()
-      ? 'https://github.com'
+    return account.endpoint === getDotComAPIEndpoint() ?
+        'https://github.com'
       : account.endpoint
   }
 

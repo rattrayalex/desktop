@@ -170,10 +170,9 @@ export class AppMenuBar extends React.Component<
   }
 
   private isMenuItemOpen(item: ISubmenuItem) {
-    const openMenu =
-      this.props.foldoutState && this.props.appMenu.length > 1
-        ? this.props.appMenu[1]
-        : null
+    const openMenu = this.props.foldoutState && this.props.appMenu.length > 1 ?
+        this.props.appMenu[1]
+      : null
 
     return openMenu !== null && openMenu.id === item.id
   }
@@ -304,8 +303,8 @@ export class AppMenuBar extends React.Component<
   }
 
   private onMenuOpen = (item: ISubmenuItem, selectFirstItem?: boolean) => {
-    const enableAccessKeyNavigation = this.props.foldoutState
-      ? this.props.foldoutState.enableAccessKeyNavigation
+    const enableAccessKeyNavigation = this.props.foldoutState ?
+        this.props.foldoutState.enableAccessKeyNavigation
       : false
 
     this.props.dispatcher.showFoldout({
@@ -441,16 +440,16 @@ export class AppMenuBar extends React.Component<
 
     // Slice away the top menu so that each menu bar button receives
     // their menu item's menu and any open submenus.
-    const menuState = this.isMenuItemOpen(item)
-      ? this.props.appMenu.slice(1)
+    const menuState = this.isMenuItemOpen(item) ?
+        this.props.appMenu.slice(1)
       : []
 
-    const openedWithAccessKey = foldoutState
-      ? foldoutState.openedWithAccessKey || false
+    const openedWithAccessKey = foldoutState ?
+        foldoutState.openedWithAccessKey || false
       : false
 
-    const enableAccessKeyNavigation = foldoutState
-      ? foldoutState.enableAccessKeyNavigation
+    const enableAccessKeyNavigation = foldoutState ?
+        foldoutState.enableAccessKeyNavigation
       : false
 
     // If told to highlight access keys we will do so. If access key navigation

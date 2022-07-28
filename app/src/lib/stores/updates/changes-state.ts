@@ -87,12 +87,13 @@ export function updateChangedFiles(
       selectedFileIDs = [mergedFiles[0].id]
     }
 
-    const diff =
-      selectedFileIDs.length === 1 &&
-      state.selection.selectedFileIDs.length === 1 &&
-      state.selection.selectedFileIDs[0] === selectedFileIDs[0]
-        ? state.selection.diff
-        : null
+    const diff = (
+        selectedFileIDs.length === 1 &&
+        state.selection.selectedFileIDs.length === 1 &&
+        state.selection.selectedFileIDs[0] === selectedFileIDs[0]
+      ) ?
+        state.selection.diff
+      : null
 
     return {
       workingDirectory,
@@ -175,10 +176,12 @@ function performEffectsForMergeStateChange(
   status: IStatusResult,
   statsStore: IStatsStore
 ): void {
-  const previousBranchName =
-    prevConflictState != null ? prevConflictState.currentBranch : null
-  const currentBranchName =
-    newConflictState != null ? newConflictState.currentBranch : null
+  const previousBranchName = prevConflictState != null ?
+      prevConflictState.currentBranch
+    : null
+  const currentBranchName = newConflictState != null ?
+      newConflictState.currentBranch
+    : null
 
   const branchNameChanged =
     previousBranchName != null &&
@@ -215,10 +218,12 @@ function performEffectsForRebaseStateChange(
   status: IStatusResult,
   statsStore: IStatsStore
 ) {
-  const previousBranchName =
-    prevConflictState != null ? prevConflictState.targetBranch : null
-  const currentBranchName =
-    newConflictState != null ? newConflictState.targetBranch : null
+  const previousBranchName = prevConflictState != null ?
+      prevConflictState.targetBranch
+    : null
+  const currentBranchName = newConflictState != null ?
+      newConflictState.targetBranch
+    : null
 
   const branchNameChanged =
     previousBranchName != null &&
@@ -261,10 +266,9 @@ export function updateConflictState(
 ): ConflictState | null {
   const prevConflictState = state.conflictState
 
-  const manualResolutions =
-    prevConflictState !== null
-      ? prevConflictState.manualResolutions
-      : new Map<string, ManualConflictResolution>()
+  const manualResolutions = prevConflictState !== null ?
+      prevConflictState.manualResolutions
+    : new Map<string, ManualConflictResolution>()
 
   const newConflictState = getConflictState(status, manualResolutions)
 

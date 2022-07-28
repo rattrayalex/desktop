@@ -4,10 +4,9 @@ import { LinkButton } from '../link-button'
 
 export function renderUnmergedFilesSummary(conflictedFilesCount: number) {
   // localization, it burns :vampire:
-  const message =
-    conflictedFilesCount === 1
-      ? `1 conflicted file`
-      : `${conflictedFilesCount} conflicted files`
+  const message = conflictedFilesCount === 1 ?
+      `1 conflicted file`
+    : `${conflictedFilesCount} conflicted files`
   return <h3 className="summary">{message}</h3>
 }
 

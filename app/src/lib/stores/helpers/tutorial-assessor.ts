@@ -76,12 +76,12 @@ export class OnboardingTutorialAssessor {
     const { branchesState } = repositoryState
     const { tip } = branchesState
 
-    const currentBranchName =
-      tip.kind === TipState.Valid ? tip.branch.name : null
-    const defaultBranchName =
-      branchesState.defaultBranch !== null
-        ? branchesState.defaultBranch.name
-        : null
+    const currentBranchName = tip.kind === TipState.Valid ?
+        tip.branch.name
+      : null
+    const defaultBranchName = branchesState.defaultBranch !== null ?
+        branchesState.defaultBranch.name
+      : null
 
     return (
       currentBranchName !== null &&

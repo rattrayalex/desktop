@@ -56,10 +56,9 @@ export class GitHubUserStore extends BaseStore {
       return null
     }
 
-    const email =
-      apiUser.email !== null && apiUser.email.length > 0
-        ? apiUser.email
-        : getStealthEmailForUser(apiUser.id, login, account.endpoint)
+    const email = apiUser.email !== null && apiUser.email.length > 0 ?
+        apiUser.email
+      : getStealthEmailForUser(apiUser.id, login, account.endpoint)
 
     return {
       avatarURL: apiUser.avatar_url,
@@ -149,10 +148,9 @@ export class GitHubUserStore extends BaseStore {
     query: string,
     maxHits: number = DefaultMaxHits
   ): Promise<ReadonlyArray<IMentionableUser>> {
-    const users =
-      this.queryCache?.repository.dbID === repository.dbID
-        ? this.queryCache.users
-        : await this.getMentionableUsers(repository)
+    const users = this.queryCache?.repository.dbID === repository.dbID ?
+        this.queryCache.users
+      : await this.getMentionableUsers(repository)
 
     this.setQueryCache(repository, users)
 

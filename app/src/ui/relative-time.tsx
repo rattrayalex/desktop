@@ -81,14 +81,13 @@ export class RelativeTime extends React.Component<
     const diff = then.diff(now)
     const duration = Math.abs(diff)
     const absoluteText = then.format('LLLL')
-    const relativeText =
-      this.props.abbreviate === true
-        ? moment
-            .duration(duration, 'milliseconds')
-            .format('y[y] M[m] w[w] d[d] h[h] m[m]', {
-              largest: 1,
-            })
-        : then.from(now)
+    const relativeText = this.props.abbreviate === true ?
+        moment
+          .duration(duration, 'milliseconds')
+          .format('y[y] M[m] w[w] d[d] h[h] m[m]', {
+            largest: 1,
+          })
+      : then.from(now)
 
     // Future date, let's just show as absolute and reschedule. If it's less
     // than a minute into the future we'll treat it as 'just now'.

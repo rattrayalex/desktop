@@ -108,11 +108,11 @@ export class SelectedCommit extends React.Component<
 
   public componentWillUpdate(nextProps: ISelectedCommitProps) {
     // reset isExpanded if we're switching commits.
-    const currentValue = this.props.selectedCommit
-      ? this.props.selectedCommit.sha
+    const currentValue = this.props.selectedCommit ?
+        this.props.selectedCommit.sha
       : undefined
-    const nextValue = nextProps.selectedCommit
-      ? nextProps.selectedCommit.sha
+    const nextValue = nextProps.selectedCommit ?
+        nextProps.selectedCommit.sha
       : undefined
 
     if ((currentValue || nextValue) && currentValue !== nextValue) {
@@ -132,8 +132,8 @@ export class SelectedCommit extends React.Component<
 
     if (file == null) {
       // don't show both 'empty' messages
-      const message =
-        this.props.changedFiles.length === 0 ? '' : 'No file selected'
+      const message = this.props.changedFiles.length === 0 ? ''
+        : 'No file selected'
 
       return (
         <div className="panel blankslate" id="diff">
@@ -315,8 +315,8 @@ export class SelectedCommit extends React.Component<
     if (!fileExistsOnDisk) {
       showContextualMenu([
         {
-          label: __DARWIN__
-            ? 'File Does Not Exist on Disk'
+          label: __DARWIN__ ?
+              'File Does Not Exist on Disk'
             : 'File does not exist on disk',
           enabled: false,
         },
@@ -327,8 +327,8 @@ export class SelectedCommit extends React.Component<
     const extension = Path.extname(file.path)
 
     const isSafeExtension = isSafeFileExtension(extension)
-    const openInExternalEditor = this.props.externalEditorLabel
-      ? `Open in ${this.props.externalEditorLabel}`
+    const openInExternalEditor = this.props.externalEditorLabel ?
+        `Open in ${this.props.externalEditorLabel}`
       : DefaultEditorLabel
 
     const items = [

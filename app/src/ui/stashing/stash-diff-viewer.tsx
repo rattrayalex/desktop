@@ -71,13 +71,11 @@ export class StashDiffViewer extends React.PureComponent<IStashDiffViewerProps> 
       onOpenBinaryFile,
       onChangeImageDiffType,
     } = this.props
-    const files =
-      stashEntry.files.kind === StashedChangesLoadStates.Loaded
-        ? stashEntry.files.files
-        : new Array<CommittedFileChange>()
+    const files = stashEntry.files.kind === StashedChangesLoadStates.Loaded ?
+        stashEntry.files.files
+      : new Array<CommittedFileChange>()
 
-    const diffComponent =
-      selectedStashedFile !== null ? (
+    const diffComponent = selectedStashedFile !== null ?
         <SeamlessDiffSwitcher
           repository={repository}
           readOnly={true}
@@ -89,7 +87,7 @@ export class StashDiffViewer extends React.PureComponent<IStashDiffViewerProps> 
           onOpenBinaryFile={onOpenBinaryFile}
           onChangeImageDiffType={onChangeImageDiffType}
         />
-      ) : null
+      : null
 
     return (
       <section id="stash-diff-viewer">

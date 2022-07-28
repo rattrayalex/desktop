@@ -48,10 +48,9 @@ export class LocalChangesOverwrittenDialog extends React.Component<
   }
 
   public render() {
-    const overwrittenText =
-      this.props.files.length > 0
-        ? ' The following files would be overwritten:'
-        : null
+    const overwrittenText = this.props.files.length > 0 ?
+        ' The following files would be overwritten:'
+      : null
 
     return (
       <Dialog
@@ -112,9 +111,9 @@ export class LocalChangesOverwrittenDialog extends React.Component<
       <DialogFooter>
         <OkCancelButtonGroup
           okButtonText={
-            __DARWIN__
-              ? 'Stash Changes and Continue'
-              : 'Stash changes and continue'
+            __DARWIN__ ?
+              'Stash Changes and Continue'
+            : 'Stash changes and continue'
           }
           okButtonTitle="This will create a stash with your current changes. You can recover them by restoring the stash afterwards."
           cancelButtonText="Close"

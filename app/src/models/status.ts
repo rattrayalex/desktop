@@ -253,8 +253,8 @@ export class WorkingDirectoryFileChange extends FileChange {
 
   /** Create a new WorkingDirectoryFileChange with the given includedness. */
   public withIncludeAll(include: boolean): WorkingDirectoryFileChange {
-    const newSelection = include
-      ? this.selection.withSelectAll()
+    const newSelection = include ?
+        this.selection.withSelectAll()
       : this.selection.withSelectNone()
 
     return this.withSelection(newSelection)

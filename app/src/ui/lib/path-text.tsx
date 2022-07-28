@@ -143,8 +143,8 @@ export function extract(normalizedPath: string): {
   // for untracked submodules, the status entry is returned as a directory,
   // with a trailing / which causes the directory to be trimmed in a weird way
   // below. let's try and resolve this here
-  normalizedPath = normalizedPath.endsWith('/')
-    ? normalizedPath.substr(0, normalizedPath.length - 1)
+  normalizedPath = normalizedPath.endsWith('/') ?
+      normalizedPath.substr(0, normalizedPath.length - 1)
     : normalizedPath
 
   const normalizedFileName = Path.basename(normalizedPath)
@@ -291,10 +291,11 @@ export class PathText extends React.PureComponent<
   }
 
   public render() {
-    const directoryElement =
-      this.state.directoryText && this.state.directoryText.length ? (
+    const directoryElement = (
+        this.state.directoryText && this.state.directoryText.length
+      ) ?
         <span className="dirname">{this.state.directoryText}</span>
-      ) : null
+      : null
 
     const truncated = this.state.length < this.state.normalizedPath.length
     const title = truncated ? this.state.normalizedPath : undefined
@@ -318,10 +319,9 @@ export class PathText extends React.PureComponent<
       return
     }
 
-    const computedAvailableWidth =
-      this.props.availableWidth !== undefined
-        ? this.props.availableWidth
-        : this.pathElement.getBoundingClientRect().width
+    const computedAvailableWidth = this.props.availableWidth !== undefined ?
+        this.props.availableWidth
+      : this.pathElement.getBoundingClientRect().width
 
     const availableWidth = Math.max(computedAvailableWidth, 0)
 
@@ -407,10 +407,11 @@ export class PathText extends React.PureComponent<
 
     // Did we just measure the full path? If so let's persist it in state, if
     // not we'll just take what we've got (could be nothing) and persist that
-    const fullTextWidth =
-      this.state.length === this.state.normalizedPath.length
-        ? actualWidth
-        : this.state.fullTextWidth
+    const fullTextWidth = (
+        this.state.length === this.state.normalizedPath.length
+      ) ?
+        actualWidth
+      : this.state.fullTextWidth
 
     // We shouldn't get into this state but if we do, guard against division by zero
     // and use a normal binary search ratio.
@@ -425,10 +426,9 @@ export class PathText extends React.PureComponent<
       } else {
         // There might be more space to fill
         const longestFit = this.state.length
-        const maxChars =
-          this.state.shortestNonFit !== undefined
-            ? this.state.shortestNonFit - 1
-            : this.state.normalizedPath.length
+        const maxChars = this.state.shortestNonFit !== undefined ?
+            this.state.shortestNonFit - 1
+          : this.state.normalizedPath.length
 
         const minChars = longestFit + 1
 

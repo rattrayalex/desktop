@@ -47,11 +47,9 @@ export class TabBar extends React.Component<ITabBarProps, {}> {
       <div
         className={
           'tab-bar ' +
-          (type === TabBarType.Switch
-            ? 'switch'
-            : type === TabBarType.Vertical
-            ? 'vertical'
-            : 'tabs')
+          (type === TabBarType.Switch ? 'switch'
+          : type === TabBarType.Vertical ? 'vertical'
+          : 'tabs')
         }
         role="tablist"
       >
